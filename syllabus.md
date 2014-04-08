@@ -1,3 +1,6 @@
+*General Questions/ Issues*
+- When should we introduce git and github and use it for assignment submission?
+
 ###Week 1: *May 12-18*
 + **Monday**
     * Topics:
@@ -33,10 +36,8 @@
 
 ###Week 4: *June 2-8*
 + **Monday**
-    * Topics: JSHint, Review Material, Review Git
-    * [Overcoming Imposter Syndrome](https://medium.com/tech-talk/bdae04e46ec5)
-
-    * Homework: 
+    * Topics:
+    * Homework:
     * Slideshow:
 
 + **Wednesday**
@@ -92,9 +93,8 @@
         - review jQuery articles listed above
         - [jQuery tree traversal](http://api.jquery.com/category/traversing/)
 + **Wednesday**
-    * Topics: LevelDB, a database that is nice to use with node.js
+    * Topics:
     * Reading:
-        - [levelup docs](https://www.npmjs.org/package/levelup)
     * Homework:
 
 
@@ -162,7 +162,7 @@
     * [Homework]()
     * [Slideshow]()
 + **Wednesday**
-    * Topics: 
+    * Topics:
     * [Homework]()
     * [Slideshow]()
 
@@ -172,7 +172,7 @@
     * [Homework]()
     * [Slideshow]()
 + **Wednesday**
-    * Topics: 
+    * Topics:
     * [Homework]()
     * [Slideshow]()
 
@@ -182,7 +182,7 @@
     * [Homework]()
     * [Slideshow]()
 + **Wednesday**
-    * Topics: 
+    * Topics:
     * [Homework]()
     * [Slideshow]()
 
@@ -192,7 +192,7 @@
     * [Homework]()
     * [Slideshow]()
 + **Wednesday**
-    * Topics: 
+    * Topics:
     * [Homework]()
     * [Slideshow]()
 
@@ -202,9 +202,6 @@
     * [Homework]()
     * [Slideshow]()
 + **Wednesday**
-    * Topics: 
+    * Topics:
     * [Homework]()
     * [Slideshow]()
-
-
-

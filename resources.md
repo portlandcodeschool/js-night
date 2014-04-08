@@ -1,3 +1,7 @@
+*General Questions/ Issues*
+-
+-
+
 #Required Reading
 -
 -
@@ -30,3 +34,6 @@
 - [JS Weekly](http://javascriptweekly.com/)
 - [Node Up](http://nodeup.com/)
 - [Javascript Jabber](http://javascriptjabber.com/)
+
+#Articles
+- [Overcoming Imposter Syndrome](https://medium.com/tech-talk/bdae04e46ec5)
