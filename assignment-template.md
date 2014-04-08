@@ -1,5 +1,10 @@
 *General Questions/ Issues*
 - This file To be deleted after course planning moves ahead
+- We need a naming convention for each week's assignment repository. This way it is easy to add hyperlinks from the syllabus to the assignment repos.
+-Proposed naming conventions: 'jsn-sum14-1' (javascript night summer 2014 week 1)
+-whitney has labeled his repos jsi for immersion, perhaps jsn will help us differentiate. The organizations repo list is getting a little cluttered, so we'll have to figure out how to mitigate that.
+- 
+
 
 #Monday
 
