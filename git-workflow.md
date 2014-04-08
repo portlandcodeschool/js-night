@@ -1,9 +1,8 @@
 # Git Worflow for Homework
 
-note: we will need to add instructions for what happens when students submit their work and it gets rejected because of failed tests and linting errors. 
+*we will need to add instructions for what happens when students submit their work and it gets rejected because of failed tests and linting errors.*
 
-setup for travis ci docs here: http://docs.travis-ci.com/user/getting-started/
-they are supported on github and are free for us
+*setup for [travis ci docs here:](http://docs.travis-ci.com/user/getting-started/)they are supported on github and are free for us*
 
 1. Make sure you are in the directory where you want your homework project directory to be stored
 2. `git clone 'urlGoesHere'`
