@@ -1,5 +1,10 @@
 *General Questions/ Issues*
 
+1. Database/ Persistence. I'm not sure if we have enough time to cover something as complex as mongodb or redis. It would be nice if we could.
+2. Orchestrate is very friendly, but we still need to have lots of examples beforehand
+3. We need to cover some of the functionality of express so that people know what kind of magic it is doing for them
+4. We need to try out different free hosts. The standard should be that they are at least as easy as Heroku and are also free.
+
 # Main Node Topics/ Node-related topics
 
 ###Modules, Purpose of Modules, Implementation of Modules in Node.js
