@@ -1,3 +1,5 @@
+*General Questions/ Issues*
+
 This course outline is a proposed series of topics and subtopics without regard to duration or segmentation.  Eventually, when all material is listed with duration estimates, it can be mapped onto weeks, nights, and segments with appropriate in-class exercises interspersed.
 
 ###JS Interpreter/Console/REPL
