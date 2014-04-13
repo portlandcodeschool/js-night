@@ -10,6 +10,11 @@
 #Main Ember Topics
 
 ###Ember Router, Templates, and Ember Starter Kit (1 session)
+    - Testing in the Ember Starter Kit with QUnit
+        + [ember starter kit](https://github.com/emberjs/starter-kit)
+        + [ember-cartoon-character viewer](https://github.com/BenjaminVerble/ember-cartoon-character-viewer)
+            * A very simple, non-modular demonstration of some of embers features and the ember starter kit
+            * QUnit is included in this module as well
 
 ###Ember Controller, Routes, and Models (1 session)
 
