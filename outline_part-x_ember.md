@@ -10,11 +10,16 @@
 #Main Ember Topics
 
 ###Ember Router, Templates, and Ember Starter Kit (1 session)
-    - Testing in the Ember Starter Kit with QUnit
-        + [ember starter kit](https://github.com/emberjs/starter-kit)
-        + [ember-cartoon-character viewer](https://github.com/BenjaminVerble/ember-cartoon-character-viewer)
-            * A very simple, non-modular demonstration of some of embers features and the ember starter kit
-            * QUnit is included in this module as well
+- Testing in the Ember Starter Kit with QUnit
+    + [ember starter kit](https://github.com/emberjs/starter-kit)
+    + [ember-cartoon-character viewer](https://github.com/BenjaminVerble/ember-cartoon-character-viewer)
+        * A very simple, non-modular demonstration of some of embers features and the ember starter kit
+        * QUnit is included in this module as well
+- Homework:
+    + Students should be able to use the ember starter kit to make new templates, controllers, routes, and add to the router.
+    + Students should spend some time writing tests in QUnit for their ember code
+    + Students should use the ember inspector to look at the different parts of their ember app
+        * [ember inspector chrome extension](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi?utm_source=chrome-ntp-icon)
 
 ###Ember Controller, Routes, and Models (1 session)
 
@@ -23,6 +28,6 @@
 ###Reinforce Ember Conventions and explain their purpose
 
 ###Putting It All Together: Individual projects (Multiweek)
-    * Students will construct an example app over a two week period using express.js, ember.js, and some sort of data persistance
+* Students will construct an example app over a two week period using express.js, ember.js, and some sort of data persistance
 
 #Possible Ember Topics/ Side topics
