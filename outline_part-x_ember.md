@@ -1,4 +1,11 @@
 *General Questions/ Issues*
+- We need a descriptive diagram of all of embers parts and how they relate
+    + Codeschool.com has a nice example. I like how they lay theirs out, but ours would need to have more annotations.
+- We should be able to use the new ember CLI to give the students the tools to: 
+    + Generate new projects
+    + Test their ember code
+    + Make their projects modular with ES6 modules instead of require.js or another solution
+
 
 #Main Ember Topics
 
