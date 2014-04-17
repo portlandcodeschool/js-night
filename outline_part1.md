@@ -2,6 +2,8 @@
 
 This course outline is a proposed series of topics and subtopics without regard to duration or segmentation.  Eventually, when all material is listed with duration estimates, it can be mapped onto weeks, nights, and segments with appropriate in-class exercises interspersed.
 
+###Icebreaker: expression parsing interactive puzzle!
+
 ###JS Interpreter/Console/REPL
 * Interaction as conversation
 * Precedents: Command line; pocket calculator
@@ -36,9 +38,15 @@ This course outline is a proposed series of topics and subtopics without regard 
   * _var_
   * use without declaration dangers
 * Assignment vs. Equality
-  * assignment operators: = += -+
+  * assignment operators: = += -+ ++ --
 * Identifiers/Names
 * Scoping, Shadowing, and Globals (quick intro)
+  * variables organized in structure of "nested boxes"
+  * each var lives in one box, can be seen from that box or any within
+  * outermost box called "global scope"; global vars visible from anywhere
+  * BUT: duplicate names in inner boxes hide ("shadow") outer vars
+  * Bad practice to use global variables, but we'll start out that way
+    * console sees only globals
 
 ###Primitive Types
 * JS is "untyped"/"weakly typed":
@@ -106,6 +114,13 @@ This course outline is a proposed series of topics and subtopics without regard 
      * call operator _()_
    * mention as value
      * Example: aliasing
+* function definition introduces new "frame"/"scope"
+  * variables within function are "local", can see outward
+  * Define outward... (lexical vs dynamic scoping)
+
+###Testing 1: Assertion
+* write poor-man's assert()
+* sprinkle liberally through all samples following
 
 ###Arrays 1: Basics
 *  series of values, indexed by number
