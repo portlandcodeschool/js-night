@@ -46,7 +46,7 @@ This course outline is a proposed series of topics and subtopics without regard 
   * outermost box called "global scope"; global vars visible from anywhere
   * BUT: duplicate names in inner boxes hide ("shadow") outer vars
   * Bad practice to use global variables, but we'll start out that way
-    * console sees only globals
+     * console sees only globals
 
 ###Primitive Types
 * JS is "untyped"/"weakly typed":
@@ -82,8 +82,8 @@ This course outline is a proposed series of topics and subtopics without regard 
 * ternary conditional operator \_?\_:\_
 * ||, &&, ! as boolean operators
 * || and && as generalized short-circuting operators
-  * (A || B) means _if (A) A else B_ ("treat || trick")
-  * (A && B) means _if (A) B else A_ ("win && celebrate")
+  * `(A || B)` means `if (A) A else B` ("treat || trick")
+  * `(A && B)` means `if (A) B else A` ("win && celebrate")
 
 ###New Tool: Scratchpad!
 * multi-line evaluation
@@ -116,7 +116,7 @@ This course outline is a proposed series of topics and subtopics without regard 
      * Example: aliasing
 * function definition introduces new "frame"/"scope"
   * variables within function are "local", can see outward
-  * Define outward... (lexical vs dynamic scoping)
+  * Define outward... (lexical vs dynamic scoping)?
 
 ###Testing 1: Assertion
 * write poor-man's assert()
@@ -130,4 +130,4 @@ This course outline is a proposed series of topics and subtopics without regard 
 
 ###(Practice Loops, Functions, Arrays)
 
-to be continued...
+_(To be continued...)_
