@@ -3,8 +3,8 @@
 -
 
 #Required Reading
--
--
+- [Node.js in Action](http://www.manning.com/cantelon/)
+- 
 -
 
 #JS Resources
