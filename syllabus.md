@@ -9,12 +9,16 @@
 ###Week 1: *May 12-18*
 + **Monday**
     * Topics: 
+	* JS Console, Expressions, Operators, Variables
+	* Primitive types; Auto-conversion
     * Reading:
     * [Homework]()
     * [Slideshow]()
     
 + **Wednesday**
     * Topics: 
+	* Truthiness & Conditionals; ScratchPad; Loops; Blocks
+	* Function basics; Assertions and Testing basics; Array basics
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -23,11 +27,15 @@
 ###Week 2: *May 19-25*
 + **Monday**
     * Topics: 
+	* Objects & Properties; References;
+	* Arrays as Objects; Array Methods
     * Reading:
     * [Homework]()
     * [Slideshow]()
 + **Wednesday**
     * Topics: 
+	* Functions as Objects; Callbacks; Anonymous Functions
+	* git workflow, branching, & assignments; JS Linting
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -35,12 +43,17 @@
 
 ###Week 3: *May 26-June 1*
 + **Monday**
-    * Topics: 
+    * Topics:
+	* Function details: Evaluation Phases, Call Objects
+	* Global Object & Call Chain; Closures
     * Reading:
     * [Homework]()
     * [Slideshow]()
+
 + **Wednesday**
-    * Topics: 
+    * Topics:
+	* Object Patterns; Helper Functions, Delegates
+	* Factory Functions; Duplicate vs. Shared Methods
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -48,7 +61,9 @@
 
 ###Week 4: *June 2-8*
 + **Monday**
-    * Topics: 
+    * Topics:
+	* Constructors, _new_; Wrapper Objects and Converters; Class Methods
+	* Prototypes, Instance Method Inheritance; Subclassing
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -56,15 +71,22 @@
 <!-- NODE FROM WEEEK 4, Wednesday to the end of the course? -->
 <!-- VANILLA JAVASCRIPT CAN CONTINUE INDEFINITELY IF WE WANT -->
 <!-- VANILLA JAVASCRIPT CHALLENGES UNTIL THE END OF THE COURSE? -->
-<!-- Modules, Purpose of Modules, FS Module (and other basic node core modules that are needed to get students started), parsing files -->
 + **Wednesday**
+    * Topics: Core JS Overflow...
+    * Reading:
+    * [Homework]()
+    * [Slideshow]()
+
+###Week 5: *June 9-15*
+<!-- Modules, Purpose of Modules, FS Module (and other basic node core modules that are needed to get students started), parsing files -->
+<!-- Modular testing: Poor-man's QUnit? -->
++ **Monday**
     * Topics: 
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 <!-- http.createServer (Node.js), internet/ HTTP concepts, HTTP Verbs -->
-###Week 5: *June 9-15*
 + **Wednesday**
     * Topics: 
     * Reading:
