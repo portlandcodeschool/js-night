@@ -60,6 +60,12 @@
     * [Homework]()
     * [Slideshow]()
 
++ **Saturday 5/31**
+    * Topics:
+    * Reading:
+    * [Homework]()
+    * [Slideshow]()
+
 
 ###Week 4: *June 2-8*
 + **Monday**
@@ -105,7 +111,7 @@
     * Reading:
     * [Homework]()
     * [Slideshow]()
-+ **Saturday**
++ **Saturday 6/21**
     * Topics: 
     * Reading:
     * [Homework]()
@@ -173,8 +179,8 @@
     * Reading:
     * [Homework]()
     * [Slideshow]()
-+ **Saturday**
-    * Topics: 
++ **Saturday 7/26*
+    * Topics: Cirriculum Review; Capstone Group Formation, Peer Teaching
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -223,6 +229,11 @@
     * [Slideshow]()
 + **Wednesday**
     * Topics: 
+    * Reading:
+    * [Homework]()
+    * [Slideshow]()
++ **Saturday 8/23**
+    * Topics: Class code review/ show&tell
     * Reading:
     * [Homework]()
     * [Slideshow]()
