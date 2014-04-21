@@ -82,10 +82,8 @@
     * [Slideshow]()
 
 ###Week 5: *June 9-15*
-<!-- Modules, Purpose of Modules, FS Module (and other basic node core modules that are needed to get students started), parsing files -->
-<!-- Modular testing: Poor-man's QUnit? -->
 + **Monday**
-    * Topics: 
+    * Topics: Node Starts / Testing Starts / poor person's QUnit
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -96,11 +94,6 @@
     * [Homework]()
     * [Slideshow]()
 
-<!-- Modules, Purpose of Modules, FS Module (and other basic node core modules that are needed to get students started), parsing files -->
-<!-- http.createServer (Node.js), internet/ HTTP concepts, HTTP Verbs -->
-<!-- routes-router module, send-data module -->
-<!-- DOM, jquery, node serves up one page with some jquery -->
-<!-- jQuery Tree Traversal, DOM manipulation, style manipulation -->
 ###Week 6: *June 16-22*
 + **Monday**
     * Topics: 
@@ -118,11 +111,9 @@
     * [Homework]()
     * [Slideshow]()
 
-<!-- Mime Types, more HTTP, Serve Static Files, Basic Routes -->
-<!-- Poor persons guide to server-side rendering and server MVC -->
 ###Week 7: *June 23-29*
 + **Monday**
-    * Topics: 
+    * Topics: Serve static files/ Jquery Starts 
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -132,9 +123,6 @@
     * [Homework]()
     * [Slideshow]()
 
-<!-- Basic User-Name and Password auth from client to server -->
-<!-- Individual Webb app Project Maybe? Use node and jQuery to serve up different, server-rendered pages that have jQuery functionality in them -->
-<!-- Salting and hashing using `pwd` module by TJ Holowaychuck -->
 ###Week 8: *June 30-July 6*
 + **Monday**
     * Topics: 
@@ -147,9 +135,6 @@
     * Reading:
     * [Homework]()
     * [Slideshow]()
-
-<!-- INTRODUCE BASIC EMBER HERE BUT KEEP ON TEACHING NODE????? -->
-<!-- Ember, how to serve a SPA/ Client-side-MVC/ Web-App with node.js -->
 
 ###Week 9: *July 7-13*
 + **Monday**
@@ -165,7 +150,7 @@
 
 ###Week 10: *July 14-20*
 + **Monday**
-    * Topics: 
+    * Topics: Ember starts 
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -193,8 +178,6 @@
     * Reading:
     * [Homework]()
     * [Slideshow]()
-
-<!-- CAPSTONE GROUPS START WITH ONE MONTH TO GO????? -->
 
 ###Week 12: *July 28-August 3*
 + **Monday**
