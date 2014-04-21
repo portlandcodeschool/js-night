@@ -2,6 +2,8 @@
 - Refactored reading from syllabus to resources document
 - Need to move around comments to divide up our topics
 - Saturday classes may not match up with the correct weeks
+- Topics listed in weeks 1-4 are divided into two halves per night, presume ~20 min break between
+
 
 <!-- BASIC JAVASCRIPT ONLY FOR ABOUT 4 WEEKS -->
 <!-- Low-stakes, low-risk git/ github workflow and practice -->
@@ -9,16 +11,16 @@
 ###Week 1: *May 12-18*
 + **Monday**
     * Topics: 
-	* JS Console, Expressions, Operators, Variables
-	* Primitive types; Auto-conversion
+		* JS Console, Expressions, Operators, Variables
+		* Primitive types; Auto-conversion
     * Reading:
     * [Homework]()
     * [Slideshow]()
     
 + **Wednesday**
     * Topics: 
-	* Truthiness & Conditionals; ScratchPad; Loops; Blocks
-	* Function basics; Assertions and Testing basics; Array basics
+		* Truthiness & Conditionals; ScratchPad; Loops; Blocks
+		* Function basics; Assertions and Testing basics; Array basics
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -27,15 +29,15 @@
 ###Week 2: *May 19-25*
 + **Monday**
     * Topics: 
-	* Objects & Properties; References;
-	* Arrays as Objects; Array Methods
+		* Objects & Properties; References;
+		* Arrays as Objects; Array Methods
     * Reading:
     * [Homework]()
     * [Slideshow]()
 + **Wednesday**
     * Topics: 
-	* Functions as Objects; Callbacks; Anonymous Functions
-	* git workflow, branching, & assignments; JS Linting
+		* Functions as Objects; Callbacks; Anonymous Functions
+		* git workflow, branching, & assignments; JS Linting
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -44,16 +46,16 @@
 ###Week 3: *May 26-June 1*
 + **Monday**
     * Topics:
-	* Function details: Evaluation Phases, Call Objects
-	* Global Object & Call Chain; Closures
+		* Function details: Evaluation Phases, Call Objects
+		* Global Object & Call Chain; Closures
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 + **Wednesday**
     * Topics:
-	* Object Patterns; Helper Functions, Delegates
-	* Factory Functions; Duplicate vs. Shared Methods
+		* Object Patterns; Helper Functions, Delegates
+		* Factory Functions; Duplicate vs. Shared Methods
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -62,8 +64,8 @@
 ###Week 4: *June 2-8*
 + **Monday**
     * Topics:
-	* Constructors, _new_; Wrapper Objects and Converters; Class Methods
-	* Prototypes, Instance Method Inheritance; Subclassing
+		* Constructors, _new_; Wrapper Objects and Converters; Class Methods
+		* Prototypes, Instance Method Inheritance; Subclassing
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -72,7 +74,9 @@
 <!-- VANILLA JAVASCRIPT CHALLENGES UNTIL THE END OF THE COURSE? -->
 
 + **Wednesday**
-    * Topics: Core JS Overflow...
+    * Topics: Core JS Overflow, Recap
+<!-- Time estimates fit Core JS into 3.5 weeks, but experience strongly suggests overflow time for questions and examples -->
+<!-- Additional short topics should be able to share Wed #4 -->
     * Reading:
     * [Homework]()
     * [Slideshow]()
