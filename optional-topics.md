@@ -1,0 +1,3 @@
+- gulp.js
+- security/ password hashing/ salting
+- socket.io 
