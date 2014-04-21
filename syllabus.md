@@ -68,9 +68,9 @@
     * [Homework]()
     * [Slideshow]()
     
-<!-- NODE FROM WEEEK 4, Wednesday to the end of the course? -->
 <!-- VANILLA JAVASCRIPT CAN CONTINUE INDEFINITELY IF WE WANT -->
 <!-- VANILLA JAVASCRIPT CHALLENGES UNTIL THE END OF THE COURSE? -->
+
 + **Wednesday**
     * Topics: Core JS Overflow...
     * Reading:
@@ -86,15 +86,14 @@
     * [Homework]()
     * [Slideshow]()
 
-<!-- http.createServer (Node.js), internet/ HTTP concepts, HTTP Verbs -->
 + **Wednesday**
     * Topics: 
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
-
-<!-- Mime Types, more HTTP, Serve Static Files, Basic Routes -->
+<!-- Modules, Purpose of Modules, FS Module (and other basic node core modules that are needed to get students started), parsing files -->
+<!-- http.createServer (Node.js), internet/ HTTP concepts, HTTP Verbs -->
 <!-- routes-router module, send-data module -->
 <!-- DOM, jquery, node serves up one page with some jquery -->
 <!-- jQuery Tree Traversal, DOM manipulation, style manipulation -->
@@ -115,6 +114,7 @@
     * [Homework]()
     * [Slideshow]()
 
+<!-- Mime Types, more HTTP, Serve Static Files, Basic Routes -->
 <!-- Poor persons guide to server-side rendering and server MVC -->
 ###Week 7: *June 23-29*
 + **Monday**

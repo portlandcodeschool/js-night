@@ -1,7 +1,5 @@
 *General Questions/ Issues*
 
-# Main Testing Topics
-
 # Resources
 (Travis CI)[http://docs.travis-ci.com/user/languages/javascript-with-nodejs/]
 (QUnit)[http://qunitjs.com/]
