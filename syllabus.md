@@ -72,11 +72,11 @@
     
 <!-- VANILLA JAVASCRIPT CAN CONTINUE INDEFINITELY IF WE WANT -->
 <!-- VANILLA JAVASCRIPT CHALLENGES UNTIL THE END OF THE COURSE? -->
+<!-- Time estimates fit Core JS into 3.5 weeks, but experience strongly suggests overflow time on Wed#4 for questions and examples -->
+<!-- Additional short topics should be able to share Wed #4 -->
 
 + **Wednesday**
     * Topics: Core JS Overflow, Recap
-<!-- Time estimates fit Core JS into 3.5 weeks, but experience strongly suggests overflow time for questions and examples -->
-<!-- Additional short topics should be able to share Wed #4 -->
     * Reading:
     * [Homework]()
     * [Slideshow]()
