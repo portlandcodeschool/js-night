@@ -1,5 +1,9 @@
 *General Questions/ Issues*
 
+Reading: 
+- [node.js api on file system, "fs"](http://nodejs.org/api/fs.html) 
+    + read approximately the first third or half of this page
+
 # Node Characteristics: 
 + DIRTy: *data-intensive-real-time*
 + Node can handle a large number of connections at once
