@@ -156,7 +156,7 @@
 
 ###Week 10: *July 14-20*
 + **Monday**
-    * Topics: Ember starts 
+    * Topics: Backbone starts, Backbone Routes, Simple Views, Simple Models
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -187,12 +187,12 @@
 
 ###Week 12: *July 28-August 3*
 + **Monday**
-    * Topics: 
+    * Topics: Advanced Backbone
     * Reading:
     * [Homework]()
     * [Slideshow]()
 + **Wednesday**
-    * Topics: 
+    * Topics: Advanced Backbone
     * Reading:
     * [Homework]()
     * [Slideshow]()

@@ -13,3 +13,40 @@ Reading:
 - Modules are 'attached' to exports or module.exports
 - exports` vs `module.exports`
     + use module.exports when you need to modify the module
+
+
+### Example
+
+- name-app.js (our main file)
+```javascript
+
+var nameFunction = require('./name-module');
+var names = require('./names-module');
+
+nameFunction('Ben');
+
+console.log('My dad\'s name is ' + names.dad);
+console.log('My mom\'s name is ' + names.mom);
+
+```
+
+- name-module.js 
+```javascript
+
+module.exports = function (name) {
+  console.log('hey there, ' + name);
+}
+
+```
+
+- names-module.js
+```javascript
+
+module.exports = {
+  mom: 'Christy',
+  dad: 'Jeff',
+  sister1: 'Becky',
+  sister2: 'Elizabeth'
+}
+
+```
