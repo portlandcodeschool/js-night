@@ -1,5 +1,4 @@
 *General Questions/ Issues*
-- Once we start http servers, content should begin to veer toward making a portfolio site. 
 - Students need to know basic html and CSS by the time that we start serving static content with our node.js servers
 - Lesson plans for node and the student's individual projects will follow complexity increase similar to that of http-framework.
     + Start at hello world http server
@@ -14,9 +13,9 @@
             - has multiple pages that are handled by ember not a server round-trip
             - has dynamic content and functionality
 
-### Modules, Purpose of Modules, Implementation of Modules in Node.js
+### Modules, Purpose of Modules, Implementation of Modules in Node.js (1a)
 
-### Node FS Module
+### Node FS Module (1b)
 
 ### Intro to node, http.createServer (1-2 Sessions)
 
