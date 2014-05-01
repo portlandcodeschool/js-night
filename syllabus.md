@@ -28,6 +28,7 @@
     * Topics: 
 		* Objects & Properties; References;
 		* Arrays as Objects; Array Methods
+        * Write a basic assert function, use it
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -79,74 +80,74 @@
 <!-- Additional short topics should be able to share Wed #4 -->
 
 + **Wednesday**
-    * Topics: Core JS Overflow, Recap
+    * Topics: Core JS Overflow, Recap, Git 
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 ###Week 5: *June 9-15*
 + **Monday**
-    * Topics: Node Starts / Testing Starts / poor person's QUnit
+    * Topics: Node, Node modules, Node FS module
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 + **Wednesday**
-    * Topics: 
+    * Topics: Node http server, basic concepts in-depth, internet concepts
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 ###Week 6: *June 16-22*
 + **Monday**
-    * Topics: 
+    * Topics: More node http server Routes with no outside modules, static file server
     * Reading:
     * [Homework]()
     * [Slideshow]() 
 + **Wednesday**
-    * Topics: 
+    * Topics: Routes with Routes-router (or similar), testing with a testing framework
     * Reading:
     * [Homework]()
     * [Slideshow]()
 + **Saturday 6/21**
-    * Topics: 
+    * Topics: More helper modules (send-data/html, for instance), Streams in node
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 ###Week 7: *June 23-29*
 + **Monday**
-    * Topics: Serve static files/ Jquery Starts 
+    * Topics: jQuery, part 1
     * Reading:
     * [Homework]()
     * [Slideshow]()
 + **Wednesday**
-    * Topics: 
+    * Topics: The concept and purpose of templates, templates with Hogan.js
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 ###Week 8: *June 30-July 6*
 + **Monday**
-    * Topics: 
+    * Topics: Data Persistence: Postgresql
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 + **Wednesday**
-    * Topics: 
+    * Topics: Postgresql, part 2
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 ###Week 9: *July 7-13*
 + **Monday**
-    * Topics: 
+    * Topics: Basic Username and password authentication
     * Reading:
     * [Homework]()
     * [Slideshow]()
 + **Wednesday**
-    * Topics: 
+    * Topics: More jQuery, overflow day
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -159,20 +160,20 @@
     * [Slideshow]()
  
 + **Wednesday**
-    * Topics: 
+    * Topics: Nested Views in Backbone, Backbone Collections
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 ###Week 11: *July 20-27*
 + **Monday**
-    * Topics: 
+    * Topics: Hogan Templates in Backbone, refactoring Backbone
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 + **Wednesday**
-    * Topics: 
+    * Topics: Gulp and Browserify for modularizing Backbone Development, pre-compiling templates, running jsHint, running tests, and starting one's server
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -194,6 +195,8 @@
     * [Homework]()
     * [Slideshow]()
 
+<!-- Other advanced topics this month for enrichment. Perhaps advanced functinoal programming, better testing, in-class pure javascript challenges -->
+<!-- Perhaps we can load slightly more of the career stuff into this month -->
 ###Week 13: *August 4-10*
 + **Monday**
     * Topics: 

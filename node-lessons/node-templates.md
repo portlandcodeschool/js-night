@@ -8,6 +8,7 @@
 - Try examples on the [Hogan.js homepage](http://twitter.github.io/hogan.js/)
 - Since Hogan is Mustache.js compatible, try examples from the [Mustache Docs](http://mustache.github.io/mustache.5.html)
 - Integrate some Hogan templates into some previous node examples from class, homework, etc. Even better, make a new node server that renders Hogan templates and serves them up. 
+- read article on [Client-Side Templating](http://www.smashingmagazine.com/2012/12/05/client-side-templating/)
  
 ### Templating without the templates
 - We can accomplish the task of templating with pure js, it just won't be very pretty
