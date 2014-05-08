@@ -1,28 +1,33 @@
 *General Questions/ Issues*
 - For reading ideas, see javascript-resources.md 
-- Topics listed in weeks 1-4 are divided into two halves per night, presume ~20 min break between
+- Topics listed in weeks 1-4 are divided into 2 or 3 segments per night with breaks between
 
 <!-- BASIC JAVASCRIPT ONLY FOR ABOUT 4 WEEKS -->
 <!-- Low-stakes, low-risk git/ github workflow and practice -->
 <!-- Online quiz to test basic js knowledge -->
+
 ###Week 1: *May 12-18*
 + **Monday**
     * Topics: 
-		* JS Console, Expressions, Operators, Variables
-		* Primitive types; Auto-conversion
+		* JS Console; Expressions, Operators;
+		* Variables, Assignment, Scope;
+		* Primitive types; String concatenation; Auto-conversion
     * Reading:
     * [Homework]()
     * [Slideshow]()
     
 + **Wednesday**
     * Topics: 
-		* Truthiness & Conditionals; ScratchPad; Loops; Blocks
-		* Function basics; Assertions and Testing basics; Array basics
+		* Conditionals & Branching; Truthiness; Boolean Ops;
+		* ScratchPad; Blocks; Loops (_while_,_for_); _console.log_;
+		* Function basics: parameters, return values, definition vs. call;
+		* Defensiveness, Assertions; Array basics
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 <!-- Introduce branches and pull requests with git for assignment submission -->
+
 ###Week 2: *May 19-25*
 + **Monday**
     * Topics: 
@@ -32,6 +37,7 @@
     * Reading:
     * [Homework]()
     * [Slideshow]()
+
 + **Wednesday**
     * Topics: 
 		* Functions as Objects; Callbacks; Anonymous Functions

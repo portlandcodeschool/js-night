@@ -84,6 +84,7 @@ __Take away:__  named values (vars) can be stored, copied, compared, but not alw
 ==== Wed #1====
 ###Truthiness and Conditionals (35)
 * truish values
+  * equality vs. identity of truths
 * falsish values
 * _if_...
 * _if_... _else_...
