@@ -1,6 +1,6 @@
 *General Questions/ Issues*
 - For reading ideas, see javascript-resources.md 
-- Topics listed in weeks 1-4 are divided into 2 or 3 segments per night with breaks between
+- Topics listed in weeks 1-4 are divided into 3 or 4 segments per night with breaks between
 
 <!-- BASIC JAVASCRIPT ONLY FOR ABOUT 4 WEEKS -->
 <!-- Low-stakes, low-risk git/ github workflow and practice -->
@@ -125,13 +125,13 @@
 
 ###Week 8: *June 30-July 6*
 + **Monday**
-    * Topics: Data Persistence: Postgresql
+    * Topics: Data Persistence: Orchestrate.io
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 + **Wednesday**
-    * Topics: Postgresql, part 2
+    * Topics: Orchestrate.io, part 2
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -193,6 +193,7 @@
 
 <!-- Other advanced topics this month for enrichment. Perhaps advanced functinoal programming, better testing, in-class pure javascript challenges -->
 <!-- Perhaps we can load slightly more of the career stuff into this month -->
+
 ###Week 13: *August 4-10*
 + **Monday**
     * Topics: 
