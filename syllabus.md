@@ -88,7 +88,7 @@
 ###Week 5: *June 9-15*
 + **Monday**
     * Topics: Node, Node modules, Node FS module
-    * Reading:
+    * Reading: 
     * [Homework]()
     * [Slideshow]()
 
@@ -100,12 +100,12 @@
 
 ###Week 6: *June 16-22*
 + **Monday**
-    * Topics: More node http server Routes with no outside modules, static file server
+    * Topics: More node http server Routes, static file server
     * Reading:
     * [Homework]()
     * [Slideshow]() 
 + **Wednesday**
-    * Topics: Routes with Routes-router (or similar), testing with a testing framework
+    * Topics: More Routes, testing with a testing framework
     * Reading:
     * [Homework]()
     * [Slideshow]()
