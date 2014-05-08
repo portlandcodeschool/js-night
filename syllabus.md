@@ -41,7 +41,7 @@
 + **Wednesday**
     * Topics: 
 		* Functions as Objects; Callbacks; Anonymous Functions
-		* git workflow, branching, & assignments; JS Linting
+		* git workflow
     * Reading:
     * [Homework]()
     * [Slideshow]()
@@ -135,13 +135,13 @@
 
 ###Week 8: *June 30-July 6*
 + **Monday**
-    * Topics: Data Persistence: Postgresql
+    * Topics: Data Persistence: Orchestrate.io
     * Reading:
     * [Homework]()
     * [Slideshow]()
 
 + **Wednesday**
-    * Topics: Postgresql, part 2
+    * Topics: Orchestrate.io, part 2
     * Reading:
     * [Homework]()
     * [Slideshow]()
