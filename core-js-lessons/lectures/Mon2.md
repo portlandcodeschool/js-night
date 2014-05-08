@@ -172,6 +172,7 @@ Until we write more complex code, it may be hard to understand the purpose of ob
 1.  An object can represent a real-world object/entity which has distinct parts and features and measurements.  Object groups together those data as different aspects of single thing:
 `var person={name:'Kermit',color:'green',occupation:'frog',height:60}`
 Or built-in: `screen`
+Equally important: groups data with object-specific methods which act on that data
 
 2. An object can be a toolbox (namespace?), grouping and isolating a set of related tools:
 Math is object which doesn't repreresent a thing; instead its a collection of methods:
@@ -410,9 +411,12 @@ Methods are called by referencing them as members (by either . or [] operator), 
 `arr['push'](z)`//clunky but equivalent
 
 What does push function do?  Takes one or more arguments and appends each to end of array, returning new length.
+Note that it leaves a change behind, a side-effect.  (Therefore called "mutating" function)
+
 
 Related:
 `arr.pop()`  Takes no arguments, strips away last array element (and decrements length), and returns element.
+Again: mutator, changing original.
 
 Related:
 `arr.concat(arr2)` returns new array combining both.  DOES NOT change arr itself, unlike push and pop.
@@ -434,7 +438,9 @@ BUTbutbut... now can a string have a method, since it's a primitive?
 Answer...
 
 WRAPPER OBJECTS
-
+There's a special category of object which is usually made invisibly, automatically: the **wrapper* object.  They correspond to primitives (usually strings or numbers), but wrap those primitive in an object, which can then have methods and other properties.
+For example:
+???
 
 Strings pretend to be objects:
 string.split()

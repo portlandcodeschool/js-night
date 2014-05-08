@@ -13,8 +13,6 @@
 		* Variables, Assignment, Scope;
 		* Primitive types; String concatenation; Auto-conversion
     * Reading:
-    * [Homework]()
-    * [Slideshow]()
     
 + **Wednesday**
     * Topics: 
@@ -23,52 +21,45 @@
 		* Function basics: parameters, return values, definition vs. call;
 		* Defensiveness, Assertions; Array basics
     * Reading:
-    * [Homework]()
-    * [Slideshow]()
+    * [Homework 1]()
 
 <!-- Introduce branches and pull requests with git for assignment submission -->
 
 ###Week 2: *May 19-25*
 + **Monday**
     * Topics: 
-		* Objects & Properties; References;
-		* Arrays as Objects; Array Methods
-        * Write a basic assert function, use it
+		* Objects: Properties, Membership Operators, Chaining, Nesting;
+        * References; Object linking and sharing; Garbage Collection
+		* Pseudo-arrays; Arrays as Objects; Array Methods
+        * String methods; String wrapper objects; Custom methods
     * Reading:
-    * [Homework]()
-    * [Slideshow]()
 
 + **Wednesday**
     * Topics: 
-		* Functions as Objects; Callbacks; Anonymous Functions
-		* git workflow, branching, & assignments; JS Linting
+		* Functions as Objects; Functions as Arguments, Callbacks;
+        * Parentheses types; Self-Executing Anonymous Functions;
+		* git workflow, branching, & assignments;
     * Reading:
-    * [Homework]()
-    * [Slideshow]()
-
+    * [Homework 2]()
 
 ###Week 3: *May 26-June 1*
 + **Monday**
-    * Topics:
-		* Function details: Evaluation Phases, Call Objects
-		* Global Object & Call Chain; Closures
+    * Memorial Day Observed; no class.
     * Reading:
-    * [Homework]()
-    * [Slideshow]()
 
 + **Wednesday**
     * Topics:
-		* Object Patterns; Helper Functions, Delegates
-		* Factory Functions; Duplicate vs. Shared Methods
+		* Function details: Evaluation Phases, Call Objects, Arguments Object
+        * Call Chain, Scopes, Closures; _this_
+        * Global Object; Global variables vs. properties
     * Reading:
-    * [Homework]()
-    * [Slideshow]()
+    * [Homework 3]()
 
 + **Saturday 5/31**
     * Topics:
+        * Object Patterns; Helper Functions, Delegates
+        * Factory Functions; Duplicate vs. Shared Methods
     * Reading:
-    * [Homework]()
-    * [Slideshow]()
 
 
 ###Week 4: *June 2-8*
@@ -77,8 +68,6 @@
 		* Constructors, _new_; Wrapper Objects and Converters; Class Methods
 		* Prototypes, Instance Method Inheritance; Subclassing
     * Reading:
-    * [Homework]()
-    * [Slideshow]()
     
 <!-- VANILLA JAVASCRIPT CAN CONTINUE INDEFINITELY IF WE WANT -->
 <!-- VANILLA JAVASCRIPT CHALLENGES UNTIL THE END OF THE COURSE? -->
@@ -86,10 +75,11 @@
 <!-- Additional short topics should be able to share Wed #4 -->
 
 + **Wednesday**
-    * Topics: Core JS Overflow, Recap, Git 
+    * Topics:
+        * Core JS Overflow, Recap, Practice;
+        * Git advanced workflow; JS Linting
     * Reading:
-    * [Homework]()
-    * [Slideshow]()
+    * [Homework 4]()
 
 ###Week 5: *June 9-15*
 + **Monday**

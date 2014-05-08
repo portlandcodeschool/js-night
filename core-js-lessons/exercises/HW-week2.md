@@ -1,7 +1,8 @@
-1. Write a function equivalent(a,b) to compare the equivalence of two distinct objects a and b.
+1.  Write a function equivalent(a,b) to compare the equivalence of two distinct objects a and b.
 
 
 2.  Social network
+
 
 3.  Chess!
 In this exercise, you will implement the mechanics (but not the intelligence!) of a chess game.
