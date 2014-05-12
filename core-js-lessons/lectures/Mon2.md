@@ -443,12 +443,62 @@ For example:
 ???
 
 Strings pretend to be objects:
-string.split()
+string.split(delim)
+string.slice(from[,to])
+string.substr(from[,len])
 
 Strings pretend to be arrays:
 string[0]
+string.length
+(BUT NOT: string.join)
 
 Don't be decieved; they're always atomic primitives
+
+
+PURPOSE OF METHODS
+
+Why would you ever have a method?  Why attach a function to an object, instead of just declaring it?
+
+Distinguish 2 reasons:
+
+1) Method is a "personal action": intended to operate on owner object or its parts
+EX: Array.push()
+
+2) Method is part of "family of actions", stored together but intended to operate on _other object_, usually parameters
+EX: Math.sqrt()
+
+Both could use _this_ keyword:
+type 1 uses it instead of parameter to target its action;
+type 2 (maybe) uses it as a relative reference to one of its teammates, or shared resource:
+EX:
+```
+var exchange = {
+  rate: 0.72,
+  toDollars: function(euros) {return euros/this.rate},
+  toEuros:  function(dollars) {return dollars*this.rate},
+  convert: function(string) {
+	if (string[0]==='$') return this.toEuros(string.slice(1));
+	if (string[0]==='E') return this.toDollars(string.slice(1));
+	return toDollars(string);}
+}
+```
+
+Exchange.rate is a resource common to both related functions
+Without _this_, must use global name _exchange_; but that violates encapsulation!
+
+
+ALTERNATIVE:
+var circleTool = {
+  PI: 3.14159,
+  diameter: function(radius) {
+		return 2*radius;
+	},
+  circumference: function(radius) {
+		return this.diameter(radius)*this.PI;
+	}
+}
+
+PATTERN: Toolbox!
 
 
 WRITING METHODS (delay...)
