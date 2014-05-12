@@ -4,7 +4,14 @@
 		* JS Console; Expressions, Operators;
 		* Variables, Assignment, Scope;
 		* Primitive types; String concatenation; Auto-conversion
-    * Reading: Already assigned via email. Please email bverble@portlandcodeschool.com if you did not receive the assignment. 
+    * Reading:
+       - [Eloquent JS Chapter 1: Introduction](http://eloquentjavascript.net/contents.html)
+       - [Eloquent JS Chapter 2: Basic JavaScript: values, variables, and control flow](http://eloquentjavascript.net/chapter2.html)
+    * Homework: 
+        + Treehouse: Intro To Programming
+        + Treehouse: JS Foundations
+        + Treehouse: Console Foundations: Achievement 1: Getting Started with the Console
+        + In general, catch up on Javascript concepts you don't understand. Try to get comfortable with the console (again, see the Treehouse course). 
 + **Wednesday**
     * Topics: 
 		* Conditionals & Branching; Truthiness; Boolean Ops;
@@ -12,6 +19,7 @@
 		* Function basics: parameters, return values, definition vs. call;
 		* Defensiveness, Assertions; Array basics
     * Reading:
+        - Eloquent JS Chapter 3-4
     * [Homework 1]()--*Note: Homework link will be provided after class on this day*
 
 ###Week 2: *May 19-25*
@@ -21,7 +29,7 @@
         * References; Object linking and sharing; Garbage Collection
 		* Pseudo-arrays; Arrays as Objects; Array Methods
         * String methods; String wrapper objects; Custom methods
-    * Reading:
+    * Reading: 
 + **Wednesday**
     * Topics: 
 		* Functions as Objects; Functions as Arguments, Callbacks;
