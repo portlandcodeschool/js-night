@@ -25,7 +25,8 @@ The pattern is always:
 
 Only if _COND_ is equivalent to _true_ does JS open the _???_ box.  Otherwise it returns _undefined_.  Going on to open the _???_ and evaluate it is called **branching**, and the surrounding statement is called a **conditional** (vs. the **condition** inside the parentheses, and the **consequent** after).
 
-The parentheses around COND are mandatory!
+The parentheses around COND are mandatory, part of the statement template.
+They're different from the grouping parens used in expressions.
 
 IF...ELSE
 
@@ -54,13 +55,18 @@ And you can nest it:
 TRUTHINESS
 
 If the condition input is literally _true_ or _false_, the outcome is predetermined, so such a conditional is useless.  The value of conditionals is when we substitute a variable (or expression containing a variable) in the condition:
-var rainy=true; if (rainy) "true enough"
-var x=1, y=2; if (x<y) "true enough"
+
+`var rainy=true; if (rainy) "true enough"`
+
+`var x=1, y=2; if (x<y) "true enough"`
 
 Easy to see how this works: the boolean value output by the nested expression is either _true_ or _false_.
 But what about this:
+
 `x=1; if (x) "true enough"`
+
 `x=0; if (x) "true enough"// undefined`
+
 Apparently 1 is true enough, but 0 isn't.
 Another way of putting it: 1 is **true-ish** or **truthy**, 0 is **false-ish** or **falsey**.
 Not identical to _true_ and _false_:
@@ -69,13 +75,14 @@ Not identical to _true_ and _false_:
 But equivalent:
 `1 == true //true`
 
-All of this is explained by our old friend invisible-auto-conversion.
-Like operators -,*,/ which demand actual numbers and auto-convert inputs as needed, the context of a condition demands an actual boolean value.
+All of this is explained by our old friend invisible-auto-conversion.  **[ASK: when does auto-convert happen?  When operator expects specific types]**
+Like operators -,*,/ which demand actual numbers and auto-convert inputs as needed, the context of a condition
+(i.e. operator `if (__)...`) demands an actual boolean value.
 And if it doesn't get one, it converts the value it has.
 The conversion rule is simple:
-> A few (6) specific values convert to false:
-> ** false, 0, NaN, undefined, "", null** (we'll see later);
-> Everything **else --> true**
+
+* A few (6) specific values convert to false: ** false, 0, NaN, undefined, "", null** (we'll see later);
+* Everything **else --> true**
 
 So we can infer that strings "false" and "undefined" are true-ish:
 `if ("false") "yup"`
@@ -84,16 +91,17 @@ So we can infer that strings "false" and "undefined" are true-ish:
 But things with value _false_ and _undefined_ are false-ish:
 `var unk; if (unk) bleargh`
 
-> Aside: operator == does some auto-conversion (e.g. `1=='1'; 1==true`) but be careful:
-> `true == "true" //false`
-> [Leave as exercise! Answer: Not doing either string compare or boolean compare, but converting both to numbers]
+<!-- Aside: equality operator == does some auto-conversion (e.g. `1=='1'; 1==true`) but be careful:
+`true == "true" //false`
+[Leave as exercise! Answer: Not doing either string compare or boolean compare, but converting both to numbers]
+-->
 
 BOOLEAN OPERATORS
 
 Let's see two more operators: **&&** and **||**.
 
 We call them boolean operators, because they represent the logic of merging _true_ and _false_.
-When they have boolean inputs, their output is what you'd expect:
+When they have boolean inputs, their output is what you'd expect: **[ASK:]**
 `(true || false) //true`
 `(true && false) //false`
 `(true && true) //true`
@@ -108,6 +116,7 @@ the actual value is not necessarily _boolean_.  Instead, it's always one of the 
 But which input?  Why 'b' instead of 'a'?
 
 To understand that, first we have to recognize that JS is lazy: it never evaluates more than it needs to.  Here's a more vivid example:
+
 **if (doJShomework() || runMarathon()) deserveCookie()**
 
 JS always has to evaluate the first expression, so we do our JS homework and return something true-ish.  Now what?  Must we also run marathon to get a cookie?  No; the conditions have been satisfied already!  So JS exits the || operation early and goes straight to the cookie.

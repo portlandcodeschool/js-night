@@ -1,29 +1,36 @@
 Homework #1
 
 ---
-<!--
-Practice parsing complex expressions which contain no parentheses
-(Need: reference for operator precedence?)
--->
-
 
 **1)**
 Before testing these expressions in the console, predict what their output will be.  If the output is undetermined, identify the conditions when it will output true.  Assume the cases are independent, and x is reset to an unknown value before each.
 
 
-* `"1" == 1`  	<!--true-->
-* `"1" === 1`	<!--false-->
-* `true == "true"`	<!--false-->
-* `false== ""` 	<!--true-->
-* `x++ == ++x` 	<!--false-->
-* `++x == x++` 	<!--true UNLESS x is non-numeric string-->
-* `"1"+x == 1+x`	<!--true when x is any string-->
-* `"0"+1 == 1`	<!--true-->
-* `(typeof x+1)==(typeof x)`	<!--true if x is number or string-->
-* `x-=x? x: (typeof x)`		<!--"number"-->
-* `(x*1 == x) || ((typeof x) != "number")`	<!--false when x is NaN-->
-* `(x=(typeof (x+(typeof x))))==x`		<!--true-->
-* `x=-1,0,-x---1+'0'+x`  <!--"00-2"-->
+**a)** `"1" == 1`
+
+**b)** `"1" === 1`
+
+**c)** `true == "true"`
+
+**d)** `false== ""`
+
+**e)** `x++ == ++x`
+
+**f)** `++x == x++`
+
+**g)** `"1"+x == 1+x`
+
+**h)** `"0"+1 == 1`
+
+**i)** `(typeof (x+1))==(typeof x)`
+
+**j)** `(x-=x)? x: (typeof x)`
+
+**k)** `(x*1 == x) || ((typeof x) != "number")`
+
+**l)** `(x=(typeof (x+(typeof x))))==x`
+
+**m)** `x=-1,0,-x---1+'0'+x`
 
 ---
 
@@ -40,14 +47,6 @@ Suppose the '&' key on your keyboard is missing, and you want to be able to cont
 **a)**
 Write a function `and3(a,b,c)` which tries to simulate a double-&& operator: it should always return the same result as `(a && b && c)` for any values of a,b,c.  (But you can't use && itself!)
 
-<!--
-```
-function and3(a,b,c) {
-  return a? (b? c: b): a;
-}
-```
--->
-
 **b)**
 Now generalize your function to handle any number of values.  You will learn better ways eventually, but for now use an array to store all the values.
 Your new function `andN(n,values)` should accept two parameters: `n` is the length of the array `values`.  Assume the array holds at least `n` values.
@@ -56,34 +55,15 @@ If your array argument holds values [a,b,c...z], as in
 Make sure to handle two special cases: length 0 (then return undefined) and length 1 (then return that single value).
 As before, you're not allowed to use &&.
 
-<!--
-```
-function andN(n,values) {
-  for (var i=0; i<n; i++) {
-    if (!values[i])
-	return values[i]; //return first falsish val
-  }
-  if (n>0)
-    return values[n-1]; //or else last (truish) val
-}
-```
--->
-
-
 **c)**
 You've just realized that your effort was doomed: neither of your functions can replace the && operator in certain circumstances.  Explain why, and find an example which demonstrates failure.
-
-<!--
-The && operator only evaluates its operands as needed, but a function call evaluates all its arguments.  A function call like `and3(x=0,x=1,x=2)` and the expression `(x=0 && x=1 && x=2)` may return the same output, but they will leave x holding a different value.
--->
 
 ---
 
 **4)**
-Write a function to decide whether a given integer (a parameter) is prime. You may need some of these functions/operators:
+Write a function to decide whether a given integer (a parameter) is prime. You may need one of these functions/operators:
 
 * function `Math.floor(N)` truncates any fractional part of a number N (i.e. returns greatest integer <=N)
-* function `Number.isInteger(N)` returns true if is N is an integer
 * modulo operator %: `x%y` returns 0 if x divides evenly by y 
 
 ---
@@ -125,11 +105,11 @@ Following that encoding scheme, write a set of functions to compute different fe
 Your functions may call each other. Try to reuse their functionality to avoid duplicating code.
 
 **a)**
-Initially, assume each function is given valid arguments (i.e. the args are integers in the appropriate range).  Write your code into the [template file](cards1a-template.js).  The template also includes a suite of assertions for testing your code.  Make sure you pass all the tests, and write more tests if you have any doubt!
+Initially, assume each function is given valid arguments (i.e. the args are integers in the appropriate range).  Write your code into the [template file](template1a-cards.js).  The template also includes a suite of assertions for testing your code.  Make sure you pass all the tests, and write more tests if you have any doubt!
 
 **b)**
-Now abandon the assumption of valid arguments.  Devise a system for dealing with arguments which are invalid in various ways, and rewrite your functions to tolerate such errors whenever possible.  If you can correct the errors, do so and return as expected; if not, return a falseish value instead.
-You may use the provided [template file](cards1b-template.js), which has extra tests checking the results of invalid arguments.
+Now abandon the assumption of valid arguments.  Devise a system for dealing with arguments which are invalid in various ways, and rewrite your functions to detect such errors whenever possible.  When you detect an invalid argument, return a value which is easily distinguished from all valid function results.
+You may use the provided [template file](template1b-cardsVerify.js), which has extra tests checking the results of invalid arguments.
 
 ---
 

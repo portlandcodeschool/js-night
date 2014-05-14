@@ -59,20 +59,22 @@ assert(prevInSuit(3)===51,"Test 24 failed");
 assert(prevInSuit(5)===1,"Test 25 failed");
 
 // Extra testing!
+// These tests check that invalid arguments produce invalid output.
+// They may need rewriting for certain error-reporting schemes.
 assert(!rank(52),"Test 26 failed");
 assert(!rank("0"),"Test 27 failed");
 assert(!rank(-1),"Test 28 failed");
 assert(!suit(52),"Test 29 failed");
 assert(!suit(false),"Test 30 failed");
 assert(!suit(true),"Test 31 failed");
-assert(!cardID(0,1),"Test 32 failed");
-assert(!cardID("1",1),"Test 33 failed");
-assert(!cardID(1,5),"Test 34 failed");
-assert(!cardID(14,1),"Test 35 failed");
-assert(!color('apple'),"Test 36 failed");
-assert(!name(false),"Test 37 failed");
-assert(!precedes(51,52),"Test 38 failed");
-assert(!precedes(-1,0),"Test 39 failed");
-assert(!sameColor("0","1"),"Test 40 failed");
-assert(!nextInSuit(52),"Test 41 failed");
-assert(!prevInSuit(52),"Test 42 failed");
+assert(isNaN(cardID(0,1)),"Test 32 failed");
+assert(isNaN(cardID("1",1)),"Test 33 failed");
+assert(isNaN(cardID(1,5)),"Test 34 failed");
+assert(isNaN(cardID(14,1)),"Test 35 failed");
+assert((typeof color('apple'))!='string',"Test 36 failed");
+assert((typeof name(false))!='string',"Test 37 failed");
+assert((typeof precedes(51,52))!='boolean',"Test 38 failed");
+assert((typeof precedes(-1,0)),"Test 39 failed");
+assert((typeof sameColor("0","1"))!='boolean',"Test 40 failed");
+assert(isNaN(nextInSuit(52)),"Test 41 failed");
+assert(isNaN(prevInSuit(52)),"Test 42 failed");
