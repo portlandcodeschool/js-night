@@ -18,6 +18,9 @@ one line per side.  And remember your expression, and its value.
 Now we're going to build a new kind of thing called an **array**!
 
 Left line first, going down the line from front to back, one at a time, tell me your expression.
+
+**[2:30]**
+
 As I type these, everyone anticipate the outcome of each...
 (Build  array literal `[expr0, expr1... expr8]`)
 
@@ -26,9 +29,11 @@ So evaluate it again preceded by a variable assignment:
 `var left = [...]`
 
 Now we can play with it.
+**[5:00]**
 
 Right line, same process...
 `var right = [...]`
+**[7:00]**
 
 Each of you is now a compartment holding the value of your expression, similar to a variable.  But unlike a variable, none of you have an individual name.  Each line gets a collective name, 'left' or 'right'.  We can still get and set your individual values, but we have to use the collective name plus a number, joined with special operator [].
 
@@ -46,6 +51,8 @@ left[3] = right[3].  Sorry left-3, whatever your value was before is gone; you'r
 
 right[3] += left[0]...
 
+**[9:00]**
+
 And a great feature of arrays is moving them around, or joining them...
 `left = left.concat(right)`
 
@@ -59,5 +66,6 @@ New left-15, is that your value?  Magic!
 
 Now you know arrays.  Thank you for playing, go sit.
 
+**[12:00]**
 
 

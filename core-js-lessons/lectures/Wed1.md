@@ -7,10 +7,14 @@
 > ```
 > **boldface for drawing on board or vocabulary**
 
+==== Part 0 ===
+
+ARRAY exercise!
+
 
 ==== Part 1 ====
 
-CONDITIONALS and BRANCHING
+CONDITIONALS and BRANCHING **[6:15]**
 
 So far, we've seen expressions which always evaluate all their parts and funnel them together; that's just a glorified pocket calculator.
 
@@ -52,11 +56,13 @@ returning only one of A,B (and not even interpreting the other).
 And you can nest it:
 `var x = ((false? 0: 1) == (true? 1: 2)) //true`
 
-TRUTHINESS
+TRUTHINESS **[6:21]**
 
 If the condition input is literally _true_ or _false_, the outcome is predetermined, so such a conditional is useless.  The value of conditionals is when we substitute a variable (or expression containing a variable) in the condition:
 
 `var rainy=true; if (rainy) "true enough"`
+
+`rainy=false; if (rainy) "true enough"`
 
 `var x=1, y=2; if (x<y) "true enough"`
 
@@ -96,7 +102,7 @@ But things with value _false_ and _undefined_ are false-ish:
 [Leave as exercise! Answer: Not doing either string compare or boolean compare, but converting both to numbers]
 -->
 
-BOOLEAN OPERATORS
+BOOLEAN OPERATORS **[6:27]**
 
 Let's see two more operators: **&&** and **||**.
 
@@ -127,6 +133,7 @@ If A is truish, return it, so the whole expression will be truish, and never loo
 And of course, if A is falseish, it's all up to B, and we have to do the work of evaluating B.  But on average, we've saved some effort.
 
 Similarly, consider this condition:
+
 **if (doJShomework() && runMarathon()) deserveCookie()**
 Now it seems we have to do both, right?
 But imagine the unimagineable: you don't do your JS homework!
@@ -146,11 +153,22 @@ Here's a mnemonic I use:
 >
 > **(work && reward)** e.g. **(openFile && readFile)**
 
-(10m break)
+
+EXERCISE: AND/OR yourselves together! **[6:40]**
+
+You each still have an expression you made earlier.
+At each table of four, starting with the tallest person, going clockwise:
+join your four expressions with the && operator, and find the collective outcome!
+Then try it in a different order!
+Then use || instead.
+Then try || in a different order.
+Take 4 min doing that, then another 4 mins of break, and reconvene at (6:50?)
+
+(break)
 
 ==== Part 2 ====
 
-SCRATCHPAD
+SCRATCHPAD **[6:50]**
 
 The console is great for doing simple science: testing expressions and probing variables to figure out how things work.
 But it only affords single-line dialog: we can use semicolons and Shift-Return to send multiple statements at once, but it's ugly and inconvenient.  If we make a typo in long expression, have to redo the whole thing.
@@ -207,7 +225,7 @@ if (rainy) {
 ```
 
 ---
-Example of consequent block:
+**[7:00]** Example of consequent block:
 
 Sometimes we all need a hug, and the way the twitterati do it in lolspeak is:
 **(((((Name)))))**
@@ -216,15 +234,16 @@ Sometimes we all need a hug, and the way the twitterati do it in lolspeak is:
 var who="Elmo";
 var needHugs = 2;
 if (needHugs) {//need two steps...
-	needHugs--;
 	who = '('+who+')';
+	needHugs--;
 }
+who
 ```
 
 What we're doing next will be easier when we can freely edit multi-line statements...
 
 ----
-LOOPS
+LOOPS **[7:05]**
 
 Remember that _if..._ is a statement which controls flow, or branching.
 It lets us conditionally do something once.
@@ -243,6 +262,16 @@ while (COND) {
 	CHANGE;
 }**
 
+
+```
+var who="Elmo";
+var needHugs=5;
+while (needHugs) {
+	who='('+who+')';
+	needHugs--;
+}
+```
+
 Again, with flourish:
 ```
 var who="Elmo";
@@ -254,7 +283,7 @@ while (needHugs--) {//double-duty: change w. cond!
 
 [Aside: the keyword _while_, like _var_ and _if_, creates an un-nestable statement.] 
 
-FOR LOOP
+FOR LOOP **[7:10]**
 
 A similar pattern uses the same components, but arranged in a specialized idiom with a different keyword: **for**
 
@@ -305,7 +334,7 @@ for (var i = 0; i++<5; who='('+who+')') {}
 
 ----
 
-SENDING REPORTS
+SENDING REPORTS **[7:20]**
 
 When using the console, action pauses between each exchange, giving us a change to inspect values and see what's going on.  With loops, and lots of other constructions, we don't get a change to intervene once it starts; have to wait for it to finish.
 Sometimes we need a way to spy on it, check progress from within.
@@ -325,11 +354,20 @@ for (var i = 0; i<5; i++) {
 
 Console.log is your new best friend; use it everywhere as you code to track what's happening.
 
+
+EXERCISE: **[7:30]**
+In scratchpad:
+1) Define an array of 10 elements.
+2) Write a loop which writes to the console every even #'d element of the array, in forward order.
+3) Write a loop which writes to the console every odd #'d element, in backward order.
+
+You have 10 minutes.  IF done early, take a break
+
 (10m break)
 
 ==== Part 3 ====
 
-FUNCTIONS
+FUNCTIONS **[7:45]**
 
 A **function** is a miniature program, a resuable module with a distinct purpose.
 We've already seen some examples:
@@ -384,7 +422,7 @@ That's very fragile, and it also means you can only hug one thing.
 The power of functions is that they are reusable not just by doing things more than once,
 but doing them in different circumstance, and doing variations on a theme.
 
-PARAMETERS/INPUT
+PARAMETERS/INPUT **[8:00]**
 
 The solution is to **parameterize** the huggee:
 ```
@@ -402,7 +440,7 @@ It sort-of worked: we can see that the function is wrapping hugs around differen
 And _who_ here is called a **parameter**: it's a local variable which is implicitly declared and initialized to match the corresponding argument.
 But the function still doesn't work properly because it's only changing that parameter, a local variable.
 
-RETURN/OUTPUT
+RETURN/OUTPUT **[8:05]**
 
 So we add one more thing:
 ```
@@ -437,6 +475,8 @@ And like other expressions, the output is just thrown away unless you save it in
 
 The function is now reusable, reliable (works under any circumstances), and safe (has no side-effects).
 
+MORE PARAMETERS **[8:15]**
+
 But we can make it even more useful by generalizing it: turn some of its hard-wired behavior into additional parameters:
 ```
 function hug(who, needHugs) {
@@ -448,6 +488,8 @@ function hug(who, needHugs) {
 hug("Elmo", 5);
 hug("Barney", 10);
 ```
+
+**[8:20]**
 
 Optional: parameterize '(' and ')' too, to make generalized wrap():
 ```
@@ -480,7 +522,7 @@ There are three distinct ways of referring to a function in code:
 
 
 ---
-DEFENSIVE PROGRAMMING, SAFEGAURDS and ASSERTIONS
+DEFENSIVE PROGRAMMING, SAFEGAURDS and ASSERTIONS **[8:25]**
 
 What could go wrong with hug()?  Is there a way to make it malfunction?
 Suppose we're writing it a resource for others, and we'll turn it loose on the internet for people to call whenever they need a hug.
@@ -505,7 +547,7 @@ It might seem convenient to be able to have such a versatile input, and sometime
 But be very careful of choices which let you be lazy!  Sooner or later you'll be lazy in a way you regret.
 Probably if your _wrap()_ function is getting _true_ instead of a number, something else has gone wrong and you want to know about it as soon as possible.  Always look for ways to save yourself from yourself.
 
-ASSERTION
+ASSERTION **[8:35]**
 
 So a good practice is: always know what parameter values are normal, and give yourself a warning if they're not.
 To that end, we're now going to write another function that you will use (in some form) for the rest of your lives: **assert**.
@@ -546,7 +588,7 @@ function wrap(...) {
 
 
 =====
-ARRAYs
+ARRAYs [done earlier]
 
 So far, all the value types we've seen are atomic; they have no constituent parts.
 From now on, we'll include more complex types which are _compound values_ or _objects_, which have distinct components within them.
@@ -611,3 +653,5 @@ Solicit Ideas:
 Add assertion to check input!
 
 Add another test!
+
+

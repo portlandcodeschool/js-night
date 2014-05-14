@@ -130,16 +130,19 @@ ii) a pair of numbers (X,Y) each from 0..7 which together give the unique coordi
 The object for each square should contain numbers from one or both systems so that its position can be inferred without additional data.
 
 Include the following methods:
-`chess.xAtN(n)`: return the X for a particular N
-`chess:yAtN(n)`: return the Y for a particular N
-`chess.nAtXY(x,y)`: return the N for a particular pair x,y
-`chess.isValidN(n)`:return true only if N is a valid square #
-`chess.isValidXY(x,y)`: return true only is (x,y) is a valid coordinate
 
-`board.squareAtN(n)`: return the object for square #n on board
-`board.squareAtXY(x,y)`: return the object for square (x,y)
-`board.getN(square)`: return the N of object square
-`board.getXY(square)`: return the (x,y) of object square
+* `chess.xAtN(n)`: return the X for a particular N
+* `chess:yAtN(n)`: return the Y for a particular N
+* `chess.nAtXY(x,y)`: return the N for a particular pair x,y
+* `chess.isValidN(n)`:return true only if N is a valid square #
+* `chess.isValidXY(x,y)`: return true only is (x,y) is a valid coordinate
+
+<!--
+* `board.squareAtN(n)`: return the object for square #n on board
+* `board.squareAtXY(x,y)`: return the object for square (x,y)
+* `board.getN(square)`: return the N of object square
+* `board.getXY(square)`: return the (x,y) of object square
+-->
 
 <!--
 Omit:
@@ -159,16 +162,17 @@ an enumeration of pieces in various positions, and a "snapshot" of the entire bo
 
 Add five methods to your board object:
 
-* `board.pieceAtN(n)`: returns the letter for the piece at square #N, or something falsish if none
+* `board.pieceAtN(n)`: returns the letter for the piece at square #N, or something falseish if none
 
 * `board.load(positions)`: positions is a single string containing one or more pairs of the form N:P, where P is the one-letter code for one piece (i.e. one of kKqQnNbBrRpP) and N is the number of the square it occupies.
 Successive pairs should be separated by a single space.
 The method should return the number of pieces placed.
 If any pair is invalid in any way, including:
--- doesn't match N:P pattern,
--- invalid P,
--- invalid N,
--- repeated N (multiple pieces sharing square),
+	* doesn't match N:P pattern,
+	* invalid P,
+	* invalid N,
+	* repeated N (multiple pieces sharing square),
+
 then write a warning to console.error, ignore that pair, and continue.
 Your method should return the number of pieces successfully placed.
 Don't worry about counting pieces; a position string with 64 queens is ok.
@@ -178,18 +182,17 @@ Don't worry about counting pieces; a position string with 64 queens is ok.
 For both methods: the order of pairs doesn't matter, but debugging will probably be easier if you order them in a sensible way (e.g. increasing N).  The initial setup of a board is encoded here:
 ```
 //UP:
-"1:R 2:N 3:B 4:K 5:Q 6:B 7:N 8:R "+
-"9:P 10:P 11:P 12:P 13:P 14:P 15:P 16:P "+
+"0:R 1:N 2:B 3:K 4:Q 5:B 6:N 7:R "+
+"8:P 9:P 10:P 11:P 12:P 13:P 14:P 15:P "+
 //DOWN: 
-"49:p 50:p 51:p 52:p 53:p 54:p 55:p 56:p "+
-"57:r 58:n 59:b 60:k 61:q 62:b 63:n 64:r"
+"48:p 49:p 50:p 51:p 52:p 53:p 54:p 55:p "+
+"56:r 57:n 58:b 59:k 60:q 61:b 62:n 63:r"
 ```
 
 Next add two more methods for the "snapshot" format:
-* `board.scan(grid)` should set up the board from a grid string which includes every space, divided into 8 rows.  Each empty space should be represented with a '.' or ',' and each filled space with the letter of its piece.
-After 8 spaces, expect a '\n' and a new line.
- 
-* `board.show()`: output a string in the same format as scan.  It will have 64 character plus delimiters.  For empty spaces, alternate dots and commas in a checkerboard pattern.
+
+* `board.scan(grid)` should set up the board from a grid string which includes every square, divided into 8 rows.  Each empty square should be represented with a '.' or ',' and each occupied square with the letter of its piece.
+After every 8 characters, expect a '\n'.
 
 A scan for the initial setup is here:
 ```
@@ -202,6 +205,9 @@ A scan for the initial setup is here:
 "pppppppp\n"+
 "rnbkqbnr\n";
 ```
+ 
+* `board.show()`: output a string in the same format as scan.  It will have 64 characters plus delimiters.  For empty squares, alternate dots and commas in a checkerboard pattern.
+
 
 ---
 
@@ -210,14 +216,18 @@ _[Difficult:]_
 **c)** Verify proposed moves of pieces on a populated board.
 
 Write one more method of the board:
-`board.canMove(fromN,toN)` considers a move by the piece currently at space fromN to space toN.  The function should return false if the move is impossible for one of these reasons:
--- either fromN or toN is invalid, or there is no piece at fromN,
--- the piece cannot move in that direction and distance,
--- the piece is blocked by another piece en route,
--- toN holds a piece of the same color.
+
+`board.canMove(fromN,toN)` considers a move by the piece currently at space _fromN_ to space _toN_.  The function should return boolean _false_ if the move is impossible for any of these reasons:
+
+* either _fromN_ or _toN_ is invalid, or there is no piece at _fromN_,
+* the piece cannot move in that direction and distance,
+* the piece is blocked by another piece en route,
+* _toN_ holds a piece of the same color.
+
 Otherwise the function should return a truish value:
--- boolean _true_ if toN is empty, or
--- the name of an opposing piece captured at toN.
+
+* boolean _true_ if _toN_ is empty, or
+* the name of an opposing piece captured at _toN_.
 
 General simplifications:
 You may ignore threats to a king which would disallow certain moves in a real game.
