@@ -1,5 +1,65 @@
-OBJECTS
-====
+INTRO, coaching:
+
+You were left with fewer tools than we intended;
+To borrow an excellent metapor from Ben:
+as you climbed up on ladder, not many low rungs to start with.
+
+Most of you filled in with tenacity: kudos!
+In future, I'll try to avoid more cases where your're left without rungs to climb on.
+But the lesson applies: tenacity is the most important ingredient.
+
+Another view:
+you're all doing science.
+Imagine the 19th century physicists who were just discovering ethe rules of electricity, putting together crude Victorian devices.
+
+You too are operating in a space of half-understanding:
+what matters isn't so much that someone on the internet actually does understand it all, and you just need to find and interpret their explanations.
+More important is that you have crude Victorian tools and and means to experiment:
+
+you have a console and a scratchpad and console.log, and with just those you can experiment to find out the hidden laws of JS.
+Don't think of it as effort wasted, an inefficient path to understanding, when people with the answer could get you there faster.
+The skill of learning to experiement, learning to operate with half-understanding, is more important than any particular fact about JS.
+
+Programmers at every level spend most of their time on the edges of their own understanding, messing around with a few toeholds into inscrutable new tools.
+Getting comfortable in that mode is a worthwhile investment.
+
+
+HW1 thoughts:
+
+
+
+
+---
+
+
+REVIEW 
+
+Ternary conditional ops
+
+
+FUNCTIONS:
+
+Example: plus(x,y) {
+	return x,y;
+}
+
+Defintion vs Call
+
+Inputs: Arguments are copied into parameters, used as local variables
+Local variables shadow globals
+
+
+Output: Return value specifies replacement in calling context
+Exits immediately
+Without return, or return w/o value --> undefined
+
+Example of calling context:
+(1+plus(x,y));
+(1+Math.sqrt(4))
+
+----
+
+OBJECTS [t+00]
 
 All the examples of data values we've seen have been (apparently) **primitives**, except for arrays, which we've assumed to contain primitives.
 But arrays themselves are the tip of an iceberg: data elements which are _compound values_ with independent parts.
@@ -9,7 +69,7 @@ These inner boxes are called **properties** or **members**; they're similar to v
 Like variables, properties have both a _name_ (the label on the box) and a _value_ (what's in the box).
 A property name is often called a **key**.
 
-EX: [Draw big box: {noise:'quack', feet:2, wings:2, canSwim:true}]
+EX: [Draw big box: {noise:'quack', feet:2, canSwim:true, canWalk:true, canFly:true}]
 
 So a property is a pair: a key and a value, and a object is just a set of key-value pairs.
 Within a particular object, keys are always unique, although the values may repeat.
@@ -25,31 +85,40 @@ They're just _in_ the set, or not.
 And there's a special operator to test this: **\_ in \_**.
 ** _key_ in _object_ ** returns true whenever the object includes a property named _key_.]
 
-INCREMENTAL CREATION
+INCREMENTAL CREATION [t+05]
 
 To build an object incrementally, first create empty object then add properties:
-`var obj = new Object(); //empty object`
-`obj.key1 = value1;`
-`obj.key2 = value2;`
-`typeof obj`
+```
+var duck = new Object(); //empty object
+duck.noise = 'quack';
+duck.feet = 2;
+duck.canSwim = true;
+duck.canWalk = true;
+duck.canFly = true;
+typeof duck;
+```
 
-**[Diagram: big box with exterior label _obj_, interior properties key1, key2]
+Notice: duck itself is a variable, declared with var.
+Its properties aren't variables, but they are compartments to store values, and they are identified partly through their collective name, 'duck'.  They should remind you of array elements.
 
-SHORTHAND
+
+**[Diagram: big box with exterior label _duck_, interior properties...]**
+
+SHORTHAND [t+07]
 
 You may also see two "slang" forms of empty-object creation:
-`obj = new Object;`
-`obj = Object();`
+`duck = new Object;`
+`duck = Object();`
 Both of these have same result, but for now always practice using the full form: `new Object()`
 
-LITERAL NOTATION
+LITERAL NOTATION [t+08]
 
 Objects also have a special notation which creates an object and its constituent properties all at once:
-`var obj = {}` for an empty object, or
-`var obj = {key1: value1, key2: value2, ...}`
+`var duck = {}` for an empty object, or
+`var duck = {noise:'quack', feet:2, canSwim:true,...}`
 That's called **object literal notation**, because it enumerates each property.
 It's somewhat a misnomer because the values may be expressions rather than literal values:
-`obj = {one:(1+2), 'two':(4-2), flavor:"pine"+"apple"}`
+`duck = {noise:'qu'+'ack', feet:(1+1), canSwim:canFloat && canPaddle}`
 
 Also called **JSON**, a format sometimes used to describe structured data outside JS programs.
 
@@ -57,48 +126,58 @@ Notice that quotes around the keys are optional, but required when the values ar
 
 And once you have an object created by either method, you can always incrementally add new properties:
 ```
-obj = {one:1, two:2};
-obj.three = 3;
-obj
+duck = {feet:2, canSwim:2};
+duck.noise = 'quack';
+duck.canFly = true;
 ```
 
 NESTED OBJECTS
 
 Often, object property values are primitives, but like variables, may also contain other objects.  In this case, have **nested** objects.
 ```
-var outer = {inner:{core:1}}
+var nest = {mama:{noise:'quack',feet:2,canSwim:true}}
 // equivalent to:
-var inner = new Object();
-inner.core = 1;
-var outer = new Object();
-outer.inner = inner;  //left inner is prop, right inner is var
+var duck = {noise:'quack',feet:2,canSwim:true};
+var nest = {mama:duck};
+//equivalent to:
+var duck = new Object();
+duck.noise='quack';
+//etc...
+var nest = new Object();
+nest.mama = duck;
 ```
-**[Diagram: nested big boxes, inmost property _core_]**
+**[Diagram: nested big boxes, inmost properties]**
 
-MEMBER ACCESS
+MEMBER ACCESS [t+15]
+
 Object members/properties act like variable in that they can be set to values or used as values in expressions.  But they always have to be named through their object in one of two ways...
 
 **dot notation: obj.key**
 The dot/period symbol, in any context besides a decimal in a number, is an operator: **\_.\_** (binary infix)
 Its inputs are the object and the property name/key, and the output is the property value:
-`var obj ={one:1, two:2};`
-`obj.one //1`
-`obj.two //2`
-`obj.one = (0+1);`
-`obj.two++`
+```
+var duck ={noise:'quack', feet:2};
+duck.noise //'quack'
+duck.feet //2
+duck.feet = 1;
+duck.feet++; //two funnelled operators!
+```
 
 **index notation: obj[keyExpr]**
 A related operator is the **member operator** or **index operator**: **\_[\_]** (binary mixed-fix)
-`obj['one'] //1`
-`obj['two'] //2`
-`obj[one]='1';
-Pronounced "obj sub one" (as in subscript) or "obj index one".
+```
+duck['noise'] //'quack'
+duck['feet'] //2
+duck['feet']=3;
+duck['feet']--;  //two funneled operators!
+```
+Pronounced "duck sub noise" (as in subscript) or "duck index noise".
 (You've already seen this notation in arrays, and arrays and objects are very similar in ways we'll shortly explore.)
 
 There is one critical difference between these two operators:
 **dot** is always followed by a literal key name, unquoted, but
-**[member]** may substitute expressions.  Therefore, if you use the literal key name, it must be quoted: obj['one'].
-Could also say: `obj['o'+'n'+'e']`, or `var x = 'one'; obj[x];`  But `obj.x` always means `obj['x']`.
+**[member]** may substitute expressions.  Therefore, if you use the literal key name, it must be quoted: duck['feet'].
+Could also say: `duck['f'+'e'+'e'+'t']`, or `var x = 'feet'; obj[x];`  But `obj.x` always means `obj['x']`.
 
 This illustrates that key names are really just strings, and they can be **any** string.  But if your string is weird, have to use [] to access the member:
 `obj[' '] = 'space'`
@@ -106,20 +185,21 @@ This illustrates that key names are really just strings, and they can be **any**
 `obj['"'] = 'quote mark'`
 Weird property names can be very confusing, so only do it with good reason.  But it's a valid consequence of the rule: object is bag of **strings**.
 
-CHAINING
+CHAINING [t+20]
 If objects are nested, both membership operators can be **chained**:
-`outer.inner.core = 0;`
-`outer['inner']['core'] = 0;`
+`nest.mama.noise;`
+`nest['mama']['noise'];`
 Don't confuse latter with:
-`outer[inner['core']]`// discuss meaning...
+`nest[mama['noise']]`// DIAGRAM as operators, discuss...
+[Note: chain operations are NOT ASSOCIATIVE: a.b.c always means (a.b).c, never  a.(b.c)
 
 Or mix them together:
-`outer['inner'].core`
+`nest['mama'].feet`
 
 You can interpret it as stacking two operator funnels: output of one is input of next. **[Diagram]**
 
 
-CREATING and DELETING PROPERTIES
+CREATING and DELETING PROPERTIES [t+25]
 
 Unlike variables, object properties aren't declared before using; they're created whenever they're set for first time.
 If they're read without creating, no error but have value _undefined_;
@@ -133,29 +213,40 @@ Also unlike variables, properties can be **deleted**:
 
 **delete** is a unary operator: takes one object-prefixed property name, has side-effect of deleting it.  Actually has a return value (usually true), but ignore it for now; pretend only side-effect.
 
-DETERMINING PROPERTIES
+EXERCISE [t+30]
+1) Make an object represeting yourself: give that object 3 properties and assign it to a variable.
+2) Make similar objects for each other person at your table, but use a different notation to create them.
+3) Make an object for the entire table, with a property holding each person and named after that person.
+4) Reference one of your properties using a chained name starting with the table, rather than a variable for the person.
+
+DETERMINING PROPERTIES [t+35]
 How can we tell whether an object has a certain property/key?  It's not enough to check for _undefined_, since there may be keys in the set with an undefined value.
 
 There's a special (binary) operator for the purpose: _KEY in OBJ_, returning _true_ if string KEY is a property name in OBJ
-`var obj = {one:1, two:2}
-'one' in obj //true
-'three' in obj//false
+`var duck = {noise:'quack', feet:2}
+'noise' in obj //true
+'quack' in obj //false
 
 But that requires proposing a particular key.  If you want to find out all the keys present, there's a special kind of loop: _for...in..._
 **for (VAR in OBJ)...**
+
 VAR is a variable which is automatically set to each key in OBJ, one per loop cycle.
 For example:
-`var obj={one:1,two:2};
-for (var key in obj) console.log('key='+key+' val='+obj[key]);
-`
+```
+var duck={noise:'quack',feet:2};
+for (var key in duck) {
+	console.log('key='+key+' val='+duck[key]);
+}
+```
 
 Don't confuse _for (\_in \_)_ with _for (\_ ;\_ ;\_ )_; they're different idioms with different templates and different roles, and you can't use either in place of the other.
 
-AUTOMATIC PROPERTIES
+AUTOMATIC PROPERTIES [t+40]
 
 Certain kinds of objects have some properties which are created automatically.  Automatic properties are hidden (technically: non-enumerable) and are not included in the keys listed by _for...in_.  However, they will return _true_ for _in_.
 
-In recognition of their differences, I'll usually draw _automatic properties_ in an "attic" on top of the main object. [Diagram]
+In recognition of their differences, I'll usually draw _automatic properties_ in an "attic" on top of the main object.
+![Diagram](auto-props.svg?raw=true)
 
 
 METHODS (briefly)
@@ -167,7 +258,7 @@ For example:
 
 
 
-PURPOSE of OBJECTS
+PURPOSE of OBJECTS [t+50]
 Until we write more complex code, it may be hard to understand the purpose of objects.  We've seen at least 3 distinct uses:
 1.  An object can represent a real-world object/entity which has distinct parts and features and measurements.  Object groups together those data as different aspects of single thing:
 `var person={name:'Kermit',color:'green',occupation:'frog',height:60}`
@@ -186,7 +277,7 @@ var everyone = {Dan:1, Ben,1:, Clarissa:1...  }
 
 ====
 
-PROPERTIES vs VARIABLES
+PROPERTIES vs VARIABLES [t+55]
 
 Differences:
 
@@ -203,6 +294,10 @@ Differences:
 
 4. Names: vars have name restrictions; params can be named any string
 
+---
+
+(break)
+
 ===
 
 REFERENCES and SHARED OBJECTS
@@ -213,6 +308,9 @@ var yourCar = myCar;
 myCar.mileage+=1000;
 yourCar.mileage
 ```
+
+[Draw on intuitions of Names..]  In everyday world, we name things: "My Pen", "The Black Pen", "The last pen I used";
+[Aliases...]
 
 To see why this object is shared, we first have to understand **references**.  A reference is JS is a _pointer_ or a _citation_.  It is literally a number in memory, stored in a variable like a number primitive, but interpreted to be the address of _another place in memory_.  But we can think of it as an _arrow_ pointing from a variable to an object.  That is, the arrow _is the value_ in a little box, which points to a big box.  Sometimes we'll call the big box the **referent**.
 **[Diagram]**
