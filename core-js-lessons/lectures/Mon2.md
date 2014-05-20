@@ -57,6 +57,11 @@ Example of calling context:
 (1+plus(x,y));
 (1+Math.sqrt(4))
 
+
+----
+
+DEFENSIVE PROGRAMMING, SAFEGUARDS, ASSERTIONS
+
 ----
 
 OBJECTS [t+00]

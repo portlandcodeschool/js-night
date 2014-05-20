@@ -523,6 +523,7 @@ There are three distinct ways of referring to a function in code:
 
 ---
 DEFENSIVE PROGRAMMING, SAFEGAURDS and ASSERTIONS **[8:25]**
+[Didn't fit; needs inserting...] 
 
 What could go wrong with hug()?  Is there a way to make it malfunction?
 Suppose we're writing it a resource for others, and we'll turn it loose on the internet for people to call whenever they need a hug.
@@ -623,13 +624,17 @@ given one parameter N from 0-6, generate a string with a list of all the weekday
 weekdayNames(0)  -> "Sunday Monday Tues... Saturday"
 
 First let's store the names in an array:
+
+```
 var names = ['Sun','Mon','Tues'...];
+```
 
 Then put that array inside our function as a local variable:
+```
 function listWeekdays(start) {
   var names...
 }
-
+```
 
 Then write a loop to cycle through the index from start back to the one before.
 First: devise a plan for dealing with wrapping around!
@@ -640,15 +645,17 @@ Solicit Ideas:
 * just count seven things, then figure out which indexes they are
 * do two loops: one from start to array length, then another from 0 to start
 
-`function listWeekdaysFrom(start) {
-	var i, names=[...];
+```
+function listWeekdaysFrom(start) {
+	var i, weekday=['Sun','Mon','Tues','Wed','Thurs','Fri','Sat'];
 	var result = "";
 	for (i = start; i<7; i++)
-	  result += weekday[i];
+	  result += weekday[i]+' ';
 	for (i=0; i<start; i++)
-	  result += weekday[i];
+	  result += weekday[i]+' ';
 	return result;
-}`
+}
+```
 
 Add assertion to check input!
 
