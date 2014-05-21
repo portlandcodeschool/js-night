@@ -14,3 +14,6 @@ b)
    loop1 = {link : loop2};
    loop2 = {link : loop1};
    loop1.link.link
+c) 
+   var weird = function (x) { x && weird(x));};
+   weird(0);
