@@ -7,10 +7,14 @@
 > ```
 > **boldface for drawing on board or vocabulary**
 
+==== Part 0 ===
+
+ARRAY exercise!
+
 
 ==== Part 1 ====
 
-CONDITIONALS and BRANCHING
+CONDITIONALS and BRANCHING **[6:15]**
 
 So far, we've seen expressions which always evaluate all their parts and funnel them together; that's just a glorified pocket calculator.
 
@@ -25,7 +29,8 @@ The pattern is always:
 
 Only if _COND_ is equivalent to _true_ does JS open the _???_ box.  Otherwise it returns _undefined_.  Going on to open the _???_ and evaluate it is called **branching**, and the surrounding statement is called a **conditional** (vs. the **condition** inside the parentheses, and the **consequent** after).
 
-The parentheses around COND are mandatory!
+The parentheses around COND are mandatory, part of the statement template.
+They're different from the grouping parens used in expressions.
 
 IF...ELSE
 
@@ -51,16 +56,23 @@ returning only one of A,B (and not even interpreting the other).
 And you can nest it:
 `var x = ((false? 0: 1) == (true? 1: 2)) //true`
 
-TRUTHINESS
+TRUTHINESS **[6:21]**
 
 If the condition input is literally _true_ or _false_, the outcome is predetermined, so such a conditional is useless.  The value of conditionals is when we substitute a variable (or expression containing a variable) in the condition:
-var rainy=true; if (rainy) "true enough"
-var x=1, y=2; if (x<y) "true enough"
+
+`var rainy=true; if (rainy) "true enough"`
+
+`rainy=false; if (rainy) "true enough"`
+
+`var x=1, y=2; if (x<y) "true enough"`
 
 Easy to see how this works: the boolean value output by the nested expression is either _true_ or _false_.
 But what about this:
+
 `x=1; if (x) "true enough"`
+
 `x=0; if (x) "true enough"// undefined`
+
 Apparently 1 is true enough, but 0 isn't.
 Another way of putting it: 1 is **true-ish** or **truthy**, 0 is **false-ish** or **falsey**.
 Not identical to _true_ and _false_:
@@ -69,13 +81,14 @@ Not identical to _true_ and _false_:
 But equivalent:
 `1 == true //true`
 
-All of this is explained by our old friend invisible-auto-conversion.
-Like operators -,*,/ which demand actual numbers and auto-convert inputs as needed, the context of a condition demands an actual boolean value.
+All of this is explained by our old friend invisible-auto-conversion.  **[ASK: when does auto-convert happen?  When operator expects specific types]**
+Like operators -,*,/ which demand actual numbers and auto-convert inputs as needed, the context of a condition
+(i.e. operator `if (__)...`) demands an actual boolean value.
 And if it doesn't get one, it converts the value it has.
 The conversion rule is simple:
-> A few (6) specific values convert to false:
-> ** false, 0, NaN, undefined, "", null** (we'll see later);
-> Everything **else --> true**
+
+* A few (6) specific values convert to false: ** false, 0, NaN, undefined, "", null** (we'll see later);
+* Everything **else --> true**
 
 So we can infer that strings "false" and "undefined" are true-ish:
 `if ("false") "yup"`
@@ -84,16 +97,17 @@ So we can infer that strings "false" and "undefined" are true-ish:
 But things with value _false_ and _undefined_ are false-ish:
 `var unk; if (unk) bleargh`
 
-> Aside: operator == does some auto-conversion (e.g. `1=='1'; 1==true`) but be careful:
-> `true == "true" //false`
-> [Leave as exercise! Answer: Not doing either string compare or boolean compare, but converting both to numbers]
+<!-- Aside: equality operator == does some auto-conversion (e.g. `1=='1'; 1==true`) but be careful:
+`true == "true" //false`
+[Leave as exercise! Answer: Not doing either string compare or boolean compare, but converting both to numbers]
+-->
 
-BOOLEAN OPERATORS
+BOOLEAN OPERATORS **[6:27]**
 
 Let's see two more operators: **&&** and **||**.
 
 We call them boolean operators, because they represent the logic of merging _true_ and _false_.
-When they have boolean inputs, their output is what you'd expect:
+When they have boolean inputs, their output is what you'd expect: **[ASK:]**
 `(true || false) //true`
 `(true && false) //false`
 `(true && true) //true`
@@ -108,6 +122,7 @@ the actual value is not necessarily _boolean_.  Instead, it's always one of the 
 But which input?  Why 'b' instead of 'a'?
 
 To understand that, first we have to recognize that JS is lazy: it never evaluates more than it needs to.  Here's a more vivid example:
+
 **if (doJShomework() || runMarathon()) deserveCookie()**
 
 JS always has to evaluate the first expression, so we do our JS homework and return something true-ish.  Now what?  Must we also run marathon to get a cookie?  No; the conditions have been satisfied already!  So JS exits the || operation early and goes straight to the cookie.
@@ -118,6 +133,7 @@ If A is truish, return it, so the whole expression will be truish, and never loo
 And of course, if A is falseish, it's all up to B, and we have to do the work of evaluating B.  But on average, we've saved some effort.
 
 Similarly, consider this condition:
+
 **if (doJShomework() && runMarathon()) deserveCookie()**
 Now it seems we have to do both, right?
 But imagine the unimagineable: you don't do your JS homework!
@@ -137,11 +153,22 @@ Here's a mnemonic I use:
 >
 > **(work && reward)** e.g. **(openFile && readFile)**
 
-(10m break)
+
+EXERCISE: AND/OR yourselves together! **[6:40]**
+
+You each still have an expression you made earlier.
+At each table of four, starting with the tallest person, going clockwise:
+join your four expressions with the && operator, and find the collective outcome!
+Then try it in a different order!
+Then use || instead.
+Then try || in a different order.
+Take 4 min doing that, then another 4 mins of break, and reconvene at (6:50?)
+
+(break)
 
 ==== Part 2 ====
 
-SCRATCHPAD
+SCRATCHPAD **[6:50]**
 
 The console is great for doing simple science: testing expressions and probing variables to figure out how things work.
 But it only affords single-line dialog: we can use semicolons and Shift-Return to send multiple statements at once, but it's ugly and inconvenient.  If we make a typo in long expression, have to redo the whole thing.
@@ -198,7 +225,7 @@ if (rainy) {
 ```
 
 ---
-Example of consequent block:
+**[7:00]** Example of consequent block:
 
 Sometimes we all need a hug, and the way the twitterati do it in lolspeak is:
 **(((((Name)))))**
@@ -207,15 +234,16 @@ Sometimes we all need a hug, and the way the twitterati do it in lolspeak is:
 var who="Elmo";
 var needHugs = 2;
 if (needHugs) {//need two steps...
-	needHugs--;
 	who = '('+who+')';
+	needHugs--;
 }
+who
 ```
 
 What we're doing next will be easier when we can freely edit multi-line statements...
 
 ----
-LOOPS
+LOOPS **[7:05]**
 
 Remember that _if..._ is a statement which controls flow, or branching.
 It lets us conditionally do something once.
@@ -234,6 +262,16 @@ while (COND) {
 	CHANGE;
 }**
 
+
+```
+var who="Elmo";
+var needHugs=5;
+while (needHugs) {
+	who='('+who+')';
+	needHugs--;
+}
+```
+
 Again, with flourish:
 ```
 var who="Elmo";
@@ -245,7 +283,7 @@ while (needHugs--) {//double-duty: change w. cond!
 
 [Aside: the keyword _while_, like _var_ and _if_, creates an un-nestable statement.] 
 
-FOR LOOP
+FOR LOOP **[7:10]**
 
 A similar pattern uses the same components, but arranged in a specialized idiom with a different keyword: **for**
 
@@ -296,7 +334,7 @@ for (var i = 0; i++<5; who='('+who+')') {}
 
 ----
 
-SENDING REPORTS
+SENDING REPORTS **[7:20]**
 
 When using the console, action pauses between each exchange, giving us a change to inspect values and see what's going on.  With loops, and lots of other constructions, we don't get a change to intervene once it starts; have to wait for it to finish.
 Sometimes we need a way to spy on it, check progress from within.
@@ -316,11 +354,20 @@ for (var i = 0; i<5; i++) {
 
 Console.log is your new best friend; use it everywhere as you code to track what's happening.
 
+
+EXERCISE: **[7:30]**
+In scratchpad:
+1) Define an array of 10 elements.
+2) Write a loop which writes to the console every even #'d element of the array, in forward order.
+3) Write a loop which writes to the console every odd #'d element, in backward order.
+
+You have 10 minutes.  IF done early, take a break
+
 (10m break)
 
 ==== Part 3 ====
 
-FUNCTIONS
+FUNCTIONS **[7:45]**
 
 A **function** is a miniature program, a resuable module with a distinct purpose.
 We've already seen some examples:
@@ -375,7 +422,7 @@ That's very fragile, and it also means you can only hug one thing.
 The power of functions is that they are reusable not just by doing things more than once,
 but doing them in different circumstance, and doing variations on a theme.
 
-PARAMETERS/INPUT
+PARAMETERS/INPUT **[8:00]**
 
 The solution is to **parameterize** the huggee:
 ```
@@ -393,7 +440,7 @@ It sort-of worked: we can see that the function is wrapping hugs around differen
 And _who_ here is called a **parameter**: it's a local variable which is implicitly declared and initialized to match the corresponding argument.
 But the function still doesn't work properly because it's only changing that parameter, a local variable.
 
-RETURN/OUTPUT
+RETURN/OUTPUT **[8:05]**
 
 So we add one more thing:
 ```
@@ -428,6 +475,8 @@ And like other expressions, the output is just thrown away unless you save it in
 
 The function is now reusable, reliable (works under any circumstances), and safe (has no side-effects).
 
+MORE PARAMETERS **[8:15]**
+
 But we can make it even more useful by generalizing it: turn some of its hard-wired behavior into additional parameters:
 ```
 function hug(who, needHugs) {
@@ -439,6 +488,8 @@ function hug(who, needHugs) {
 hug("Elmo", 5);
 hug("Barney", 10);
 ```
+
+**[8:20]**
 
 Optional: parameterize '(' and ')' too, to make generalized wrap():
 ```
@@ -471,7 +522,8 @@ There are three distinct ways of referring to a function in code:
 
 
 ---
-DEFENSIVE PROGRAMMING, SAFEGAURDS and ASSERTIONS
+DEFENSIVE PROGRAMMING, SAFEGAURDS and ASSERTIONS **[8:25]**
+[Didn't fit; needs inserting...] 
 
 What could go wrong with hug()?  Is there a way to make it malfunction?
 Suppose we're writing it a resource for others, and we'll turn it loose on the internet for people to call whenever they need a hug.
@@ -496,7 +548,7 @@ It might seem convenient to be able to have such a versatile input, and sometime
 But be very careful of choices which let you be lazy!  Sooner or later you'll be lazy in a way you regret.
 Probably if your _wrap()_ function is getting _true_ instead of a number, something else has gone wrong and you want to know about it as soon as possible.  Always look for ways to save yourself from yourself.
 
-ASSERTION
+ASSERTION **[8:35]**
 
 So a good practice is: always know what parameter values are normal, and give yourself a warning if they're not.
 To that end, we're now going to write another function that you will use (in some form) for the rest of your lives: **assert**.
@@ -537,7 +589,7 @@ function wrap(...) {
 
 
 =====
-ARRAYs
+ARRAYs [done earlier]
 
 So far, all the value types we've seen are atomic; they have no constituent parts.
 From now on, we'll include more complex types which are _compound values_ or _objects_, which have distinct components within them.
@@ -572,13 +624,17 @@ given one parameter N from 0-6, generate a string with a list of all the weekday
 weekdayNames(0)  -> "Sunday Monday Tues... Saturday"
 
 First let's store the names in an array:
+
+```
 var names = ['Sun','Mon','Tues'...];
+```
 
 Then put that array inside our function as a local variable:
+```
 function listWeekdays(start) {
   var names...
 }
-
+```
 
 Then write a loop to cycle through the index from start back to the one before.
 First: devise a plan for dealing with wrapping around!
@@ -589,16 +645,20 @@ Solicit Ideas:
 * just count seven things, then figure out which indexes they are
 * do two loops: one from start to array length, then another from 0 to start
 
-`function listWeekdaysFrom(start) {
-	var i, names=[...];
+```
+function listWeekdaysFrom(start) {
+	var i, weekday=['Sun','Mon','Tues','Wed','Thurs','Fri','Sat'];
 	var result = "";
 	for (i = start; i<7; i++)
-	  result += weekday[i];
+	  result += weekday[i]+' ';
 	for (i=0; i<start; i++)
-	  result += weekday[i];
+	  result += weekday[i]+' ';
 	return result;
-}`
+}
+```
 
 Add assertion to check input!
 
 Add another test!
+
+
