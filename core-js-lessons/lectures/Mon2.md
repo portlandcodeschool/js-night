@@ -428,7 +428,7 @@ y.c === x`
 (Break!)
 ==== Part 2
 
-PSEUDO-ARRAYS
+PSEUDO-ARRAYS [t+0]
 
 Suppose we make this object:
 ```
@@ -452,7 +452,7 @@ var obj[0]//'a'!  String keys, not numbers
 
 [Draw: semi-segregated box]
 
-REAL ARRAYS
+REAL ARRAYS [t+10]
 But despite appearances, there is more than that to a Real Array.  Two critical differences in behavior:
 
 1.  Real arrays get an automatic _length_ property, and
