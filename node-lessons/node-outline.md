@@ -24,7 +24,7 @@
 4. Routes with Routes-router (or similar), testing with a testing framework
 5. More helper modules (send-data/html, for instance), Streams in node
 6. The concept and purpose of templates, templates with Hogan.js
-7. Data Persistence: Postgresql
-8. Postgresql, part 2
+7. Data Persistence: Orchestrate
+8. Orchestrate, part 2
 9. Basic Username and password authentication
 

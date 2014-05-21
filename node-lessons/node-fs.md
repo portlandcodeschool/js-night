@@ -5,6 +5,13 @@ Reading:
 - [node.js api on file system, "fs"](http://nodejs.org/api/fs.html) 
     + read approximately the first third or half of this page
 
+# In-Class Exercises
+- Learnyounode 1-4
+- 
+
+# Homework 
+- Learnyounode through 6
+- Other exercises 
 
 # Node Characteristics: 
 + DIRTy: *data-intensive-real-time*

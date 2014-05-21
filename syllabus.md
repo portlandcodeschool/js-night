@@ -1,3 +1,33 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// For planning purposes only. see the js-night-summer-2014 for current syllabus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###Week 1: *May 12-18*
 + **Monday**
     * Topics: 
