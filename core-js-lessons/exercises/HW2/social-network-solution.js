@@ -1,6 +1,6 @@
 // Template
 
-var people = {/* something here */};
+var people = {index:{}};
 
 people.meet = function(nameA,nameB) {
 }
@@ -11,6 +11,9 @@ people.haveMet = function(nameA,nameB) {
 people.friendsOf = function(name) {
 }
 
+people.makeNewPerson(newName) {
+    return {name:newName, friends:{}}
+}
 //people.morePropertiesAsNeeded = whatever;
 
 
