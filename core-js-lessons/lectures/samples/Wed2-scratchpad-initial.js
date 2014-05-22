@@ -1,3 +1,102 @@
+var duck = {noise:'quack', feet:2, canSwim:true};
+var nest = {mama:duck};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// How many objects?
+var a={};
+var b=a;
+var c={a:a,b:b};
+a.c = c;
+var d=c.a;
+delete c.a;
+delete c.b;
+a = null;
+c = null;
+
+
+
+
+
+
+
+
+
+
+
+// Passing by reference
+
+function paint(color) {
+    color='blue';
+}
+var myCar = {color:'red'};
+paint(myCar.color);//no change
+
+
+function paint(obj) {
+    obj.color='blue'
+}
+paint(myCar);//change!
+
+
+
+
+
+
+
+
+
+// Circular linking
+
+var ernie={}, bert={};
+ernie.bff = bert; bert.bff = ernie;
+
+
+
+
+
+// Big picture
+
+
+var x={a:{a1:{},a2:{}},b:{b1:{},b2:{}}};
+var y=x.b.b2;
+y.c = x;//circular ref
+
+
+
+
+// Array Methods
+var arr = [0,1,2,3,4,5,6,7];
+
+
+
+
+
+
+
+
 
 function everyNth(array,n) {
     var result = [];
@@ -49,7 +148,7 @@ var exchange = {
 	    return 'E'+this.toEuros(string.slice(1));
 	if (string[0]==='E')
 	    return '$'+this.toDollars(string.slice(1));
-	return toDollars(string);
+	return this.toDollars(string);
     }
 };
 //call:
