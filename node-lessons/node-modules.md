@@ -13,6 +13,7 @@ Reading:
 - Modules are 'attached' to exports or module.exports
 - exports` vs `module.exports`
     + use module.exports when you need to modify the module
+- The require() function is actually based on the FS module (NIA, 327)
 
 
 ### Example
