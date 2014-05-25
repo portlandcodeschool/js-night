@@ -57,3 +57,33 @@ function difference(objA,objB) {
     }
     return diff;
 }
+
+
+// Testing
+function assert(claim,warning) {
+    if (!claim) console.log(warning);
+}
+
+// Your assertions will differ...
+var testVar;
+assert( equal( union( {a:0,b:0},{b:1,c:0} ),
+                        {a:0,b:1,c:0} ),        "Union 1 failed");
+assert( equal( union( {1:Infinity}, {1:NaN,2:NaN} ),
+                        {1:Infinity,2:NaN} ),   "Union 2 failed");
+assert( equal( union( {a:undefined}, {} ),
+                        {a:undefined} ),        "Union 3 failed");
+assert( equal( union( testVar={a:1}, {a:2,b:testVar} ),
+                            {a:1,b:testVar} ),  "Union 4 failed");
+assert( equal( union( {'1':1},{'2':2} ),
+                        {1:1,2:2} ),            "Union 5 failed");
+
+assert( equal( intersection ( {}, {} ),
+                                {} ), "Intersection 1 failed");
+assert( equal( intersection ( {}, {} ),
+                                {} ), "Intersection 2 failed");
+assert( equal( intersection ( {}, {} ),
+                                {} ), "Intersection 3 failed");
+assert( equal( intersection ( {}, {} ),
+                                {} ), "Intersection 4 failed");
+assert( equal( intersection ( testVar={}, {} ),
+                                {} ), "Intersection 5 failed");

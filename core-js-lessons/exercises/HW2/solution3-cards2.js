@@ -37,7 +37,7 @@ var cardReader = {
 
     rankNames: ['','Ace','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
                 'Jack','Queen','King'],
-    suitNames: ['','Hearts','Diamonds','Spade','Clubs'],
+    suitNames: ['','Hearts','Diamonds','Spades','Clubs'],
 
     name: function(card) { //--> string, NaN
         var rank = this.rank(card);
