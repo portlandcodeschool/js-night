@@ -1,13 +1,18 @@
 *General Questions/ Issues*
 
+Examples:
+
+
 Reading: 
 - [Art of Node by Max Ogden](https://github.com/maxogden/art-of-node)
 - [node.js api on file system, "fs"](http://nodejs.org/api/fs.html) 
     + read approximately the first third or half of this page
+- [node.js api entry on modules](http://nodejs.org/api/modules.html)
+- [node.js api section on process.argv in the process entry](http://nodejs.org/api/process.html#process_process_argv)
+    + This section will provide some critical understanding that enables us to use nodeschool.io
 
 # In-Class Exercises
 - Learnyounode 1-4
-- 
 
 # Homework 
 - Learnyounode through 6
@@ -21,6 +26,54 @@ Reading:
 + Streams
 + Modular
 + Callbacks: 'define logic for one-off responses'(NIA, 46)
+
+# Modules
+
+### Introduction To Modules
+- Modules help us organize our code
+- Node modules do not use the global namespace and thus help us avoid naming collisions (NIA, 40)
+- Modules can be files or directories (default file in directory is index.js)
+- Modules are 'attached' to exports or module.exports
+- exports` vs `module.exports`
+    + use module.exports when you need to modify the module
+- The require() function is actually based on the FS module (NIA, 327)
+
+
+### Example
+
+- name-app.js (our main file)
+```javascript
+
+var nameFunction = require('./name-module');
+var names = require('./names-module');
+
+nameFunction('Ben');
+
+console.log('My dad\'s name is ' + names.dad);
+console.log('My mom\'s name is ' + names.mom);
+
+```
+
+- name-module.js 
+```javascript
+
+module.exports = function (name) {
+  console.log('hey there, ' + name);
+}
+
+```
+
+- names-module.js
+```javascript
+
+module.exports = {
+  mom: 'Christy',
+  dad: 'Jeff',
+  sister1: 'Becky',
+  sister2: 'Elizabeth'
+}
+
+```
 
 # Async vs. Sync (*Node.js in Action*, 5-11)
 ### synchronous browser example:
