@@ -20,10 +20,10 @@
     - basic routes with control flow logic
     - basic resources (plain text, html, or JSON inline)
     - mime type explanation
-3. More node http server Routes with no outside modules, static file server
-4. Routes with Routes-router (or similar), testing with a testing framework
-5. More helper modules (send-data/html, for instance), Streams in node
-6. The concept and purpose of templates, templates with Hogan.js
+3. More node http server Routes with no outside modules, static file server, streams
+4. 
+5. 
+6. 
 7. Data Persistence: Orchestrate
 8. Orchestrate, part 2
 9. Basic Username and password authentication

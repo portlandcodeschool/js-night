@@ -104,6 +104,14 @@ fs.readFile('./resource.json', function (err, data) {
 
 ```
 
+
+# Node Process Global Object 
+
+### What is it? 
+- The Obvious: It is something that node provides, so don't give anything in your code the name process.
+- Each node process has its own process object. A process is basically any node program that you might be running. You may have multiple processes if you have more than one of the following: a server, a client, or a database.
+- We can use process.argv, that you read about, to access command-line arguments. Process.argv is just an array that we can play with. One thing that this enables, which you will find more useful later on, is the ability to make command-line tools. For our purposes, we only need it to use nodeschool.io.
+
 ### Discuss Homework
 1. Learnyounode (Complete the first 5 lessons)
     - Show installation and first two examples
