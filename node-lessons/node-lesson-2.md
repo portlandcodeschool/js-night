@@ -1,13 +1,14 @@
-*General Questions/ Issues*
+# Reading:
+- [Node Docs entries on HTTP](http://nodejs.org/api/http.html)
+- Continue reading or re-read [art-of-node](https://github.com/maxogden/art-of-node)
 
-### Resources 
-* Reading:
-    - [Node Docs entries on HTTP](http://nodejs.org/api/http.html)
-    - [Example Code on Node.js homepage](http://nodejs.org/)
-    - Continue reading or re-read [art-of-node](https://github.com/maxogden/art-of-node)
-    - Nodeschool.io: Learnyounode
+# Reading for Homework: 
+- [node docs entry on Path](http://nodejs.org/api/path.html)
+    + pay particular attention to path.extname
 
-# Node as a Basic HTTP server
+# Slides
+
+### Node as a Basic HTTP server
 ```javascript
     var http = require('http');
     var server = http.createServer(function (req, res) {
@@ -17,7 +18,6 @@
     server.listen(3000);
     console.log('Server running at http://localhost:3000/');
 
-//for another example, see Node JS in Action, 33
 ```
 
 - bring in the http module and store it in a var
