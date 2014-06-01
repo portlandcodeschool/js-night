@@ -1,3 +1,7 @@
+Homework #3
+
+---
+
 **1) Still more Playing Cards!**
 
 **a)** _[Moderate]_
@@ -24,7 +28,7 @@ Because each card knows its own id, the methods need fewer arguments than before
 **c)** _[Easy]_ Write a few more assertions proving that your methods are shared between instances and not duplicates.
 (Hint: check for object identity.)
 
-
+---
 
 **2) Stacking the Deque**
 
@@ -50,14 +54,10 @@ Write a deque factory, a function `makeDeque(values)` which follows the Factory 
 	*  if _offset_ is non-zero integer: adjust split by _offset_ elements toward top if positive, toward bottom if negative.
 Make sure to handle reasonably all possible combinations of offset and deque length.
 
-<!-- riffle:  split as with a cut, using _offset_ the same way, then interleave the two halves by these rules...  -->
-
 * `sort(compareValsFn)`: reorder all elements of deque according to the comparison defined by the function _compareValsFn_, passed as an argument to _sort_.
 `compareValsFn(a,b)` should return a negative number whenever value _a_  belongs somewhere below value _b_ in the sorted result, and a positive number whenever _a_ belongs above _b_.  (Zero means they're equivalent: either may come first.)
 
 * `map(convertValFn)`: return an array whose elements are derived from the values in deque, converting each value with the function `convertValFn(val)`.
-
-<!--* `list(stringifyValFn, delim)`: list the contents of the deque as a single string, using function _stringifyValFn_ to convert each element to a string and _delim_ to seperate them.-->
 
 In part b), you'll use a deque to simulate a deck of 52 cards, but your deque implementation should be completely general, able to handle any number of any type of element.
 
@@ -96,14 +96,7 @@ assert(deck.top().name() === 'Two of Spades', 'Failed Two of Spades test');
 
 **d)** _[Easy]_
 Without changing your deque factory, use it to create another deque which holds the names of all 19 students in this class, plus 5 TAs (yes, we're very mean, making you remember all your teammates!)
-
-<!--OK, fine:
-Abe,Adam,Chad,Charity,Christian,Danielle, 
-Esha,Geoff,Hanna,Jesse,Joshua,Kellen,
-Kyle,Liam,Lori,Matt,Nathan,Shawna,Tom,
-Abby,Amanda,Chris,Clarissa,Jhenna -->
-
-Sort the names alphabetically, bottom to top, by the SECOND letter of the name (e.g. "Dan" would precede "Ben" because 'a'<'e').
+Sort the names alphabetically, bottom to top, by the SECOND letter of the name (e.g. "Dan" would precede "Ben" because 'a'<'e').  Then test it:
 ```
 var everyone = makeDeque(/*something*/);
 everyone.sort(/*something*/);
