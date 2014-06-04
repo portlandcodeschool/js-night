@@ -35,10 +35,11 @@ Then rewrite your deque's _map_ method to prevent such an exploit.
 
 **b)** _[Difficulty: difficult] Now that we have our user objects, let's assume that our system needs some notion of a "system log" that will record messages left by different users. This system log, being shared by all user objects created, will contain all the messages that users have recorded. You will need to modify the factory you made above to be a part of a module that has a private variable that holds the system log.
 
-  + Entries can be added to the log with the method .record(msg)
+  + Entries can be added to the log with .record(msg), which is a method of the *user* object
     + The log entry should be recorded in the format "username: msg"
     + If no message is provided in the call to .record, then it should return undefined
   + The log should be retrievable by a method .getLog(name) which takes an optional "name" argument
+    + .getLog should be a method of the *factory* that creates users, since it is an operation of the system and not something for individual users to use.
     + If the name is provided then it should print out all log entries that were recorded by that user
     + If no name is provided, then it should print out all log entries by all users
     + Log entries should be separated by newlines
