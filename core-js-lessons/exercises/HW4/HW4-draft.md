@@ -2,9 +2,8 @@ Homework 4
 
 **1)**
 
-Package your playing-card code into a module; that is, wrapped inside an immediately-invoked function expression (IIFE, or "Iffy").  Your module should return one object: the factory _makeCard_.  As before, calling makeCard(id) should create and return a card object with methods for rank, suit, name, etc, but with two differences:
-
-
+Package your playing-card code into a module; that is, wrapped inside an immediately-invoked function expression (IIFE, or "Iffy").  Your module should return one object: the factory _makeCard_.  As before, calling makeCard(id) should create and return a card object with methods for rank, suit, name, etc, but with a difference structure of the package:
+the methods shared between instances need not be initially as methods of the factory, but can instead be 'siblings' of it, functions local to the IFFE's scope.
 
 
 **2)** 
