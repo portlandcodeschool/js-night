@@ -27,4 +27,19 @@ Then rewrite your deque's _map_ method to prevent such an exploit.
 
 **3)**
 
-Write a user-registration tool, a function which accepts a username and password and generates a user object.
+**a)** _[Difficulty: moderately difficult] Write a user-registration tool, a function which accepts a username and password and generates a user object.  Once we have a user object we should be able to do two separate things with it: retrieve the username from the object and test to see if a provided password matches the password for the user at object creation. It should not be possible, however, to modify the username or password once created nor to directly see the password. Your solution should somehow use closures to protect the password as a private variable. Ultimately, this means that your user object should have
+
+  + A method .getName() which returns the username
+  + A method .validate(str) that takes a string and returns true if the password is correct
+  + There is no way to see the password once a user is created
+  + There is no way to modify the username or password once is created
+**b)** _[Difficulty: difficult] Now that we have our user objects, let's assume that our system needs some notion of a "system log" that will record messages left by different users. This system log, being shared by all user objects created, will contain all the messages that users have recorded. You will need to modify the factory you made above to be a part of a module that has a private variable that holds the system log.
+
+     + Entries can be added to the log with the method .record(msg)
+       + The log entry should be recorded in the format "username: msg"
+       + If no message is provided in the call to .record, then it should return undefined
+     + The log should be retrievable by a method .getLog(name) which takes an optional "name" argument
+       + If the name is provided then it should print out all log entries that were recorded by that user
+       + If no name is provided, then it should print out all log entries by all users
+       + Log entries should be separated by newlines
+     + The log should not be able to be modified other than through the .record method in a user.
