@@ -1,7 +1,5 @@
 module.exports = function () {
-  var outputArr = [];
-  this.ingredients.forEach(function (item, index) {
-     outputArr.push('\n ' + (index + 1) + ". " + item);
+  return this.ingredients.map(function (item, index) {
+    return item = '\n ' + (index + 1) + ". " + item;
   });
-  return outputArr;
 }

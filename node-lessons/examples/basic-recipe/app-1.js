@@ -1,5 +1,11 @@
 var app = {};
 
+function Recipe (title, ingredients, directions) {
+  this.title = title;
+  this.ingredients = ingredients;
+  this.directions = directions;
+}
+
 app.pbAndJ = new Recipe (
   'Peanut Butter and Jelly',
   ['peanut butter', 'jelly', 'bread'],
@@ -11,19 +17,16 @@ app.pbAndJ = new Recipe (
 );
 
 Recipe.prototype.listIngredients = function () {
-  var outputArr = [];
-  this.ingredients.forEach(function (item, index) {
-     outputArr.push('\n ' + (index + 1) + ". " + item);
+  return this.ingredients.map(function (item, index) {
+    return item = '\n ' + (index + 1) + ". " + item;
   });
-  return outputArr;
 }
 
+
 Recipe.prototype.listDirections = function () {
-  var outputArr = [];
-  this.directions.forEach(function (item, index) {
-    outputArr.push('\n ' + (index + 1) + '. ' + item);
+  return this.directions.map(function (item, index) {
+    return item = '\n ' + (index + 1) + '. ' + item
   });
-  return outputArr;
 }
 
 Recipe.prototype.listAll = function () {
@@ -37,9 +40,4 @@ Recipe.prototype.listAll = function () {
 
 console.log(app.pbAndJ.listAll());
 
-//helper functions
-function Recipe (title, ingredients, directions) {
-  this.title = title;
-  this.ingredients = ingredients;
-  this.directions = directions;
-}
+
