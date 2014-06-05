@@ -23,7 +23,7 @@
 - bring in the http module and store it in a var
 - create the server and store it in a var
 - make a callback function that determines how requests will be handled
-- declare arguments (also local vars) that pass the request and response objects into the callback function's scope
+- declare arguments (also local vars) that pass the request and response objects into the callback function
 - write an HTTP header
 - send the response and end it in one statement
 - listen on a particular port
