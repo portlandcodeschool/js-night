@@ -1,43 +1,90 @@
 var fs = require('fs');
 
-var listIng = require('./list-ingredients');
-var listDir = require('./list-directions');
-var listEvery = require('./list-all');
-var RecipeCard = require('./recipe-maker'); // bring in recipe card constructor func
+var RecipeBox = {};
 
-var app = {};
+var RecipeCard = function (title, ingredients, directions) {
+  this.title = title;
+  this.ingredients = ingredients;
+  this.directions = directions;
+}
 
-RecipeCard.prototype.listIngredients = listIng;
-
-RecipeCard.prototype.listDirections = listDir; 
-
-RecipeCard.prototype.listAll = listEvery;
-
-
-function readRecipeData (cb) {
-  var output;
-  fs.readFile('./recipes.json' , {encoding: 'utf8'}, function (err, data) {
-    if (err) console.error(err);
-    output = JSON.parse(data);
-    cb(null, output, print);
+RecipeBox.readRecipeData = function (file, next1, next2) {
+  var self = this;
+  fs.readFile(file, {encoding: 'utf8'}, function (error, data) {
+    var outputArray;
+    if (error) throw error;
+    outputArray = JSON.parse(data);
+    next1(null, outputArray, next2);
   });
 }
 
-function makeRecipeCards (err, arrayOfRecipes, cb) {
-  var newArray = arrayOfRecipes.map(function (item, index) {
+RecipeBox.makeRecipeCards = function (error, arrayOfRecipes, next) {
+  var newArray;
+  if (error) throw error;
+  newArray = arrayOfRecipes.map(function (item, index) {
      return new RecipeCard(item.title, item.ingredients, item.directions);
   });
-
-  cb(newArray);
+  next(null, newArray);
 }
 
-function print(data) {
-  console.log(data);
+RecipeBox.printRecipeTitles = function (error, data) {
+  if (error) throw error;
+  console.log('\nYOUR RECIPE COLLECTION (just the titles)\n');
+  data.forEach( function(item, index) {
+    console.log('\t-- ' + item.title + '\n');
+  });
+  console.log('\n\n');
 }
 
-readRecipeData(makeRecipeCards);
+RecipeBox.printRecipeCards = function (error, data) {
+  var output = '';
+  if (error) throw error;
 
+  console.log('\nYOUR RECIPE COLLECTION\n');
 
-// app.pbAndJ = new Recipe (title, ingredients, directions);
+  data.forEach(function (recipeCard) {
+    output += '\n' + recipeCard.title + '\n';
+    recipeCard.ingredients.forEach(function (item, index) {
+      var unitPlural = item.unit + 's';
 
+      if (item.amount > 0)
+        output += '\t' + item.amount + ' ';
+
+      if (item.amount > 1) {
+        output += unitPlural;
+      } else {
+        output += item.unit;
+      }
+
+      output += ' of ';
+      output += item.ingredient + '\n';
+
+    });
+
+    recipeCard.directions.forEach(function (item, index) {
+      timeUnitPlural = item.unit + 's';
+
+      output += '\n' + (index + 1).toString() + '. ' + item.direction;
+      if (item.duration > 0) {
+        output += ' for ' + item.duration + ' ' + item.unit;
+      } else if (item.duration > 1) {
+        output += ' for ' + item.duration + ' ' + item.unitPlural;
+      }
+
+    });
+
+    output += '\n\n';
+  });
+
+  console.log(output);
+
+}
+
+RecipeBox.readRecipeData('./recipes.json', 
+                          RecipeBox.makeRecipeCards,
+                          RecipeBox.printRecipeTitles);
+
+RecipeBox.readRecipeData('./recipes.json', 
+                          RecipeBox.makeRecipeCards,
+                          RecipeBox.printRecipeCards);
 

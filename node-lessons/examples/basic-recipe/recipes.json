@@ -67,7 +67,7 @@
                     },
                     { "ingredient": "orange juice",
                       "amount": 2,
-                      "unit": "tablespoons"
+                      "unit": "tablespoon"
                     }
 
                   ],
