@@ -1,31 +1,15 @@
-// out of date, get from exercises
-
 var fs = require('fs');
 
 var RecipeBox = {};
 
-var RecipeCard = function (title, ingredients, directions) {
-  this.title = title;
-  this.ingredients = ingredients;
-  this.directions = directions;
-}
-
-RecipeBox.readRecipeData = function (file, next1, next2) {
+RecipeBox.readRecipeData = function (file, callback) {
   fs.readFile(file, {encoding: 'utf8'}, function (error, data) {
     var outputArray;
     if (error) throw error;
     outputArray = JSON.parse(data);
-    next1(null, outputArray, next2);
+    console.log(outputArray);
+    callback(null, outputArray);
   });
-}
-
-RecipeBox.makeRecipeCards = function (error, arrayOfRecipes, next) {
-  var newArray;
-  if (error) throw error;
-  newArray = arrayOfRecipes.map(function (item, index) {
-     return new RecipeCard(item.title, item.ingredients, item.directions);
-  });
-  next(null, newArray);
 }
 
 RecipeBox.printRecipeTitles = function (error, data) {
@@ -81,11 +65,6 @@ RecipeBox.printRecipeCards = function (error, data) {
 
 }
 
-RecipeBox.readRecipeData('./recipes.json', 
-                          RecipeBox.makeRecipeCards,
-                          RecipeBox.printRecipeTitles);
+RecipeBox.readRecipeData('./recipes.json', RecipeBox.printRecipeTitles);
 
-RecipeBox.readRecipeData('./recipes.json', 
-                          RecipeBox.makeRecipeCards,
-                          RecipeBox.printRecipeCards);
-
+RecipeBox.readRecipeData('./recipes.json', RecipeBox.printRecipeCards);

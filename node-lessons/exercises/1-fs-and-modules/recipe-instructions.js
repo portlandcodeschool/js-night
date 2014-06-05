@@ -1,25 +1,36 @@
-// out of date, get from exercises
+///////////////////////////////////////////
+// INSTRUCTIONS
+// 1. Follow the instructions in the comments
+// 2. Test to see that your app works
+// 3. Refactor every function to be a separate file
+///////////////////////////////////////////
 
-var fs = require('fs');
+
+//! bring in the fs module here !
 
 var RecipeBox = {};
 
-var RecipeCard = function (title, ingredients, directions) {
-  this.title = title;
-  this.ingredients = ingredients;
-  this.directions = directions;
-}
-
 RecipeBox.readRecipeData = function (file, next1, next2) {
-  fs.readFile(file, {encoding: 'utf8'}, function (error, data) {
-    var outputArray;
-    if (error) throw error;
-    outputArray = JSON.parse(data);
-    next1(null, outputArray, next2);
+  //this function should:
+  // 1. read a file asynchronously (hint: fs module)
+  // 2. the thing that reads the file should check for errors, 
+  //    and throw an error if there is one
+  // 3. use the file parameter as a variable to pass in each file 
+  //    location (e.g. './file.json')
+  // 4. turn the JSON data into a proper Javascript data structure
+  //    (e.g. an array with some stuff in it)
+  // 5. Call next1 and (in this order)
+  //     - pass in null for the first argument
+  //     - pass in the array of your entire data
+  //     - pass in the local variable/parameter next2 
   });
 }
 
 RecipeBox.makeRecipeCards = function (error, arrayOfRecipes, next) {
+  //this function should:
+  // 1. throw an error if there is one
+  // 2. make a new array that
+  //    - takes each 
   var newArray;
   if (error) throw error;
   newArray = arrayOfRecipes.map(function (item, index) {
@@ -88,4 +99,3 @@ RecipeBox.readRecipeData('./recipes.json',
 RecipeBox.readRecipeData('./recipes.json', 
                           RecipeBox.makeRecipeCards,
                           RecipeBox.printRecipeCards);
-
