@@ -1,0 +1,40 @@
+{prongs: 1, serialNum: 1, myMethod: makeFactory/factory.sharedMethod()} Scratchpad/1:13
+function factory() Scratchpad/1:13
+Object
+function Object()
+Array
+function Array()
+Number
+function Number()
+var strObj = new String('apple');
+undefined
+strObj
+String {0: "a", 1: "p", 2: "p", 3: "l", 4: "e", 1 more…}
+strObj+' pear'
+"apple pear"
+strObj[2]
+"p"
+'apple'[3]
+"l"
+var now = new Date();
+undefined
+now
+Date 2014-06-05T03:51:19.846Z
+Date()
+"Wed Jun 04 2014 20:51:41 GMT-0700 (PDT)"
+Date(1000)
+"Wed Jun 04 2014 20:52:03 GMT-0700 (PDT)"
+new Date(1000)
+Date 1970-01-01T00:00:01.000Z
+obj.constructor
+function Object()
+Object.prototype.flavor = 'banana'
+"banana"
+arr = []
+[]
+arr.flavor
+"banana"
+arr.flavor = 'pear'
+"pear"
+arr.flavor
+"pear"
