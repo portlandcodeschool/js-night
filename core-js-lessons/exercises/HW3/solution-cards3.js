@@ -1,18 +1,27 @@
-// Error-detecting version
-
 function makeCard(id) {
+    if (!makeCard.isValid(id,0,51))
+	return null;
     return {id:id,
+	    cardID : makeCard.cardID,
+	    getID : makeCard.cardID, //alias same method with better name 'getID'
             rank : makeCard.rank,
             suit : makeCard.suit,
             color: makeCard.color,
-            name : makeCard.cardName,
+            name : makeCard.cardName, //NOTE: functions have a built-in property 'name',
+	    //so you'll need a different key (e.g. cardName) for the factory method
             precedes :  makeCard.precedes,
             sameColor:  makeCard.sameColor,
             nextInSuit: makeCard.nextInSuit,
-            prevInSuit: makeCard.nextInSuit
+            prevInSuit: makeCard.prevInSuit
         };
 };
 
+//-----------------------
+// Methods to be called through factory:
+//-----------------------
+
+// isValid could be linked as an instance method, but it isn't intended for public use.
+// Keeping it factory-callable (by not using 'this') allows its use without having any instances
 makeCard.isValid = function(num,low,high) { // Returns--> NaN, true
         if ((typeof num)!="number") //wrong type
             return NaN;
@@ -23,6 +32,22 @@ makeCard.isValid = function(num,low,high) { // Returns--> NaN, true
         return true;
     };
 
+// Not foolproof, but a basic check for cardness:
+makeCard.isCard = function(card) {
+    return card && (typeof card === 'object') && ('id' in card);
+}
+
+//-----------------------------
+// Methods called though instances (where 'this' means the instance):
+//-----------------------------
+
+// cardID isn't needed by instances, who each have an id property,
+// but we'll include it for completeness:
+makeCard.cardID = function() {
+    return this.id;
+};
+
+
 makeCard.rank = function() { // --> 1..13, NaN
         var card = this.id;
         return makeCard.isValid(card,0,51) &&
@@ -30,18 +55,11 @@ makeCard.rank = function() { // --> 1..13, NaN
     };
 
 makeCard.suit = function() { // --> 1..4, NaN
-        card = this.id;
+        var card = this.id;
         return makeCard.isValid(card,0,51) &&
             (card%4)+1;
     };
-
-/*
-    cardID: function(rank,suit) { // --> 0..51, NaN
-        return this.isValid(rank,1,13) &&
-                this.isValid(suit,1,4) &&
-                ((rank-1)*4 + (suit-1));
-    },
-*/    
+   
 makeCard.color = function() { // -->"red,"black",NaN
         var suit=this.suit();
         if (isNaN(suit))
@@ -51,7 +69,6 @@ makeCard.color = function() { // -->"red,"black",NaN
 
 makeCard.rankNames = ['','Ace','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
                         'Jack','Queen','King'];
-
 makeCard.suitNames = ['','Hearts','Diamonds','Spades','Clubs'];
 
 makeCard.cardName = function() { //--> string, NaN
@@ -61,6 +78,7 @@ makeCard.cardName = function() { //--> string, NaN
     };
 
 makeCard.precedes = function(cardB) { //-->false,true,NaN
+    if (!makeCard.isCard(cardB)) return NaN;
         var diff= cardB.rank()-this.rank();
         if (isNaN(diff))
             return NaN;
@@ -68,6 +86,7 @@ makeCard.precedes = function(cardB) { //-->false,true,NaN
     };
     
 makeCard.sameColor = function(cardB) { //-->false,true,NaN
+    if (!makeCard.isCard(cardB)) return NaN;
         var colorA=this.color(), colorB=cardB.color();
         if (Number.isNaN(colorA) || Number.isNaN(colorB))
         // must use Number.isNaN() instead of isNaN(), which returns true for non-numeric strings
@@ -75,16 +94,85 @@ makeCard.sameColor = function(cardB) { //-->false,true,NaN
         return colorA==colorB;
     };
     
+// Ideally, these functions could return a card object instead of just an id,
+// but then we'd need a smarter factory which maintains an index of its instances.
+
 makeCard.nextInSuit = function() {//--> 0..51,NaN
-        var cardA = this.id;
-        nextCard = makeCard.isValid(cardA,0,51) && cardA+4;
-        if (nextCard>51) nextCard-=52;
-        return nextCard;
+        var nextCardID = makeCard.isValid(this.id,0,51) && this.id+4;
+        if (nextCardID>51) nextCardID-=52;
+        return nextCardID;
     };
     
 makeCard.prevInSuit = function() {//--> 0..51,NaN
-        var cardB = this.id;
-        prevCard = this.isValid(cardB,0,51) && cardB-4;
-        if (prevCard<0) prevCard+=52;
-        return prevCard;
+        var prevCardID = makeCard.isValid(this.id,0,51) && this.id-4;
+        if (prevCardID<0) prevCardID+=52;
+        return prevCardID;
     };
+
+
+// Same old testing suite, with calls in new format:
+function assert(claim,message) {
+    if (!claim) console.error(message);
+}
+
+
+// instances needed for original assertions:
+var card0 = makeCard(0);
+var card1 = makeCard(1);
+var card2 = makeCard(2);
+var card3 = makeCard(3);
+var card5 = makeCard(5);
+var card48 = makeCard(48);
+var card50 = makeCard(50);
+var card51 = makeCard(51);
+
+
+
+assert(card0.rank()===1,"Test 1 failed");
+assert(card3.rank()===1,"Test 2 failed");
+assert(card51.rank()===13,"Test 3 failed");
+assert(card0.suit()===1,"Test 4 failed");
+assert(card5.suit()===2,"Test 5 failed");
+assert(card51.suit()===4,"Test 6 failed");
+assert(card0.cardID()===0,"Test 7 failed");
+assert(card51.cardID()===51,"Test 8 failed");
+
+assert(card0.color()==='red',"Test 10 failed");
+assert(card2.color()==='black',"Test 11 failed");
+assert(card5.name()==='Two of Diamonds',"Test 12 failed");
+assert(card51.name()==='King of Clubs',"Test 13 failed");
+assert(!card0.precedes(card1),"Test 14 failed");
+assert(card0.precedes(card5),"Test 15 failed");
+assert(card51.precedes(card0),"Test 16 failed");
+assert(card50.precedes(card2),"Test 17 failed");
+assert(card0.sameColor(card1),"Test 18 failed");
+assert(!card1.sameColor(card2),"Test 19 failed");
+assert(card0.nextInSuit()===4,"Test 20 failed");
+assert(card51.nextInSuit()===3,"Test 21 failed");
+assert(card48.nextInSuit()===0,"Test 22 failed");
+assert(card0.prevInSuit()===48,"Test 23 failed");
+assert(card3.prevInSuit()===51,"Test 24 failed");
+assert(card5.prevInSuit()===1,"Test 25 failed");
+
+// Some of the original argument validity tests...
+assert(!makeCard(52),"Test 26 failed");
+assert(!makeCard("0"),"Test 27 failed");
+assert(!makeCard(-1),"Test 28 failed");
+
+assert(!makeCard(false),"Test 30 failed");
+assert(!makeCard(true),"Test 31 failed");
+
+assert((typeof card51.precedes(52))!='boolean',"Test 38 failed");
+assert((typeof card0.precedes(null))!='boolean',"Test 39 failed");
+assert((typeof card0.sameColor("1"))!='boolean',"Test 40 failed");
+
+
+// Proof that methods are shared:
+assert(card0 !== card1, "Test 50 failed"); //first prove different cards
+assert(card0.rank === card1.rank, "Test 51 failed");
+assert(card0.suit === card1.suit, "Test 52 failed");
+assert(card0.name === card1.name, "Test 53 failed");
+//etc...
+
+
+
