@@ -1,20 +1,5 @@
-function makeCard(id) {
-    if (!makeCard.isValid(id,0,51))
-	return null;
-    return {id:id,
-	    cardID : makeCard.cardID,
-	    getID : makeCard.cardID, //alias same method with better name 'getID'
-            rank : makeCard.rank,
-            suit : makeCard.suit,
-            color: makeCard.color,
-            name : makeCard.cardName, //NOTE: functions have a built-in property 'name',
-	    //so you'll need a different key (e.g. cardName) for the factory method
-            precedes :  makeCard.precedes,
-            sameColor:  makeCard.sameColor,
-            nextInSuit: makeCard.nextInSuit,
-            prevInSuit: makeCard.prevInSuit
-        };
-};
+var makeCard = (function () {
+
 
 //-----------------------
 // Methods to be called through factory:
@@ -22,20 +7,20 @@ function makeCard(id) {
 
 // isValid could be linked as an instance method, but it isn't intended for public use.
 // Keeping it factory-callable (by not using 'this') allows its use without having any instances
-makeCard.isValid = function(num,low,high) { // Returns--> NaN, true
-        if ((typeof num)!="number") //wrong type
-            return NaN;
-        if (!Number.isInteger(num)) //non-integer
-            return NaN;
-        if (num<low || num>high) //out of range
-            return NaN;
-        return true;
-    };
+    var isValid = function(num,low,high) { // Returns--> NaN, true
+            if ((typeof num)!="number") //wrong type
+                return NaN;
+            if (!Number.isInteger(num)) //non-integer
+                return NaN;
+            if (num<low || num>high) //out of range
+                return NaN;
+            return true;
+        };
 
 // Not foolproof, but a basic check for cardness:
-makeCard.isCard = function(card) {
-    return card && (typeof card === 'object') && ('id' in card);
-}
+    var isCard = function(card) {
+        return card && (typeof card === 'object') && ('id' in card);
+    }
 
 //-----------------------------
 // Methods called though instances (where 'this' means the instance):
@@ -43,50 +28,50 @@ makeCard.isCard = function(card) {
 
 // cardID isn't needed by instances, who each have an id property,
 // but we'll include it for completeness:
-makeCard.cardID = function() {
-    return this.id;
-};
+    var cardID = function() {
+        return this.id;
+    };
 
 
-makeCard.rank = function() { // --> 1..13, NaN
+    var rank = function() { // --> 1..13, NaN
         var card = this.id;
-        return makeCard.isValid(card,0,51) &&
+        return isValid(card,0,51) &&
             Math.floor(card/4)+1;
     };
 
-makeCard.suit = function() { // --> 1..4, NaN
+    var suit = function() { // --> 1..4, NaN
         var card = this.id;
-        return makeCard.isValid(card,0,51) &&
+        return isValid(card,0,51) &&
             (card%4)+1;
     };
    
-makeCard.color = function() { // -->"red,"black",NaN
+    var color = function() { // -->"red,"black",NaN
         var suit=this.suit();
         if (isNaN(suit))
             return NaN;
         return (suit<3)? "red": "black";
     };
 
-makeCard.rankNames = ['','Ace','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
+    var rankNames = ['','Ace','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
                         'Jack','Queen','King'];
-makeCard.suitNames = ['','Hearts','Diamonds','Spades','Clubs'];
+    var suitNames = ['','Hearts','Diamonds','Spades','Clubs'];
 
-makeCard.cardName = function() { //--> string, NaN
+    var cardName = function() { //--> string, NaN
         var rank = this.rank();
         var suit = this.suit();
-        return rank && suit && (makeCard.rankNames[rank]+' of '+makeCard.suitNames[suit]);
+        return rank && suit && (rankNames[rank]+' of '+suitNames[suit]);
     };
 
-makeCard.precedes = function(cardB) { //-->false,true,NaN
-    if (!makeCard.isCard(cardB)) return NaN;
+    var precedes = function(cardB) { //-->false,true,NaN
+    if (!isCard(cardB)) return NaN;
         var diff= cardB.rank()-this.rank();
         if (isNaN(diff))
             return NaN;
         return diff==1 || diff==-12;
     };
     
-makeCard.sameColor = function(cardB) { //-->false,true,NaN
-    if (!makeCard.isCard(cardB)) return NaN;
+    var sameColor = function(cardB) { //-->false,true,NaN
+    if (!isCard(cardB)) return NaN;
         var colorA=this.color(), colorB=cardB.color();
         if (Number.isNaN(colorA) || Number.isNaN(colorB))
         // must use Number.isNaN() instead of isNaN(), which returns true for non-numeric strings
@@ -97,17 +82,38 @@ makeCard.sameColor = function(cardB) { //-->false,true,NaN
 // Ideally, these functions could return a card object instead of just an id,
 // but then we'd need a smarter factory which maintains an index of its instances.
 
-makeCard.nextInSuit = function() {//--> 0..51,NaN
-        var nextCardID = makeCard.isValid(this.id,0,51) && this.id+4;
+    var nextInSuit = function() {//--> 0..51,NaN
+        var nextCardID = isValid(this.id,0,51) && this.id+4;
         if (nextCardID>51) nextCardID-=52;
         return nextCardID;
     };
     
-makeCard.prevInSuit = function() {//--> 0..51,NaN
-        var prevCardID = makeCard.isValid(this.id,0,51) && this.id-4;
+    var prevInSuit = function() {//--> 0..51,NaN
+        var prevCardID = isValid(this.id,0,51) && this.id-4;
         if (prevCardID<0) prevCardID+=52;
         return prevCardID;
     };
+
+    function makeCard(id) {
+        if (!isValid(id,0,51))
+            return null;
+        return {id:id,
+            cardID : cardID,
+            getID : cardID, //alias same method with better name 'getID'
+            rank : rank,
+            suit : suit,
+            color: color,
+            name : cardName, //NOTE: functions have a built-in property 'name',
+        //so you'll need a different key (e.g. cardName) for the factory method
+            precedes :  precedes,
+            sameColor:  sameColor,
+            nextInSuit: nextInSuit,
+            prevInSuit: prevInSuit
+        };
+    };
+
+    return makeCard;
+})(); //end IIFE
 
 
 // Same old testing suite, with calls in new format:

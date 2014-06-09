@@ -83,7 +83,8 @@ Make sure the sorted deck passes the tests below:
 var deck = makeDeque(/*something*/);
 deck.sort(/*something*/);
 deck.cut(1);
-assert(deck.top().name() === 'Ace of Spades', 'Failed Ace of Spades test');
+//assert(deck.top().name() === 'Ace of Spades', 'Failed Ace of Spades test');// MISTAKE, SORRY!
+assert(deck.top().name() === 'Seven of Spades', 'Failed Seven of Spades test');
 ```
 
 Now sort the deck by card name, alphabetically from bottom to top.   (Hint: You'll need to write a new comparison function.)
