@@ -7,18 +7,9 @@ RecipeBox.readRecipeData = function (file, callback) {
     var outputArray;
     if (error) throw error;
     outputArray = JSON.parse(data);
-    console.log(outputArray);
+
     callback(null, outputArray);
   });
-}
-
-RecipeBox.printRecipeTitles = function (error, data) {
-  if (error) throw error;
-  console.log('\nYOUR RECIPE COLLECTION (just the titles)\n');
-  data.forEach( function(item, index) {
-    console.log('\t-- ' + item.title + '\n');
-  });
-  console.log('\n\n');
 }
 
 RecipeBox.printRecipeCards = function (error, data) {
@@ -64,7 +55,5 @@ RecipeBox.printRecipeCards = function (error, data) {
   console.log(output);
 
 }
-
-RecipeBox.readRecipeData('./recipes.json', RecipeBox.printRecipeTitles);
 
 RecipeBox.readRecipeData('./recipes.json', RecipeBox.printRecipeCards);

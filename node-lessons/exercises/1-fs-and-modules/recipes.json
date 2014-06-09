@@ -96,11 +96,11 @@
                       "duration": 0,
                       "unit": ""
                     },
-                    { "direction": "cover chicken with foil and bake",
+                    { "direction": "cover chicken with foil and bake at 425 degrees",
                       "duration": 45,
                       "unit": "minutes"
                     },
-                    { "direction": "uncover chicken and bake",
+                    { "direction": "uncover chicken and continue to bake",
                       "duration": 35,
                       "unit": "minutes"
                     },
