@@ -1,8 +1,3 @@
-//Magic step needed later:
-function addMagicStamp(obj,ctor) {
-	obj.__proto__ = ctor.prototype;
-}
-
 
 
 // Card patterns seen:
@@ -225,9 +220,6 @@ ace2 instanceof Card;
 
 
 
-
-
-
 function newEmulator2(ctor,arg) {
 	var instance = {};
 	// Magic step; ignore for now:
@@ -272,6 +264,8 @@ var z = new plus(x,y);
 
 
 
+
+
 // Try constructor without new:
 var ace3 = Card(3);
 
@@ -303,4 +297,71 @@ var arr = Array();
 
 
 
-// ----- 
+
+//--- Prototypes ----
+// --> Invisible benevolent helpers
+
+// 4 ways of getting from Instance to proto:
+
+var CTOR = Card;
+var INST = new Card(0);
+
+CTOR.prototype;
+INST.constructor.prototype;
+Object.getPrototypeOf(INST);
+INST.__proto__;
+
+
+
+
+// Prototypes never take credit; instance gets to pretend it did work:
+function CTOR() {
+    this.name = 'Instance';
+}
+CTOR.prototype.name = 'Proto';
+CTOR.prototype.getName = function() {
+    return this.name;
+}
+
+var INST = new CTOR();
+INST.getName();
+
+
+
+// Own properties vs. inherited properties:
+INST.hasOwnProperty('name'); 
+INST.hasOwnProperty('getName');
+INST.hasOwnProperty('hasOwnProperty');
+
+CTOR.prototype.hasOwnProperty('name');
+CTOR.prototype.hasOwnProperty('getName');
+CTOR.prototype.hasOwnProperty('hasOwnProperty');
+
+
+Object.prototype.hasOwnProperty('hasOwnProperty');
+
+
+
+// Familiar example:
+var arr = [0,1,2];
+arr.length;
+arr.join();
+
+arr.hasOwnProperty('length');
+
+// But look closer:
+arr.hasOwnProperty('join');
+arr.join === Array.prototype.join; 
+arr.join === Array.join; 
+
+// Prototype properties are shared among instances:
+arr2 = ['a','b','c'];
+arr2.join === arr.join; 
+
+
+
+
+
+// In includes inherited props:
+('getName' in INST) 
+
