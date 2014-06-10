@@ -1,3 +1,8 @@
+//Magic step needed later:
+function addMagicStamp(obj,ctor) {
+	obj.__proto__ = ctor.prototype;
+}
+
 
 
 // Card patterns seen:
@@ -329,16 +334,16 @@ INST.getName();
 
 
 // Own properties vs. inherited properties:
-INST.hasOwnProperty('name'); 
-INST.hasOwnProperty('getName');
-INST.hasOwnProperty('hasOwnProperty');
+INST.hasOwnProperty('name'); //true
+INST.hasOwnProperty('getName');//false
+INST.hasOwnProperty('hasOwnProperty');//false
 
-CTOR.prototype.hasOwnProperty('name');
-CTOR.prototype.hasOwnProperty('getName');
-CTOR.prototype.hasOwnProperty('hasOwnProperty');
+CTOR.prototype.hasOwnProperty('name');//true
+CTOR.prototype.hasOwnProperty('getName');//true
+CTOR.prototype.hasOwnProperty('hasOwnProperty');//false
 
 
-Object.prototype.hasOwnProperty('hasOwnProperty');
+Object.prototype.hasOwnProperty('hasOwnProperty');//true
 
 
 
@@ -347,21 +352,21 @@ var arr = [0,1,2];
 arr.length;
 arr.join();
 
-arr.hasOwnProperty('length');
+arr.hasOwnProperty('length');// true, as expected
 
 // But look closer:
-arr.hasOwnProperty('join');
-arr.join === Array.prototype.join; 
-arr.join === Array.join; 
+arr.hasOwnProperty('join');// false
+arr.join === Array.prototype.join; //true
+arr.join === Array.join; // false; 
 
 // Prototype properties are shared among instances:
 arr2 = ['a','b','c'];
-arr2.join === arr.join; 
+arr2.join === arr.join; //true
 
 
 
 
 
 // In includes inherited props:
-('getName' in INST) 
+('getName' in INST) //true
 
