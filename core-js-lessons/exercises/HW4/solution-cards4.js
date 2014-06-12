@@ -1,12 +1,12 @@
-var makeCard = (function () {
+var makeCard = (function () { //begin IIFE...
 
 
 //-----------------------
 // Methods to be called through factory:
 //-----------------------
 
-// isValid could be linked as an instance method, but it isn't intended for public use.
-// Keeping it factory-callable (by not using 'this') allows its use without having any instances
+    // isValid could be linked as an instance method, but it isn't intended for public use.
+    // keep as private function, internal to IIFE
     var isValid = function(num,low,high) { // Returns--> NaN, true
             if ((typeof num)!="number") //wrong type
                 return NaN;
@@ -17,7 +17,7 @@ var makeCard = (function () {
             return true;
         };
 
-// Not foolproof, but a basic check for cardness:
+    // Not foolproof, but a basic check for cardness:
     var isCard = function(card) {
         return card && (typeof card === 'object') && ('id' in card);
     }
@@ -26,8 +26,8 @@ var makeCard = (function () {
 // Methods called though instances (where 'this' means the instance):
 //-----------------------------
 
-// cardID isn't needed by instances, who each have an id property,
-// but we'll include it for completeness:
+    // cardID isn't needed by instances, who each have an id property,
+    // but we'll include it for completeness:
     var cardID = function() {
         return this.id;
     };
@@ -56,8 +56,10 @@ var makeCard = (function () {
                         'Jack','Queen','King'];
     var suitNames = ['','Hearts','Diamonds','Spades','Clubs'];
 
+    // In HW3, this function needed renaming from makeCard.name() to makeCard.cardName() to avoid conflict with
+    //  native 'name' property.  Here that doesn't matter, since it's a nested function, but let's keep 'cardName' as before
     var cardName = function() { //--> string, NaN
-        var rank = this.rank();
+        var rank = this.rank();  //shadows IIFE var 'rank' but calls it through this.rank()
         var suit = this.suit();
         return rank && suit && (rankNames[rank]+' of '+suitNames[suit]);
     };
@@ -97,14 +99,14 @@ var makeCard = (function () {
     function makeCard(id) {
         if (!isValid(id,0,51))
             return null;
-        return {id:id,
+        return {id:id,  //personal property
+            // links to shared methods:
             cardID : cardID,
             getID : cardID, //alias same method with better name 'getID'
             rank : rank,
             suit : suit,
             color: color,
-            name : cardName, //NOTE: functions have a built-in property 'name',
-        //so you'll need a different key (e.g. cardName) for the factory method
+            name : cardName,
             precedes :  precedes,
             sameColor:  sameColor,
             nextInSuit: nextInSuit,
@@ -112,8 +114,9 @@ var makeCard = (function () {
         };
     };
 
-    return makeCard;
-})(); //end IIFE
+    return makeCard;  //factory function, product of IIFE's work
+
+})(); //end IIFE definition and do it now!
 
 
 // Same old testing suite, with calls in new format:
