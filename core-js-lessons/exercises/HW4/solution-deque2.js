@@ -1,10 +1,13 @@
 function makeDeque(values) {
-	var array = values.slice();
-	var absent = [];
+	// these vars are private, local to scope of makeDeque,
+	//  only accessible to functions defined in makeDeque
+	var array = values.slice();//copy values
+	var absent = []; //list of missing elements
+
 
 	function readmit(val) { //internal function only, do not attach to instances
 		var foundAt = absent.indexOf(val);
-		if (foundAt<0) return false;
+		if (foundAt<0) return false; //foundAt is -1 if val not found
 		// else found; excise from absent array
 		absent.splice(foundAt,1);
 		return true;
@@ -46,6 +49,7 @@ function makeDeque(values) {
 		array.sort(sortFn);
 	}
 
+	// naive map function, from HW3:
 	function exploitableMap(convertFn) {
 		return array.map(convertFn);
 	}
@@ -58,8 +62,9 @@ function makeDeque(values) {
 		function wrapCallback(val) {
 			return convertFn(val);
 		}
-		return array.map(wrapCallback);
+		return array.map(wrapCallback);  //wrapCallback runs convertFn but blocks extra args
 	}
+
 	function safeMap2(convertFn) {
 		return array.slice().map(convertFn); // do map on copy of array
 	}
@@ -104,7 +109,7 @@ function makeDeque(values) {
 	deque = {// export each public method by linking an instance property to it:
 			sort : sort,
 			map : safeMap1, //or safeMap2 or safeMap3
-			exploitableMap : exploitableMap, //linked to show exploit
+			exploitableMap : exploitableMap, //included to show exploit
 			cut : cut,
 			shuffle : shuffle,
 			top : top,
@@ -122,13 +127,15 @@ function makeDeque(values) {
 // Part b), exploit:
 function duplicateAces(card,i,array) {
 	// adds one extra of each Ace to top of deque
-	if (i<52 && (card.rank()==1)) {
-		array.push(makeCard(card.id));
+	if (i<52 && // for each orginal card...
+		(card.rank()==1)) {//... if it's an Ace...
+			array.push(makeCard(card.id));//... push one extra copy
 	}
 	return card;
 }
 
 var deck = makeDeque(make52cards);
-deck.exploitableMap(duplicateAces);
+deck.exploitableMap(duplicateAces); //deck now has 8 aces!
+
 
 // Part b) prevention is above as one of safeMap1-3
