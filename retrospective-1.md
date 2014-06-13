@@ -53,3 +53,22 @@ YELLOW:
 3. We frequent MDN to help us through homework (reviewing concepts, etc). We also try to avoid Stack Overflow as it seems to sidetrack us more than help sometimes.
 
 4. Homework is manageable to too much. Easy to fall behind with the card problem and feel defeated.
+
+
+### Shawna's Group 
+
+Green light:
+Posting scratchpad is awesome!
+Pair programming is helpful!
+
+Yellow:
+Less required homework, more optional, sorted by level of requirement
+
+
+Red:
+Distractions in space
+Less obtuse math-things that are applicable
+
+Geoff: 10
+Lori: 8
+Shawna: 8
