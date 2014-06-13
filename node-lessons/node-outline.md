@@ -13,6 +13,8 @@
             - has multiple pages that are handled by Backbone, not a server round-trip
             - has dynamic content and functionality
 
+Don't forget: node repl, node assert library, more testing
+
 1. Node, Node modules, Node FS module, testing
 2. Node http server, basic concepts in-depth, internet concepts
     - request and response objects
@@ -21,7 +23,7 @@
     - basic resources (plain text, html, or JSON inline)
     - mime type explanation
 3. More node http server Routes with no outside modules, static file server, streams
-4. 
+4. Express
 5. 
 6. 
 7. Data Persistence: Orchestrate

@@ -19,7 +19,6 @@
 
 # Reading for Homework: 
 + [Node Docs: File System](http://nodejs.org/api/fs.html)
-+ [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number#Example:_Using_Number_to_convert_a_Date_object)
 
 # Homework 
 - Learnyounode 3-4 (this is a portion of the homework for this week, the majority of which will be assigned after node lesson 2(Wednesday))
