@@ -1,3 +1,37 @@
+### Matt's Group
+
+1. General Feedback: Come up with one of each (Red, Green, Yellow Light) that you all agree on:
+    - Red Light -- What is something in the class you wish would STOP
+
+    -- referencing the same card problem each week is useful to provide context to the variability in programming, and provide some new difficulty each week but the format makes those that are falling behind feel as though the can't catch up without finishing the previous assignments.
+
+    -- Scratchpad can be confusing with the ability to compile portions of the code. Maybe extend the whitespace so that the only code visible is being processed.
+
+    - Green Light
+        -- making materials like scratchpad available is good.
+        -- Teachers are very approachable and more than willing to help.
+
+    - Yellow Light
+         -- record the video for the class so we can review it later.
+         -- more baby steps in both homework and class, still go over same material but maybe announce that things are getting to get difficult. Frequently we feel that we just start to understand something and then the instructors will bring up an off example that breaks the code, or defies our logic with the understanding we have already.
+         -- flash 3 min of homework solutions each class.
+
+2. How much total study time have you been putting in outside of class(not just homework)?  Average this number of hours for your group. Come to a consensus about whether this is enough time for you to succeed in the course.
+    -- 6-7/week hours and no it is not enough
+
+3. What has proved to be the most effective way to get through the homework sucessfully?
+
+    -- go over scratchpad
+    -- really go through the book if needed
+    -- study groups
+    -- start putting down code.
+    -- packagecontrol jshint
+
+4. Come to a consensus about whether the homework is too much, too little, or the perfect amount.
+
+    -- a necessary evil
+    -- Rather have a crap load of homework than pay more money
+
 ### Josh's group
 1.
 Red :   Stop making HW so difficult.
