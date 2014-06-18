@@ -121,28 +121,26 @@ var Card = (function () { //begin IIFE...
 		if (prevCardID<0) prevCardID+=52;
 		return prevCardID;
 	};
-	
-	// Class methods:
-	Card.numRanks = function() {
-		return 13;
-	}
-	Card.numSuits = function() {
-		return 4;
-	}
-	Card.numIDs = function() {
-		return 52;
-	}
-	Card.highID = function() {
-		return 51;
-	}
+
+
+    // Class Methods:
+    Card.cardID = function(rank,suit) {
+
+    }
+    Card.cardRank = function(rank,suit) {
+
+    }
+
 
 	return Card; //constructor, producdt of IIFE
 })(); //end IIFE and invoke it now!
 
 
-// Same old testing suite, with calls in new format:
+
+
+// Same old testing suite, with some calls in new format:
 function assert(claim,message) {
-	if (!claim) console.error(message);
+    if (!claim) console.error(message);
 }
 
 
@@ -164,8 +162,8 @@ assert(card51.rank()===13,"Test 3 failed");
 assert(card0.suit()===1,"Test 4 failed");
 assert(card5.suit()===2,"Test 5 failed");
 assert(card51.suit()===4,"Test 6 failed");
-assert(card0.cardID()===0,"Test 7 failed");
-assert(card51.cardID()===51,"Test 8 failed");
+assert(card0.getID()===0,"Test 7 failed");
+assert(card51.getID()===51,"Test 8 failed");
 
 assert(card0.color()==='red',"Test 10 failed");
 assert(card2.color()==='black',"Test 11 failed");
@@ -183,14 +181,6 @@ assert(card48.nextInSuit()===0,"Test 22 failed");
 assert(card0.prevInSuit()===48,"Test 23 failed");
 assert(card3.prevInSuit()===51,"Test 24 failed");
 assert(card5.prevInSuit()===1,"Test 25 failed");
-
-// Some of the original argument validity tests...
-assert(!makeCard(52),"Test 26 failed");
-assert(!makeCard("0"),"Test 27 failed");
-assert(!makeCard(-1),"Test 28 failed");
-
-assert(!makeCard(false),"Test 30 failed");
-assert(!makeCard(true),"Test 31 failed");
 
 assert((typeof card51.precedes(52))!='boolean',"Test 38 failed");
 assert((typeof card0.precedes(null))!='boolean',"Test 39 failed");

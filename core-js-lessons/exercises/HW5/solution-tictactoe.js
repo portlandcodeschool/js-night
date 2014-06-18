@@ -1,13 +1,18 @@
+/* Note: There are many equally good solutions to this problem;
+the approach here is a compromise between several factors.
+If your solution doen't resemble this one, don't assume yours is wrong.
+*/
 
 var TicTacToeBoard = function() { //module returning constructor:
 
-	// specification of lines shared by all boards; each 2-digit pair 'xy' refers to grid space (x,y),
+	// Specification of lines shared by all boards; each 2-digit pair 'xy' refers to grid space (x,y),
 	//   which in this implementation is a character within the private 'marks' string
 	var lines = ['00 01 02',  '10 11 12',  '20 21 22', //columns
 				 '00 10 20',  '01 11 21',  '02 12 22', //rows
 				 '00 11 22',  '02 11 20']; //diagonals
 
-	var cleanMarks = '   \n   \n   '; //initial marks for all boards
+	var cleanMarks = '...\n...\n...'; //initial marks for all boards
+	var emptyMark = '.';
 
 	// Class-wide (shared) helper functions without access to instance closure (i.e. board-specific marks):
 
@@ -26,14 +31,6 @@ var TicTacToeBoard = function() { //module returning constructor:
 		return result;
 	}
 
-/*
-	function showMarkAtI(mark,i) { //produce mark and possible newline
-		var str = (mark || ' ');
-		if (i==2 || i==5) str+='\n';
-		return str;
-	}
-*/
-
 	// These two functions could equally well be placed within Board
 	//   and therefore have access to function getMark without needing it as parameter:
 
@@ -46,8 +43,7 @@ var TicTacToeBoard = function() { //module returning constructor:
 	}
 	
 	function checkWinner(getMarkFn) {
-		//console.log('checkWinner: this='+this);
-		for (var i=0, winner; i<8; i++) { // check each line...
+		for (var i=0, winner; i<lines.length; i++) { // check each line...
 			winner = checkLine(lines[i],getMarkFn); //-->false,'X','O'
 			if (winner) {
 				return makeTrio(lines[i],winner);
@@ -60,62 +56,57 @@ var TicTacToeBoard = function() { //module returning constructor:
 
 	function Board(endGameFn) {
 		var marks = cleanMarks; 
-		//private data, specific to one instance; represents 9 spaces.
+		//private data, specific to one board; represents 9 spaces.
 		// Could be array, but simpler to use string: each char is ' ','X','O', or newline
 		var numMarks = 0; //count of non-blank marks
 
-		// Private helper functions with access to marks array:
+		//----Private helper functions ----
+		// (each with access to marks)
 
-		// getMark can be passed as callback to shared functions to lend them read access to marks
 		function getMark(xyStr) {
-//			return index[xyStr] || ' ';
+		// getMark can be passed as callback to shared functions
+		//   to give them read access to marks
 			return marks[xyToN(xyStr)];
 		}
 
 		function placeMark(x,y,mark) {
 			var n = xyToN(x+''+y);
 			// check if empty:
-			if (marks[n] != ' ') return false;
+			if (marks[n] != emptyMark) return false;
 			// leave mark:
 			numMarks++;
-			marks = marks.substr(0,n) +
-					mark +
-					marks.substr(n+1); //string equivalent of marks[n]=mark;
+			marks =  //string equivalent of marks[n]=mark :
+					marks.substr(0,n) + // preceding chars
+					mark +  // replace single char
+					marks.substr(n+1); // following chars
 			// if endGame callback, check for winner:
 			var triple = (endGameFn && checkWinner(getMark));
 			if (triple || numMarks==9)
 				endGameFn(triple);
 
 			return mark;
-//			var key=x+''+y;
-//			return !index[key] && (index[key]='X');			
 		}
 
-
 		// --- Public methods: ---
-
 
 		this.placeX = function(x,y) {
 			return placeMark(x,y,'X');
 		}
+
 		this.placeO = function(x,y) {
 			return placeMark(x,y,'O');
 		}
+
 		this.clear = function() {
 			marks = cleanMarks;
 			numMarks = 0;
 		}
 
 		this.show = function() {
+			// storing the marks as one string makes this trivial:
 			return marks;
 		}
-/*			for (var str='', i=0; i<marks.length; i++) {
-				str+=showMarkAtI(marks[i],i);
-			}
-			return str;
-			//return marks.map(showMarkAtI).join('');
-		}
-*/
+
 		this.winner = function () {
 			return checkWinner(getMark);
 		}
@@ -124,7 +115,6 @@ var TicTacToeBoard = function() { //module returning constructor:
 
 	return Board; //return the constructor as module's product
 }()
-
 
 
 
@@ -164,7 +154,8 @@ function gameOver2(trio) {
 var board1 = new TicTacToeBoard(gameOver1);
 var board2 = new TicTacToeBoard(gameOver2);
 
-var board=board2;
+var board=board2; // switch to try other callback
+
 board.placeO(0,0);
 board.placeX(1,0);
 board.placeO(2,2);
