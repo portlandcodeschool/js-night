@@ -4,14 +4,14 @@ var nameUtil = require("./name-modules/name-util");
 
 // These won't work
 
-// nameUtil.sayTheName(names.dad);
-// nameUtil.reverseTheName(names.dad);
+nameUtil.sayTheName(names.dad);
+nameUtil.reverseTheName(names.dad);
 
-// console.log('\n');
+console.log('\n');
 
-// nameUtil.sayTheName(names.mom);
-// nameUtil.reverseTheName(names.mom);
+nameUtil.sayTheName(names.mom);
+nameUtil.reverseTheName(names.mom);
 
 
 // what's in this object anyway?
-console.log(nameUtil);
+// console.log(nameUtil);

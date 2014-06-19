@@ -1,8 +1,8 @@
 var fs = require('fs');
 
-var RecipeBox = {};
+var recipeBox = {};
 
-RecipeBox.readRecipeData = function (file, callback) {
+recipeBox.readRecipeData = function (file, callback) {
   fs.readFile(file, {encoding: 'utf8'}, function (error, data) {
     var outputArray;
     if (error) throw error;
@@ -12,7 +12,7 @@ RecipeBox.readRecipeData = function (file, callback) {
   });
 }
 
-RecipeBox.printRecipeCards = function (error, data) {
+recipeBox.printRecipeCards = function (error, data) {
   var output = '';
   if (error) throw error;
 
@@ -56,4 +56,4 @@ RecipeBox.printRecipeCards = function (error, data) {
 
 }
 
-RecipeBox.readRecipeData('./recipes.json', RecipeBox.printRecipeCards);
+recipeBox.readRecipeData('./recipes.json', recipeBox.printRecipeCards);

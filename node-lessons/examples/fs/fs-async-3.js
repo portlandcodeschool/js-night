@@ -8,6 +8,6 @@ console.log('is my file ready yet?')
 
 // which data will print to the console first?
 
-for (var i = 0; i < 20; i++) {
+for (var i = 0; i < 1000; i++) {
   console.log(i);
 }

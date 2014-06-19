@@ -2,16 +2,17 @@
 // INSTRUCTIONS
 // 1. Follow the instructions in the comments
 // 2. Test to see that your app works
-// 3. Refactor so that each function is in a separate file
+// 3. Refactor so that each method of 
+//    recipeBox is in a separate file
 ///////////////////////////////////////////
 
 // Instructions start here:////////////////
 
 //! bring in the fs module here !
 
-var RecipeBox = {};
+var recipeBox = {};
 
-RecipeBox.readRecipeData = function (file, callback) {
+recipeBox.readRecipeData = function (file, callback) {
   //this function should:
   // 1. call a method from node that will read a file asynchronously (hint: fs module)
   //    - this function call should: 
@@ -28,11 +29,13 @@ RecipeBox.readRecipeData = function (file, callback) {
   //     - pass in the array of your entire data
 }
 
-RecipeBox.printRecipeCards = function (error, data) {
+recipeBox.printRecipeCards = function (error, data) {
     // this function should:
     // 1. Print the contents of data such that they look something like
-    //    output-example.js
+    //    output-example.jpg
     // 2. if there is an error throw one
 }
 
-RecipeBox.readRecipeData('./recipes.json', RecipeBox.printRecipeCards);
+recipeBox.readRecipeData('./recipes.json', recipeBox.printRecipeCards);
+// this function call and the options (arguments) passed in should 
+// give you a some hints on how the above code should work. 
