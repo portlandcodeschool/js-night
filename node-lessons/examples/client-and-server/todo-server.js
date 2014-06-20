@@ -6,6 +6,8 @@ var items = [];
 
 var server = http.createServer(function (req, res) {
 
+  var pathRequested = url.parse(req.url, true).pathname;
+
   if (req.method === 'POST') {
 
     var item = '';
@@ -29,8 +31,7 @@ var server = http.createServer(function (req, res) {
 
   } else if (req.method === 'DELETE') {
 
-    var path = url.parse(req.url).pathname;
-    var requestedId = parseInt(path.slice(1), 10);
+    var requestedId = parseInt(pathRequested.slice(1), 10);
 
     if (isNaN(requestedId)) {
       res.statusCode = 400; //bad request

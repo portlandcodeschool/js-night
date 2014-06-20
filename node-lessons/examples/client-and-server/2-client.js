@@ -6,7 +6,7 @@ http.get(urlToFetch, function (res) {
   var output = '';
 
   res.on('data', function (chunk) {
-    output += chunk;
+    output += chunk.toString();
   });
 
   res.on('end', function () {
