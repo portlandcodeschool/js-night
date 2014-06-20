@@ -7,5 +7,6 @@ module.exports = function (file, callback) {
     outputArray = JSON.parse(data);
 
     callback(null, outputArray);
+    return outputArray;
   });
 }
