@@ -1,4 +1,3 @@
-// from node.js in action
 
 var http = require('http');
 var url = require('url');
