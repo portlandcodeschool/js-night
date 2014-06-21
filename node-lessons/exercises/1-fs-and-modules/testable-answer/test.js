@@ -14,7 +14,7 @@ function testTest () {
 function dataToTextTest (data, textFunction) { 
   data.forEach(function (item, index) {
     var textOutput = textFunction(item);
-    assert.equal('string', typeof(textOutput), 'output should be a string');
+    assert.equal(typeof(textOutput), 'string', 'output should be a string');
   });  
   testsCompleted++;
 }
@@ -22,8 +22,7 @@ function dataToTextTest (data, textFunction) {
 function typeOfDataTest (file, dataFunction) {
   dataFunction(file, testFunc);
   function testFunc (err, data) {
-    var actual = typeof(data);
-    assert.equal('object', actual, 'type of data should be object');
+    assert.equal(typeof(data), 'object', 'type of data should be object');
     testsCompleted++;
   }
 }

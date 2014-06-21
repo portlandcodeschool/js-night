@@ -7,8 +7,12 @@ var contacts = [];
 var server = http.createServer(function (req, res) {
 
   var pathRequested = url.parse(req.url, true).pathname;
+  var queryParam = url.parse(req.url, true).query;
+  var queryParamId = parseInt(queryParam.id, 10);
 
-  if (pathRequested === '/todos') {
+  console.log(url.parse(req.url, true));
+
+  if (pathRequested.slice(0,6) === '/todos') {
 
     if (req.method === 'POST') {
 
@@ -33,22 +37,21 @@ var server = http.createServer(function (req, res) {
 
     } else if (req.method === 'DELETE') {
 
-      var requestedId = parseInt(pathRequested.slice(1), 10);
-
-      if (isNaN(requestedId)) {
+      if (isNaN(queryParamId)) {
         res.statusCode = 400; //bad request
-        res.end('Invalid item id');
-      } else if (!items[requestedId]) {
+        res.end('Invalid todo id');
+      } else if (!items[queryParamId]) {
         res.statusCode = 404; // not found
-        res.end('Item not found');
+        res.end('Todo not found');
       } else {
-        items.splice(requestedId, 1);
-        res.end('OK: We deleted todo # ' + requestedId);
+        items.splice(queryParamId, 1);
+        res.statusCode = 200;
+        res.end('OK: We deleted todo # ' + queryParamId);
       }
     } //end DELETE
   }
 
-  if (pathRequested === '/contacts') {
+  if (pathRequested.slice(0,9) === '/contacts') {
 
     if (req.method === 'POST') {
       var person = '';
@@ -64,8 +67,22 @@ var server = http.createServer(function (req, res) {
     } else if (req.method === 'GET') {
       res.writeHead({'Content-Type': 'application/json'});
       res.end(JSON.stringify(contacts));
-    } 
+    } else if (req.method === 'DELETE') {
+      if (isNaN(queryParamId)) {
+        res.statusCode = 400;
+        res.end('Invalid Contact ID');
+      } else if (!items[queryParamId]){
+        res.statusCode = 404;
+        res.end('Contact not found');
+      } else {
+        contacts.splice(queryParamId, 1);
+        res.statusCode = 200;
+        res.end('OK: We deleted contact # ' + queryParamId);
+      }
+    }
   }
+
+
 
 });
 
