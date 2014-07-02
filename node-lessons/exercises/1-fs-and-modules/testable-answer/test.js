@@ -1,10 +1,13 @@
 var assert = require('assert');
-var testsCompleted = 0;
 var recipes = require('./recipes.json');
 var printRecipes = require('./print-recipes');
 var readRecipes = require('./read-recipes');
 var formatIngredients = require('./format-ingredients');
 var formatDirections = require('./format-directions');
+
+var testsCompleted = 0;
+
+// actual, expected, message
 
 function testTest () {
   assert.equal(1, 1, "1 should equal 1");
@@ -14,6 +17,7 @@ function testTest () {
 function dataToTextTest (data, textFunction) { 
   data.forEach(function (item, index) {
     var textOutput = textFunction(item);
+                  // actual           expected    message 
     assert.equal(typeof(textOutput), 'string', 'output should be a string');
   });  
   testsCompleted++;
