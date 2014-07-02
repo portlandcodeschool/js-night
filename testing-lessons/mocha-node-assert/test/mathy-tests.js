@@ -7,6 +7,7 @@ describe('mathy toolbox', function(){
     it('should return the sum of the inputs', function(){
       assert.equal(app.adder(1,2), 2);
     });
+
   });
 
   describe('#squarer()', function () {

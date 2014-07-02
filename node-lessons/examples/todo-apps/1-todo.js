@@ -1,7 +1,6 @@
-// from node.js in action
-
 var http = require('http');
 var url = require('url');
+
 var items = ["mow the lawn", "do the dishes", "scoop the litter box"];
 
 var server = http.createServer(function (req, res) {
