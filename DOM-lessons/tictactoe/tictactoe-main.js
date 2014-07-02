@@ -4,7 +4,7 @@ function installTicTacToe() {
 	var game = new TicTacToeGame(null, //optional endgame callback
 								 gui); //optional game interface
 	return game;
-});
+};
 
 
 window.addEventListener("load", installTicTacToe);// runs when all HTML has loaded
