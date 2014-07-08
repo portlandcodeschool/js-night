@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', indexRoute);
 
-app.del('/todos/:id', todosRoute.del);
+app.del('/todos/:id', todosRoute.del);   // router.del 
 app.get('/todos', todosRoute.get);
 app.post('/todos', todosRoute.post);
 

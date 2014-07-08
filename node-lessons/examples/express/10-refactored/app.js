@@ -31,10 +31,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.route('/')
   .get(indexHandler);
 
+function (obj) {
+  //does stuff to object
+
+  return obj;
+}
+
+// all my routes that only care about all todos
+
 app.route('/todos')
   .get(todosHandler.get)
   .post(todosHandler.post);
 
+// routes that care about specific todos
 app.del('/todos/:id', todosHandler.del);
 
 app.route('/contacts')

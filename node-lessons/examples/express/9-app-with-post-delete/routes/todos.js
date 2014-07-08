@@ -14,7 +14,7 @@ module.exports = {
     res.send(200, 'We added your todo');
   },
   del:  function (req, res) {
-    var requestedId = req.params.id;
+    var requestedId = req.params.id; // /todos/:id
 
     if (isNaN(requestedId)) {
       res.send(400, 'Invalid item id');
@@ -26,3 +26,11 @@ module.exports = {
     }
   }
 };
+
+//version 2 
+
+var myToolkit = {};
+myToolkit.get = function () {};
+myToolkit.post = function () {};
+myToolkit.delete = function () {};
+module.exports = myToolkit;

@@ -2,11 +2,12 @@ var http = require('http');
 var url = require('url');
 
 var items = ["mow the lawn", "do the dishes", "scoop the litter box"];
+var completed = [];
 
 var server = http.createServer(function (req, res) {
 
   var pathRequested = url.parse(req.url, true).pathname;
-
+  console.log(pathRequested);
   if (req.method === 'POST') {
 
     var item = '';
@@ -29,9 +30,8 @@ var server = http.createServer(function (req, res) {
     res.end(responseBody);
 
   } else if (req.method === 'DELETE') {
-
-    var requestedId = parseInt(pathRequested.slice(1), 10);
-
+    var requestedId = parseInt(pathRequested.slice(-1), 10);
+    console.log(requestedId);
     if (isNaN(requestedId)) {
       res.statusCode = 400; //bad request
       res.end('Invalid item id');
@@ -39,6 +39,8 @@ var server = http.createServer(function (req, res) {
       res.statusCode = 404; // not found
       res.end('Item not found');
     } else {
+      completed.push("we just added " + items[requestedId]);
+      console.log(completed);
       items.splice(requestedId, 1);
       res.end('OK: We deleted todo # ' + requestedId);
     }
