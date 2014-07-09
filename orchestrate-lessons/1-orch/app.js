@@ -43,7 +43,6 @@ dbFunctions.addFakeTodo = function () {
   })
   .fail(function (err) {
     console.error(err);
-    console.error('could not add the todo. sorry :-(');
   });
 }
 
@@ -53,7 +52,6 @@ dbFunctions.addFakeTodo();
 app.get('/', function (req, res) {
   db.get('todos', 'todo1')
   .then(function (result) {
-    console.log(result.body.todo);
     items.push(result.body.todo);
     res.render('todos', {items:items});
   })
