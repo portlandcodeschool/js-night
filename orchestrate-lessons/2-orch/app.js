@@ -1,29 +1,18 @@
-
-
 // dependencies
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var consolidate = require('consolidate');
-var Q = require('q');
 var config = require('./config.js');
-var db = require('orchestrate')(config.dbKey); // you need to use your own api key
-// add a file in this same directory called config.js
-// export an object from the file with the property called dbKey
-// add your own orchestrate app key 
+var db = require('orchestrate')(config.dbKey);
 
-// start express
 var app = express();
 
-// template configuration
 app.engine('html', consolidate.hogan);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/templates');
 
-// app.set('env', 'production'); 
-
-// express middleware
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -52,10 +41,6 @@ dbFunctions.addTodo = function (id, description) {
   });
 }
 
-// dbFunctions.addFakeTodo();
-
-// express routes
-
 var items = [];
 
 app.get('/', function (req, res) {
@@ -76,8 +61,6 @@ app.get('/', function (req, res) {
   })
 });
 
-
-// json from client: {"todo": "mow the lawn"}
 app.post('/addtodo', function (req, res){
   req.accepts('application/json');
   var id = items.length;
@@ -87,15 +70,12 @@ app.post('/addtodo', function (req, res){
   res.send(200, 'ok, we added your todo');
 });
 
-// express middleware for error handling
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-// development error handler
-// will print stacktrace to browswer...awesome!
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
@@ -106,8 +86,6 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user... also awesome!
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {

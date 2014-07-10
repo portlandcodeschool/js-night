@@ -6,7 +6,7 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var consolidate = require('consolidate');
-var Q = require('q');
+
 var config = require('./config.js');
 var db = require('orchestrate')(config.dbKey); // you need to use your own api key
 // add a file in this same directory called config.js
@@ -34,10 +34,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 var dbFunctions = {};
 
 dbFunctions.addFakeTodo = function () {
+
   db.put('todos', 'todo1', {
     "todo": "mow the lawn"
   })
@@ -46,11 +46,11 @@ dbFunctions.addFakeTodo = function () {
   });
 }
 
-dbFunctions.addFakeTodo();
+//dbFunctions.addFakeTodo();
 
 // express routes
 app.get('/', function (req, res) {
-  db.get('todos', 'todo1')
+  db.get('todos', 'todo2') // then-able
   .then(function (result) {
     items.push(result.body.todo);
     res.render('todos', {items:items});

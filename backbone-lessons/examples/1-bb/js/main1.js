@@ -20,7 +20,7 @@ var HomeView = Backbone.View.extend({
   el: 'body',
   template: _.template('Hello World'),
   render: function () {
-    this.$el.html(this.template({}));
+    this.$el.html(this.template({})); //$(this.el)
   }
 });
 
