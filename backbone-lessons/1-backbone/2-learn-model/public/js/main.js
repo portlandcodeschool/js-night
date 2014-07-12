@@ -6,11 +6,11 @@ var todo1 = new Todo({
   title: 'mow the lawn'
 });
 
-// CHALLENGE: Create a new todo instance
+// CHALLENGE: Create a new todo model instance
 
 console.log(todo1.attributes);
 
-// CHALLENGE: Log your new todo to see it's properties
+// CHALLENGE: Log your new todo model to see it's properties
 
 var Router = Backbone.Router.extend({
   routes: {

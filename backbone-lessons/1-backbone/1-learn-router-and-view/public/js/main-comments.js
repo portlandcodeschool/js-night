@@ -13,7 +13,9 @@ var Router = Backbone.Router.extend({
   },
   home: function () {
     this.homeView = new HomeView(); // make an instance of this view class
+                                    // this is placed on this so we can view it from window.app
     this.homeView.render();         // call the render method of this view instance
+                                  
   }
   // CHALLENGE: add a new route handler function here
 }); 
