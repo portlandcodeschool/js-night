@@ -1,7 +1,4 @@
 // EXERCISE 3
-// now that we have a description input for our todo app, 
-// lets create a form with two inputs that accepts both.
-// be sure you maintain all of the current functionality
 
 var Todo = Backbone.Model.extend({});
 
@@ -27,7 +24,6 @@ var Router = Backbone.Router.extend({
 }); 
 
 
-// #todo-input #add-todo
 var TodoInputView = Backbone.View.extend({
   el: '.form-group',
   model: todo1,
