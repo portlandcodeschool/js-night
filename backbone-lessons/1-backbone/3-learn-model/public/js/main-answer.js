@@ -17,7 +17,7 @@ var Router = Backbone.Router.extend({
     console.log(this);
     this.todoInputView = new TodoInputView();
     this.todoListView = new TodoListView();
-    this.todoInputView.render();
+    // no need to render input view, since it doesn't create dom elements
     this.todoListView.render();
   }
 
