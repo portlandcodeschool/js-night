@@ -1,19 +1,22 @@
-var TodoInputView = Backbone.View.extend({
+var ContactsInputView = Backbone.View.extend({
   //no more need for model property, collection handles that now
   el: '.form-group',
   events: {
-    'click #add-todo': 'addTodo'
+    'click #add-contact': 'addContact'
   },
-  addTodo: function () {
-    var $todoInput = $(this.el).find('#todo-input');
-    var $description = $(this.el).find('#description-input');
+  addContact: function () {
+    var $firstName = $(this.el).find('#first-name-input');
+    var $lastName = $(this.el).find('#last-name-input');
+    var $age = $(this.el).find('#age-input')
     console.log('button was clicked');
-    var todoInput = $todoInput.val();
-    var descriptionInput = $description.val(); 
+    var firstNameInput = $firstName.val();
+    var lastNameInput = $lastName.val(); 
+    var ageInput = $age.val()
     // add a new item to the collection
-    this.collection.add({title: todoInput, description: descriptionInput});
+    this.collection.add({firstName: firstNameInput, lastName: lastNameInput, age: ageInput});
 
-    $description.val(''); 
-    $todoInput.val('');
+    $firstName.val(''); 
+    $lastName.val('');
+    $age.val('');
   }
 });

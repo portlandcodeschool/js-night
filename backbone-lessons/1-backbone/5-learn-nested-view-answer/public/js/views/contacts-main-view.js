@@ -1,20 +1,24 @@
-var template = '<h2>Add a Todo</h2>' +
+var template = '<h2>Add a Contact</h2>' +
   '<div class="form-group">' +
-    '<label for="todo-input">Todo Title</label>' +
-    '<input id="todo-input" class="form-control" type="text">' +
+    '<label for="first-name-input">First Name</label>' +
+    '<input id="first-name-input" class="form-control" type="text">' +
     '<br>' +
-    '<label for="description-input">Todo Description</label>' +
-    '<input id="description-input" class="form-control" type="text">' +
-    '<button id="add-todo" class="btn btn-success">Add todo</button>' +
+    '<label for="last-name-input">Last Name</label>' +
+    '<input id="last-name-input" class="form-control" type="text">' +
+    '<br>' +
+    '<label for="age-input">Age</label>' +
+    '<input id="age-input" class="form-control" type="text">' +
+    '<br><br>'+
+    '<button id="add-contact" class="btn btn-success">Add Contact</button>' +
   '</div>' +
-  '<br><br>' +
-  '<h3>My Todos</h3>' +
-  '<div id="todo-list">' +
+  '<br>' +
+  '<h3>My Contacts</h3>' +
+  '<div id="contacts-list">' +
   '</div>';
 
-var TodoMainView = Backbone.View.extend({
+var ContactsMainView = Backbone.View.extend({
   el: '#my-app',
-  listEl: '#todo-list',
+  listEl: '#contact-list',
   inputEl: '.form-group',
   template: template,
   initialize: function () {
@@ -23,11 +27,11 @@ var TodoMainView = Backbone.View.extend({
   },
   render: function () {
     console.log(this);
-    var todoListView = new TodoListView({collection: todos});
-    todoListView.render();
-    $('#todo-list').html(todoListView.$el);
+    var contactsListView = new ContactsListView({collection: contacts});
+    contactsListView.render();
+    $('#contacts-list').html(contactsListView.$el);
 
-    var todoInputView = new TodoInputView({collection: todos});
+    var contactsInputView = new ContactsInputView({collection: contacts});
     
   }
 

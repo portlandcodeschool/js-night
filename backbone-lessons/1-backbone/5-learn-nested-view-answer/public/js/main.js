@@ -26,7 +26,7 @@ var Contact = Backbone.Model.extend({});
 
 var Contacts = Backbone.Collection.extend({
   model: Contact,
-  comparator: 'lastName'
+  comparator: 'age'
 });
 
 var contacts = new Contacts();
@@ -39,7 +39,8 @@ contacts.add([
     lastName: 'Bon Jovi',
     age: 52 },
   { firstName: 'Ella',
-    lastName: 'Marija Lani Yelich-O\'Connor (aka Lorde)'}
+    lastName: 'Marija Lani Yelich-O\'Connor (aka Lorde)',
+    age: 18 }
 ]);
 
 // contacts.models.forEach(function (item, index){
@@ -58,7 +59,8 @@ var Router = Backbone.Router.extend({
     this.todoMainView.render();
   }, 
   contacts: function () {
-
+    this.contacstMainView = new ContactsMainView({collection: contacts});
+    this.contacstMainView.render();
   }
 
 }); 
