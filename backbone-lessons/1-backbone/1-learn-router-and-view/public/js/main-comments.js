@@ -23,6 +23,7 @@ var Router = Backbone.Router.extend({
 var HomeView = Backbone.View.extend({
   el: 'body', //tell this View class which element it attaches to 
   render: function () { //a function that adds some html to this el
+    // also valid:  this.$el.html('<h1>some header</h1>');
     $(this.el).html('<h1>Home page</h1>' + 
                     '<ul><li><a href = "/">Home</a></li></ul>' + 
                     '<ul><li><a href = "/#/about">About</a></li></ul>');

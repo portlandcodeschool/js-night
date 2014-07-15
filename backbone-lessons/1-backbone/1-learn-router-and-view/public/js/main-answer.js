@@ -21,8 +21,8 @@ var HomeView = Backbone.View.extend({
   el: 'body',
   render: function () {
     $(this.el).html('<h1>Home page</h1>' + 
-                    '<ul><li><a href = "/">Home</a></li></ul>' + 
-                    '<ul><li><a href = "/#/about">About</a></li></ul>');
+                    '<ul><li><a href = "/">Home</a></li>' + 
+                    '<li><a href = "/#/about">About</a></li></ul>');
   }
 });
 
@@ -30,8 +30,8 @@ var AboutView = Backbone.View.extend({ // answer
   el: 'body',
   render: function () {
     $(this.el).html('<h1>About Page</h1>' +
-                    '<ul><li><a href = "/">Home</a></li></ul>' + 
-                    '<ul><li><a href = "/#/about">About</a></li></ul>');
+                    '<ul><li><a href = "/">Home</a></li>' + 
+                    '<li><a href = "/#/about">About</a></li></ul>');
   }
 });
 

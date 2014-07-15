@@ -26,6 +26,7 @@ var Router = Backbone.Router.extend({
 var HomeView = Backbone.View.extend({
   el: 'body',
   todoTitle: todo1.get('title'),
+  // store another get function in a property
   render: function () {
     $(this.el).html('<h1>Todos</h1>' + 
                     '<ol><li>' + this.todoTitle + '</li></ol>'); //CHALLENGE: add another li 
