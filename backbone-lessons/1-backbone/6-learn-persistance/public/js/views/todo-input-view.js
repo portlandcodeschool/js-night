@@ -9,10 +9,9 @@ var TodoInputView = Backbone.View.extend({
     var $description = $(this.el).find('#description-input');
 
     var todoInput = $todoInput.val();
-    var descriptionInput = $description.val(); 
+    var descriptionInput = $description.val();
 
-    this.collection.add({title: todoInput, description: descriptionInput});
-
+    this.collection.create({title: todoInput, description: descriptionInput, creationDate: Date.now()}, {validate: true});
     $description.val(''); 
     $todoInput.val('');
   }

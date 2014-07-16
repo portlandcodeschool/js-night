@@ -13,7 +13,12 @@ var ContactsInputView = Backbone.View.extend({
     var lastNameInput = $lastName.val(); 
     var ageInput = $age.val()
 
-    this.collection.add({firstName: firstNameInput, lastName: lastNameInput, age: ageInput});
+    this.collection.add(
+      { firstName: firstNameInput,
+        lastName: lastNameInput,
+        age: ageInput },
+      {validate: true}
+    );
 
     $firstName.val(''); 
     $lastName.val('');

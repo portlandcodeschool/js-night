@@ -10,8 +10,9 @@ var TodoListView = Backbone.View.extend({
 
     this.collection.models.forEach(function (item) {
       outputHtml += '<a href="#" class="list-group-item">'
-      outputHtml += '<h4 class="list-group-item-heading">' + item.get('title') + '</h4>';
-      outputHtml += '<p class="list-group-item-text">' + item.get('description') + '</p>';
+      //escape instead of get will prevent scripting attacks
+      outputHtml += '<h4 class="list-group-item-heading">' + item.escape('title') + '</h4>';
+      outputHtml += '<p class="list-group-item-text">' + item.escape('description') + '</p>';
       outputHtml += '<a/>'
     });
 

@@ -17,8 +17,9 @@ var todoMainTemplate = '<h2>Add a Todo</h2>' +
 var TodoMainView = Backbone.View.extend({
   el: '#my-app',
   initialize: function () {
+    todos.fetch();
     $(this.el).html(todoMainTemplate);
-    this.collection.on('add', this.render, this);
+    // this.collection.on('add', this.render, this);
   },
   render: function () {
     var todoListView = new TodoListView({collection: todos});

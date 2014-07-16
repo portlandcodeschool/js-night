@@ -1,28 +1,41 @@
-var Todo = Backbone.Model.extend({});
-
+var Todo = Backbone.Model.extend({
+  validate: function (attrs) {
+    if (attrs.title.length < 1) {
+      alert("no title provided");
+      return "no title provided";
+    }
+    if (attrs.description.length < 1) {
+      alert("no title provided");
+      return "no description provided";  // need to return something for validation to stop bad inputs
+                                        // don't return anything when things are good 
+    }
+  }
+});
+      
 var Todos = Backbone.Collection.extend({
   model: Todo,
-  comparator: 'cid'
+  url: '/api/todos',
+  comparator: 'creationDate'
 });
 
 var todos = new Todos();
 
-todos.add([
-  { title: 'mow the lawn',
-    description: 'fill the gasoline tank, start the engine, cut all the grass, bag grass'},
-  { title: 'paint the house',
-    description: 'paint all the things'},
-  { title: 'fix the leaky bathtub faucet',
-    description: 'get the seat wrench, turn off water main, unscrew things, get new parts'}
-]);
-
-// todos.models.forEach(function (item, index){
-//   console.log('item\'s cid :' + item.cid);
-//   console.log(item);
-//   console.log(item.toJSON());
-// });
-
-var Contact = Backbone.Model.extend({});
+var Contact = Backbone.Model.extend({
+  validate: function (attrs) {
+    if (attrs.firstName.length < 1) {
+      alert("no first name provided");
+      return "no first name provided";
+    }
+    if (attrs.lastName.length < 1) {
+      alert("no last name provided");
+      return "no last name provided";
+    }
+    if (attrs.age.length < 1) {
+      alert("no age provided");
+      return "no age provided";
+    }
+  }
+});
 
 var Contacts = Backbone.Collection.extend({
   model: Contact,

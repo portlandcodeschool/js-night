@@ -3,19 +3,57 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var config = require('./config.js');
+var consolidate = require('consolidate');
+
+var db = require('orchestrate')(config.dbKey);
 
 var app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.engine('html', consolidate.hogan);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/templates');
 
 // express routes
 
 app.get('/', function (req, res) {
-  res.sendfile('./index.html');
+  res.render('./index.html');
 });
+
+//db.deleteCollection('bb-todos');
+
+app.get('/api/todos', function (req, res) {
+  var todos = [];
+  db.list('bb-todos')
+  .then(function (result) {
+    result.body.results.forEach(function (item){
+      todos.push(item.value);
+    });
+    res.json(todos);
+    console.log(todos);
+  })
+  .fail(function (err) {
+    console.error(err);
+  })
+});
+
+app.post('/api/todos', function (req, res){
+  req.accepts('application/json');
+  console.log(req.body);
+  db.put('bb-todos', ('todo' + req.params.id), req.body)
+  .then(function (result){
+    console.log(result);
+  })
+  .fail(function (err) {
+    console.error(err);
+  });
+
+});
+
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -46,3 +84,7 @@ app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port # ' + app.get('port'));
 });
+
+function genRandomId () {
+  return Math.floor((Math.random())*1000000);
+}
