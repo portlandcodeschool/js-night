@@ -46,7 +46,7 @@ app.post('/api/todos', function (req, res){
   console.log(req.body);
   db.put('bb-todos', ('todo' + req.params.id), req.body)
   .then(function (result){
-    console.log(result);
+    res.send(200, 'ok, we added your todo, here is what you added');
   })
   .fail(function (err) {
     console.error(err);
