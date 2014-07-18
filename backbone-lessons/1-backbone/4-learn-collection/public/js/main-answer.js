@@ -11,7 +11,7 @@ var Todos = Backbone.Collection.extend({
 
 var todos = new Todos();
 
-// we can add multiple items to our collection, our collection will instantiate 
+// we can add multiple items to our collection, our collection will instantiate
 // them with the appropriate model class, since we told the Collection class which model it uses
 todos.add([
   { title: 'mow the lawn',
@@ -26,7 +26,7 @@ todos.add([
 
 console.log('get one item by it\'s cid :');
 console.log(todos.get({cid:'c1'}));
-// or console.log(todos.get('cid', 'c1')); 
+// or console.log(todos.get('cid', 'c1'));
 // we can git the get "getter function" a pair of string parameters instead of passing an object
 // in other words, ('key', 'value') instead of ({key: 'value'})
 
@@ -49,11 +49,11 @@ var TodoInputView = Backbone.View.extend({
     var $description = $(this.el).find('#description-input');
     console.log('button was clicked');
     var todoInput = $todoInput.val();
-    var descriptionInput = $description.val(); 
+    var descriptionInput = $description.val();
     // add a new item to the collection
-    this.collection.add({title: todoInput, description: descriptionInput});
+    this.collection.add({title: todoInput, description: descriptionInput}); // ANSWER
 
-    $description.val(''); 
+    $description.val('');
     $todoInput.val('');
   }
 });
@@ -68,7 +68,7 @@ var TodoListView = Backbone.View.extend({
     // completely new render function
     var outputHtml = '';
 
-    this.collection.models.forEach(function (item) {
+    this.collection.models.forEach(function (item) { // ANSWER
       outputHtml += '<li class="list-group-item"><strong>' + item.get('title') + '</strong></li>';
       outputHtml += '<li class="list-group-item">&nbsp;&nbsp-' + item.get('description') + '</li>';
     });
@@ -87,10 +87,10 @@ var Router = Backbone.Router.extend({
     this.todoListView = new TodoListView({collection: todos});
     this.todoListView.render();
   }
-}); 
+});
 
 // START THE APP
 $(function () {
   window.app = new Router();
   Backbone.history.start();
-}); 
+});
