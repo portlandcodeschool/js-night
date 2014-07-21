@@ -45,7 +45,7 @@ var TodoListView = Backbone.View.extend({
     this.childViews.forEach(function (view){
       view.remove();
     });
-
+    //CHALLENGE: empty the childViews array so we can start with a clean slate
     this.childViews = [];
 
     this.collection.each(function (item){
