@@ -9,12 +9,12 @@ var TodoInputView = Backbone.View.extend({
     var $description = $(this.el).find('#description-input');
 
     var todoInput = $todoInput.val();
-    var descriptionInput = $description.val(); 
+    var descriptionInput = $description.val();
 
     this.collection.add({title: todoInput, description: descriptionInput});
 
-    $description.val(''); 
+    $description.val('');
     $todoInput.val('');
   }
-  
+
 });

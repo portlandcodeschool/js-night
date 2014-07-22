@@ -21,6 +21,7 @@ var ContactsMainView = Backbone.View.extend({
   initialize: function () {
     // CHALLENGE: call the method whose job it is to retrieve the entire collection
     // from the database via an http request
+    // HINT: how do we reference a collection from the current view?
     this.collection.fetch();// ANSWER
     $(this.el).html(contactsMainTemplate);
   },

@@ -3,8 +3,7 @@ var Backbone = require('backbone');
 Backbone.$ = $;
 
 
-//CHALLENGE: "bring in" the appropriate template for this view
-var myTemplate = require('../../templates/todo-list.hbs'); //ANSWER
+var myTemplate = require('../../templates/todo-list.hbs');
 
 var TodoListView = Backbone.View.extend({
   tagName: 'div',

@@ -1,5 +1,5 @@
 var ContactsListView = Backbone.View.extend({
-  tagName: 'div',
+  tagName: 'ul', // <div class='list-group'>
   className: 'list-group',
   initialize: function () {
     this.collection.on('add', this.render, this);
@@ -16,5 +16,6 @@ var ContactsListView = Backbone.View.extend({
     });
 
     $(this.el).html(outputHtml);
+    this.$el.html(outputHtml);
   }
 });

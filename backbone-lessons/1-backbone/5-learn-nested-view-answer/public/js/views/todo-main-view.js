@@ -16,18 +16,20 @@ var todoMainTemplate = '<h2>Add a Todo</h2>' +
 
 var TodoMainView = Backbone.View.extend({
   el: '#my-app',
+  // collection: todos,
   initialize: function () {
     $(this.el).html(todoMainTemplate);
-    this.collection.on('add', this.render, this);
+    //this.collection.on('add', this.render, this);
+    this.listenTo(this.collection, 'change', this.render);
+    //this.collection.on('change', this.render, this);
   },
   render: function () {
-    var todoListView = new TodoListView({collection: todos});
+    var todoListView = new TodoListView({collection: this.collection});
     todoListView.render();
     // attach the contents of todoListView to the #todo-list id in the todoMainView
     $('#todo-list').html(todoListView.$el);
 
     var todoInputView = new TodoInputView({collection: todos});
-    
-  }
 
+  }
 });

@@ -12640,17 +12640,23 @@ var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
 
-// CHALLENGE: bring in the missing dependency for this file
-var TodoMainView = require('./views/todo-main-view'); //answer
+var TodoMainView = require('./views/todo-main-view');
+var TodoEditView = require('./views/todo-edit-view');
+var Todos = require('./collections/todos');
+var todos = new Todos();
 
 var Router = Backbone.Router.extend({
   routes: {
-    '': 'todos'
+    '': 'todos',
+    'edit/:id': 'todoEdit'
   },
   todos: function () {
-    this.todoMainView = new TodoMainView();
-    // CHALLENGE: render the main todo view
-    this.todoMainView.render(); //answer
+    this.todoMainView = new TodoMainView({collection: todos});
+    this.todoMainView.render();
+  },
+  todoEdit: function (id) {
+    this.todoEditView = new TodoEditView({model: todos.get(id)});
+    this.todoEditView.render();
   }
 });
 
@@ -12659,7 +12665,7 @@ $(function () {
   Backbone.history.start();
 });
 
-},{"./views/todo-main-view":17,"backbone":1,"jquery":10}],14:[function(require,module,exports){
+},{"./collections/todos":12,"./views/todo-edit-view":15,"./views/todo-main-view":18,"backbone":1,"jquery":10}],14:[function(require,module,exports){
 var Backbone = require('backbone');
 
 var Todo = Backbone.Model.extend({
@@ -12678,6 +12684,45 @@ var Todo = Backbone.Model.extend({
 module.exports = Todo;
 
 },{"backbone":1}],15:[function(require,module,exports){
+var $ = require('jquery');
+var Backbone = require('backbone');
+Backbone.$ = $;
+
+var todoEditTemplate = require('../../templates/todo-edit.hbs');
+
+var TodoEditView = Backbone.View.extend({
+  el: '#my-app',
+  titleEl: '#todo-input',
+  descriptionEl: '#description-input',
+  events: {
+    'click: save-todo' : 'saveTodo',
+    'keyup: input': 'setTodo'
+  },
+  $title: $(this.titleEl).val(),
+  $description: $(this.descriptionEl).val(),
+  template: todoEditTemplate,
+  initialize: function (){
+    this.listenTo(this.model, 'change', this.render);
+    window.thisModel = this.model;
+  },
+  setTodo: function() {
+    this.model.set({title: this.$title, description: this.$description})
+  },
+  saveTodo: function(){
+    this.model.save();
+  },
+  render: function () {
+    var data = {id: this.model.get('id'), title: this.model.escape('title'), description: this.model.escape('description') };
+    $(this.el).html(this.template(data));
+    $(this.titleEl).val(data.title);
+    $(this.descriptionEl).val(data.description);
+  }
+
+});
+
+module.exports = TodoEditView;
+
+},{"../../templates/todo-edit.hbs":19,"backbone":1,"jquery":10}],16:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
@@ -12707,14 +12752,13 @@ var TodoInputView = Backbone.View.extend({
 
 module.exports = TodoInputView;
 
-},{"backbone":1,"jquery":10}],16:[function(require,module,exports){
+},{"backbone":1,"jquery":10}],17:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
 
 
-//CHALLENGE: "bring in" the appropriate template for this view
-var myTemplate = require('../../templates/todo-list.hbs'); //ANSWER
+var myTemplate = require('../../templates/todo-list.hbs');
 
 var TodoListView = Backbone.View.extend({
   tagName: 'div',
@@ -12736,7 +12780,7 @@ var TodoListView = Backbone.View.extend({
 
 module.exports = TodoListView;
 
-},{"../../templates/todo-list.hbs":18,"backbone":1,"jquery":10}],17:[function(require,module,exports){
+},{"../../templates/todo-list.hbs":20,"backbone":1,"jquery":10}],18:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
@@ -12746,11 +12790,11 @@ var TodoInputView = require('./todo-input-view');
 
 var todoMainTemplate = require('../../templates/todo-main.hbs');
 
-var Todos = require('../collections/todos');
+// var Todos = require('../collections/todos');
 
 var TodoMainView = Backbone.View.extend({
   el: '#my-app',
-  collection: new Todos(),
+  // collection: new Todos(), // defined collection in main.js upon instantiation of this view
   initialize: function () {
     this.collection.fetch();
     $(this.el).html(todoMainTemplate);
@@ -12769,7 +12813,32 @@ var TodoMainView = Backbone.View.extend({
 
 module.exports = TodoMainView;
 
-},{"../../templates/todo-main.hbs":19,"../collections/todos":12,"./todo-input-view":15,"./todo-list-view":16,"backbone":1,"jquery":10}],18:[function(require,module,exports){
+},{"../../templates/todo-main.hbs":21,"./todo-input-view":16,"./todo-list-view":17,"backbone":1,"jquery":10}],19:[function(require,module,exports){
+// hbsfy compiled Handlebars template
+var Handlebars = require('hbsfy/runtime');
+module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<h2>Edit Todo: ";
+  if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</h2>\n<div class=\"form-group\">\n  <label for=\"todo-input\">Todo Title</label>\n  <input id=\"todo-input\" class=\"form-control\" type=\"text\">\n  <br>\n  <label for=\"description-input\">Todo Description</label>\n  <input id=\"description-input\" class=\"form-control\" type=\"text\">\n  <br>\n  <button id=\"save-todo\" class=\"btn btn-success\">Save todo</button>\n  <br>\n</div>\n<a href=\"#\" class=\"list-group-item\">\n  <h4 id=\"list-title\" class=\"list-group-item-heading\">";
+  if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</h4>\n  <p id=\"list-description\" class=\"list-group-item-text\">";
+  if (helper = helpers.description) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.description); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\n<a/>\n";
+  return buffer;
+  });
+
+},{"hbsfy/runtime":9}],20:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -12802,7 +12871,7 @@ function program1(depth0,data) {
   return buffer;
   });
 
-},{"hbsfy/runtime":9}],19:[function(require,module,exports){
+},{"hbsfy/runtime":9}],21:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {

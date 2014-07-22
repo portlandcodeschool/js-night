@@ -28,7 +28,7 @@ var ContactsMainView = Backbone.View.extend({
     $('#contacts-list').html(contactsListView.$el);
 
     var contactsInputView = new ContactsInputView({collection: contacts});
-    
+
   }
 
 });

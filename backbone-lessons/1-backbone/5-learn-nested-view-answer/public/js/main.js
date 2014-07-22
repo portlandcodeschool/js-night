@@ -57,15 +57,15 @@ var Router = Backbone.Router.extend({
   todos: function () {
     this.todoMainView = new TodoMainView({collection: todos});
     this.todoMainView.render();
-  }, 
+  },
   contacts: function () {
-    this.contacstMainView = new ContactsMainView({collection: contacts});
-    this.contacstMainView.render();
+    this.contactsMainView = new ContactsMainView({collection: contacts});
+    this.contactsMainView.render();
   }
 
-}); 
+});
 
-$(function () {
+$(function () { // when the doc loads, do this stuff
   window.app = new Router();
   Backbone.history.start();
-}); 
+});

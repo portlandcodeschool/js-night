@@ -9,7 +9,7 @@ var ContactsListView = Backbone.View.extend({
     var outputHtml = '';
     this.collection.models.forEach(function (item) {
       // CHALLENGE:
-      // Change the model property getters to be the kind that will *escape* html
+      // Change the model property getters to be the kind that will *escape*  html
       // ANSWER:
       // use model.escape instead of model.get
       outputHtml += '<a href="#" class="list-group-item">'

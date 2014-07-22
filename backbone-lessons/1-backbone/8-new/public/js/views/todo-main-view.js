@@ -7,11 +7,11 @@ var TodoInputView = require('./todo-input-view');
 
 var todoMainTemplate = require('../../templates/todo-main.hbs');
 
-var Todos = require('../collections/todos');
+// var Todos = require('../collections/todos');
 
 var TodoMainView = Backbone.View.extend({
   el: '#my-app',
-  collection: new Todos(),
+  // collection: new Todos(), // defined collection in main.js upon instantiation of this view
   initialize: function () {
     this.collection.fetch();
     $(this.el).html(todoMainTemplate);

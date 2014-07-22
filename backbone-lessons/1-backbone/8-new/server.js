@@ -52,6 +52,9 @@ app.get('/api/todos', function (req, res) {
 
 app.post('/api/todos', function (req, res){
   console.log(req.body);
+
+  //NEW STUFF: Creating an id for backbone to use. here, we create it and the orchestrate "key"
+  // the same. both are the word todo plus the creation date. 
   var itemKey = 'todo' + req.body.creationDate;
   req.body.id = itemKey;
   db.put('bb-todos', itemKey, req.body)
@@ -62,34 +65,6 @@ app.post('/api/todos', function (req, res){
     console.error(err);
   });
 });
-
-app.get('/api/contacts', function (req, res) {
-  var contacts = [];
-  db.list('bb-contacts')
-  .then(function (result) {
-    result.body.results.forEach(function (item){
-      contacts.push(item.value);
-    });
-    console.log(contacts);
-    res.json(contacts);
-  })
-  .fail(function (err) {
-    console.error(err);
-  });
-});
-
-app.post('/api/contacts', function (req, res){
-  req.accepts('application/json');
-  console.log(req.body);
-  db.put('bb-contacts', ('contact' + req.body.creationDate), req.body)
-  .then(function (){
-    res.send(200, 'ok, we added your contact');
-  })
-  .fail(function (err) {
-    console.error(err);
-  });
-});
-
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
