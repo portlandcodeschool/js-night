@@ -15,27 +15,15 @@ var TodoMainView = Backbone.View.extend({
   initialize: function () {
     window.todoCollection = this.collection;
     this.collection.fetch();
-
-    this.childViews = [];
-
-    $(this.el).html(todoMainTemplate);
+    //CHALLENGE: attach todoMainTemplate to this element, replacing any html
+    // already present
+    // HINT: see previous examples
+    $(this.el).html(todoMainTemplate); // ANSWER
   },
   render: function () {
-    var self = this;
-    this.childViews.forEach(function(childView){
-      childView.remove();
-    });
-    this.childViews = [];
-
-    this.collection.forEach(function(todoModel){
-      var todoItemView = new TodoItemView({model: todoModel});
-      todoItemView.render();
-      self.childViews.push(todoItemView.$el);
-    });
-
-    this.childViews.forEach(function(childView){
-      $("#todo-list").append(childView);
-    });
+    var todoListView = new TodoListView({collection: this.collection});
+    todoListView.render();
+    $('#todo-list').html(todoListView.$el);
 
     var todoInputView = new TodoInputView({collection: this.collection});
 

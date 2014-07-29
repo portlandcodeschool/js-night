@@ -2,7 +2,8 @@ var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
 
-var TodoMainView = require('./views/todo-main-view');
+// CHALLENGE: bring in the missing dependency for this file
+var TodoMainView = require('./views/todo-main-view'); //answer
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -10,7 +11,8 @@ var Router = Backbone.Router.extend({
   },
   todos: function () {
     this.todoMainView = new TodoMainView();
-    this.todoMainView.render(); 
+    // CHALLENGE: render the main todo view
+    this.todoMainView.render(); //answer
   }
 });
 
