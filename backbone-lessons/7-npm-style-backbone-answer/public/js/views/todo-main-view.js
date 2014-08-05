@@ -18,7 +18,7 @@ var TodoMainView = Backbone.View.extend({
     //CHALLENGE: attach todoMainTemplate to this element, replacing any html
     // already present
     // HINT: see previous examples
-    $(this.el).html(todoMainTemplate); // ANSWER
+    this.$el.html(todoMainTemplate); // ANSWER
   },
   render: function () {
     var todoListView = new TodoListView({collection: this.collection});

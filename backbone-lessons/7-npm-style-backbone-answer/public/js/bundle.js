@@ -12717,6 +12717,9 @@ Backbone.$ = $;
 var myTemplate = require('../../templates/todo-list.hbs'); //ANSWER
 
 var TodoListView = Backbone.View.extend({
+  // <div class="list-group">
+  // handlebars template here with data added 
+  // </div>
   tagName: 'div',
   className: 'list-group',
   initialize: function () {
@@ -12757,7 +12760,7 @@ var TodoMainView = Backbone.View.extend({
     //CHALLENGE: attach todoMainTemplate to this element, replacing any html
     // already present
     // HINT: see previous examples
-    $(this.el).html(todoMainTemplate); // ANSWER
+    this.$el.html(todoMainTemplate); // ANSWER
   },
   render: function () {
     var todoListView = new TodoListView({collection: this.collection});

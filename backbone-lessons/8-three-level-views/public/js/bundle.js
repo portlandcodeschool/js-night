@@ -12640,8 +12640,7 @@ var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
 
-// CHALLENGE: bring in the missing dependency for this file
-var TodoMainView = require('./views/todo-main-view'); //answer
+var TodoMainView = require('./views/todo-main-view');
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -12649,8 +12648,7 @@ var Router = Backbone.Router.extend({
   },
   todos: function () {
     this.todoMainView = new TodoMainView();
-    // CHALLENGE: render the main todo view
-    this.todoMainView.render(); //answer
+    this.todoMainView.render();
   }
 });
 
@@ -12682,39 +12680,6 @@ var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
 
-
-var listItemTemplate = require('../../templates/todo-list-item.hbs');
-var TodoListItemView = Backbone.View.extend({
-  tagName: 'a',
-  className: 'list-group-item',
-  initialize: function () {
-    console.log('initializing an item view');
-    //this.listenTo(this.model,'all', this.render);
-    this.model.on('all', this.render, this);
-    this.render();
-  },
-  events: {
-    'click #delete': 'deleteTodo'
-  },
-  deleteTodo: function () {
-
-    //TODO: figure out how to properly delete model 
-    this.remove();
-    this.model.destroy();
-  },
-  render: function () {
-    var data = {title: this.model.escape('title'), description: this.model.escape('description') };
-
-    this.$el.html(listItemTemplate(data));
-  }
-});
-
-module.exports = TodoListItemView;
-},{"../../templates/todo-list-item.hbs":19,"backbone":1,"jquery":10}],16:[function(require,module,exports){
-var $ = require('jquery');
-var Backbone = require('backbone');
-Backbone.$ = $;
-
 var TodoInputView = Backbone.View.extend({
 
   el: '.form-group',
@@ -12733,6 +12698,7 @@ var TodoInputView = Backbone.View.extend({
       creationDate: Date.now()
     };
     this.collection.create( collectionFromInput, {validate: true});
+    console.log(this.collection.models);
     $description.val('');
     $todoInput.val('');
   }
@@ -12740,12 +12706,43 @@ var TodoInputView = Backbone.View.extend({
 
 module.exports = TodoInputView;
 
-},{"backbone":1,"jquery":10}],17:[function(require,module,exports){
+},{"backbone":1,"jquery":10}],16:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
 
-var ListItemView = require('./list-item-view');
+
+var listItemTemplate = require('../../templates/todo-list-item.hbs');
+var TodoListItemView = Backbone.View.extend({
+  tagName: 'a',
+  className: 'list-group-item',
+  initialize: function () {
+    console.log('initializing an item view');
+    this.render();
+    this.listenTo(this.model,'all', this.render);
+    this.model.on('destroy', this.remove, this);
+  },
+  events: {
+    'click #delete': 'deleteTodo'
+  },
+  deleteTodo: function () {
+    this.model.destroy();
+    // this.remove();
+  },
+  render: function () {
+    var data = {title: this.model.escape('title'), description: this.model.escape('description') };
+
+    this.$el.html(listItemTemplate(data));
+  }
+});
+
+module.exports = TodoListItemView;
+},{"../../templates/todo-list-item.hbs":19,"backbone":1,"jquery":10}],17:[function(require,module,exports){
+var $ = require('jquery');
+var Backbone = require('backbone');
+Backbone.$ = $;
+
+var ListItemView = require('./todo-list-item-view');
 var myTemplate = require('../../templates/todo-list.hbs'); 
 
 var TodoListView = Backbone.View.extend({
@@ -12774,20 +12771,12 @@ var TodoListView = Backbone.View.extend({
       self.$el.append(item);
     });
 
-
-    // var data = [];
-
-    // this.collection.models.forEach(function (item) {
-    //   data.push({title: item.escape('title'), description: item.escape('description') });
-    // });
-
-    // this.$el.html(myTemplate({todoData:data}));
   }
 });
 
 module.exports = TodoListView;
 
-},{"../../templates/todo-list.hbs":20,"./list-item-view":15,"backbone":1,"jquery":10}],18:[function(require,module,exports){
+},{"../../templates/todo-list.hbs":20,"./todo-list-item-view":16,"backbone":1,"jquery":10}],18:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
@@ -12823,7 +12812,7 @@ var TodoMainView = Backbone.View.extend({
 
 module.exports = TodoMainView;
 
-},{"../../templates/todo-main.hbs":21,"../collections/todos":12,"./todo-input-view":16,"./todo-list-view":17,"backbone":1,"jquery":10}],19:[function(require,module,exports){
+},{"../../templates/todo-main.hbs":21,"../collections/todos":12,"./todo-input-view":15,"./todo-list-view":17,"backbone":1,"jquery":10}],19:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {

@@ -7,6 +7,9 @@ Backbone.$ = $;
 var myTemplate = require('../../templates/todo-list.hbs'); //ANSWER
 
 var TodoListView = Backbone.View.extend({
+  // <div class="list-group">
+  // handlebars template here with data added 
+  // </div>
   tagName: 'div',
   className: 'list-group',
   initialize: function () {
