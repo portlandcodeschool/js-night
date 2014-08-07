@@ -14,10 +14,12 @@ var TodoInputView = Backbone.View.extend({
 
     var todoInput = $todoInput.val();
     var descriptionInput = $description.val();
+    var date = Date.now();
     var collectionFromInput = {
       title: todoInput,
       description: descriptionInput,
-      creationDate: Date.now()
+      creationDate: date,
+      id: 'todo' + date
     };
     this.collection.create( collectionFromInput, {validate: true});
     console.log(this.collection.models);

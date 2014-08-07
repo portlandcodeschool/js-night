@@ -67,7 +67,6 @@ app.post('/api/todos', function (req, res){
   req.accepts('application/json');
   console.log(req.body);
   var todo = req.body;
-  todo.id = 'todo' + todo.creationDate;
 
   db.put('bb-todos', todo.id, todo)
   .then(function (){
@@ -96,7 +95,7 @@ app.put('/api/todos/:id', function (req, res){
 app.delete('/api/todos/:id', function (req, res) {
   db.remove('bb-todos', req.params.id)
   .then(function(){
-    res.send(200, 'ok, deleted the todo' + req.params.id);
+    res.send(200, 'ok, deleted ' + req.params.id);
   })
   .fail(function(){
     console.error(err);
