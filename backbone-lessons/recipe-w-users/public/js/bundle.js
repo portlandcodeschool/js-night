@@ -12864,27 +12864,27 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<h2>Edit Recipe: ";
+  buffer += "<div class=\"panel-heading\">\n  <h3 class=\"panel-title\">Edit Recipe: ";
   if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</h2>\n<div class=\"form-group\">\n  <label for=\"title-input\">Recipe Title</label>\n  <input id=\"title-input\" value=\"";
+    + "</h3>\n\n</div>\n<br>\n<div class=\"row\">\n  <div class=\"col-xs-10 col-xs-offset-1\">\n\n    <div class=\"form-group\">\n      <label for=\"title-input\">Recipe Title</label>\n      <input id=\"title-input\" value=\"";
   if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\"class=\"form-control\" type=\"text\">\n  <br>\n  <label for=\"description-input\">Recipe Description</label>\n  <input id=\"description-input\" value=\"";
+    + "\"class=\"form-control\" type=\"text\">\n      <br>\n      <label for=\"description-input\">Recipe Description</label>\n      <input id=\"description-input\" value=\"";
   if (helper = helpers.description) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.description); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" class=\"form-control\" type=\"text\">\n  <br>\n  <button id=\"save-recipe\" class=\"btn btn-success\">Save Recipe</button>\n  <br>\n</div>\n<div id=\"item-display\">\n  <div class=\"list-group-item\">\n    <h4 id=\"list-title\" class=\"list-group-item-heading\">";
+    + "\" class=\"form-control\" type=\"text\">\n      <br>\n      <button id=\"save-recipe\" class=\"btn btn-success\">Save Recipe</button>\n      <br>\n    </div>\n    <div class=\"panel panel-default\">\n      <header class=\"panel-heading\">\n        ";
   if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</h4>\n    <p id=\"list-description\" class=\"list-group-item-text\">";
+    + "\n      </header>\n      <div class=\"panel-body\">\n        <p id=\"list-description\" class=\"list-group-item-text\">";
   if (helper = helpers.description) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.description); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</p>\n  </div>\n</div>";
+    + "</p>\n      </div>\n    </div>\n  </div>\n</div>\n<br>\n";
   return buffer;
   });
 
@@ -12905,11 +12905,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.description) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.description); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</p>\n<a href=\"/#/edit/";
+    + "</p>\n<br>\n<a href=\"/#/edit/";
   if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" class=\"btn btn-warning\" name=\"edit\">Edit</a>\n<button id=\"delete\" class=\"btn btn-danger\" name=\"edit\">Delete</button>\n";
+    + "\" class=\"btn btn-info\" name=\"edit\">Edit</a>\n<button id=\"delete\" class=\"btn btn-primary\" name=\"edit\">Delete</button>\n";
   return buffer;
   });
 
@@ -12922,7 +12922,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<h2>Add a Recipe</h2>\n<div class=\"form-group\">\n  <label for=\"title-input\">Recipe Title</label>\n  <input id=\"title-input\" class=\"form-control\" type=\"text\">\n  <br>\n  <label for=\"description-input\">Recipe Description</label>\n  <input id=\"description-input\" class=\"form-control\" type=\"text\">\n  <br>\n  <button id=\"add-recipe\" class=\"btn btn-success\">Add Recipe</button>\n  <br>\n</div>\n<br><br>\n<h3>My Recipes</h3>\n<div id=\"recipe-list\">\n</div>\n";
+  return "<div class=\"panel-heading\">\n  <h3 class=\"panel-title\">Add a Recipe</h3>\n\n</div>\n<br>\n<div class=\"row\">\n  <div class=\"col-xs-10 col-xs-offset-1\">\n      <div class=\"form-group\">\n        <label for=\"title-input\">Recipe Title</label>\n        <input id=\"title-input\" class=\"form-control\" type=\"text\">\n        <br>\n        <label for=\"description-input\">Recipe Description</label>\n        <input id=\"description-input\" class=\"form-control\" type=\"text\">\n        <br>\n        <button id=\"add-recipe\" class=\"btn btn-success\">Add Recipe</button>\n        <br>\n      </div>\n      <br><br>\n      <h3>My Recipes</h3>\n    <div id=\"recipe-list\">\n    </div>\n\n  </div>\n</div>\n";
   });
 
 },{"hbsfy/runtime":9}]},{},[13])
