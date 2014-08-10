@@ -7,37 +7,33 @@ var Todo = require('../models/todo');
 
 var TodoEditView = Backbone.View.extend({
   el: '#my-app',
-  titleEl: '#todo-input',
-  descriptionEl: '#description-input',
   events: {
-    'click: #save-todo' : 'saveTodo',
-    'keyup: input': 'setTodo'
+    'click #save-todo': 'saveTodo'
   },
-  $title: $(this.titleEl),
-  $description: $(this.descriptionEl),
-  template: todoEditTemplate,
-  setTodo: function() {
-    this.model.set({title: this.$title.val(), description: this.$description.val()});
-    $('#list-title').val(this.data.title);
-    $('#list-description').val(this.data.description);
+  saveTodo: function () {
+    var titleVal = $('#title-input').val();
+    var descriptionVal = $('#description-input').val();
+    this.model.save({title: titleVal, description: descriptionVal});
+    // this only works becuse we set a urlRoot on our model:  '/api/todos'
+    // the urlRoot gets combined with the id to create something like:
+    // /api/todos/todo123456789
   },
-  saveTodo: function(){
-    console.log('saving...')
-    this.model.save();
-    this.render();
+  initialize: function(options){
+    var self = this;
+    this.model = new Todo({id: options.modelId});
+    this.model.fetch({
+      success: function () {
+        console.log('fetched model');
+      },
+      error: function (e) {
+        console.log(e);
+      }
+  });
+    this.model.on('all', this.render, this);
   },
-  render: function (options) {
-    var this.model = new Todo({id: options.id});
-    this.model.fetch({success: function (todo){
-      var data = {title: todo.escape('title'), description: todo.escape('description') };
-      $(this.el).html(this.template(data));
-      $(this.titleEl).val(data.title);
-      $(this.descriptionEl).val(data.description);
-    }});
-    console.log(this.model);
-
+  render: function () {
+    var data = {title: this.model.escape('title'), description: this.model.escape('description') };
+    this.$el.html(todoEditTemplate(data));
   }
-
 });
-
 module.exports = TodoEditView;

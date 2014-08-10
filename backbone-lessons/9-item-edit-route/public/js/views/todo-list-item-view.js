@@ -15,11 +15,10 @@ var TodoListItemView = Backbone.View.extend({
     this.model.on('destroy', this.remove, this);
   },
   events: {
-    'click #delete': 'deleteTodo'
+    'click #delete': 'deleteTodo',
   },
   deleteTodo: function () {
     this.model.destroy();
-    // this.remove();
   },
   render: function () {
     var data = {  title: this.model.escape('title'), 

@@ -53,7 +53,7 @@ app.get('/api/todos', function (req, res) {
 app.get('/api/todos/:id', function (req, res) {
   db.get('bb-todos', req.params.id)
   .then(function (result) {
-    var todo = result.body.value;
+    var todo = result.body;
     console.log(todo);
     res.json(todo);
   })
@@ -67,8 +67,6 @@ app.post('/api/todos', function (req, res){
   req.accepts('application/json');
   console.log(req.body);
   var todo = req.body;
-  todo.id = 'todo' + todo.creationDate;
-
   db.put('bb-todos', todo.id, todo)
   .then(function (){
     console.log(req.body);

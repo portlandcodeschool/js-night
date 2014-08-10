@@ -12680,6 +12680,8 @@ var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
 
+window.TodoInputView = TodoInputView;
+
 var TodoInputView = Backbone.View.extend({
 
   el: '.form-group',

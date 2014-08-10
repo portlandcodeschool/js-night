@@ -12644,20 +12644,24 @@ var TodoMainView = require('./views/todo-main-view');
 var TodoEditView = require('./views/todo-edit-view');
 var Todos = require('./collections/todos');
 var todos = new Todos();
+var Todo = require('./models/todo');
 
 var Router = Backbone.Router.extend({
   routes: {
     '': 'todos',
     'edit/:id': 'todoEdit'
-
   },
   todos: function () {
     this.todoMainView = new TodoMainView({collection:todos});
     this.todoMainView.render();
   },
+  todoEditTest: function () {
+    this.todoEditView = new TodoEditView();
+    this.todoEditView.render();
+  },
   todoEdit: function (id) {
-    this.todoEditView = new TodoEditView({collection: todos});
-    this.todoEditView.render({id: id});
+    this.todoEditView = new TodoEditView({modelId: id});
+    this.todoEditView.render();
   }
 
 });
@@ -12667,10 +12671,11 @@ $(function () {
   Backbone.history.start();
 });
 
-},{"./collections/todos":12,"./views/todo-edit-view":15,"./views/todo-main-view":19,"backbone":1,"jquery":10}],14:[function(require,module,exports){
+},{"./collections/todos":12,"./models/todo":14,"./views/todo-edit-view":15,"./views/todo-main-view":19,"backbone":1,"jquery":10}],14:[function(require,module,exports){
 var Backbone = require('backbone');
 
 var Todo = Backbone.Model.extend({
+  urlRoot: '/api/todos',
   validate: function (attrs) {
     if (attrs.title.length < 1) {
       alert("no title provided");
@@ -12691,43 +12696,41 @@ var Backbone = require('backbone');
 Backbone.$ = $;
 
 var todoEditTemplate = require('../../templates/todo-edit.hbs');
+var Todo = require('../models/todo');
 
 var TodoEditView = Backbone.View.extend({
   el: '#my-app',
-  titleEl: '#todo-input',
-  descriptionEl: '#description-input',
   events: {
-    'click: save-todo' : 'saveTodo',
-    'keyup: input': 'setTodo'
+    'click #save-todo': 'saveTodo'
   },
-  $title: $(this.titleEl),
-  $description: $(this.descriptionEl),
-  template: todoEditTemplate,
-  setTodo: function() {
-    this.model.set({title: this.$title.val(), description: this.$description.val()});
-    $('#list-title').val(this.data.title);
-    $('#list-description').val(this.data.description);
+  saveTodo: function () {
+    var titleVal = $('#title-input').val();
+    var descriptionVal = $('#description-input').val();
+    this.model.save({title: titleVal, description: descriptionVal});
+    // this only works becuse we set a urlRoot on our model:  '/api/todos'
+    // the urlRoot gets combined with the id to create something like:
+    // /api/todos/todo123456789
   },
-  saveTodo: function(){
-    console.log('saving...')
-    this.model.save();
-    this.render();
+  initialize: function(options){
+    var self = this;
+    this.model = new Todo({id: options.modelId});
+    this.model.fetch({
+      success: function () {
+        console.log('fetched model');
+      },
+      error: function (e) {
+        console.log(e);
+      }
+  });
+    this.model.on('all', this.render, this);
   },
-  render: function (options) {
-
-    this.model = this.collection.get(options.id);
-    console.log(this.model);
+  render: function () {
     var data = {title: this.model.escape('title'), description: this.model.escape('description') };
-    $(this.el).html(this.template(data));
-    $(this.titleEl).val(data.title);
-    $(this.descriptionEl).val(data.description);
+    this.$el.html(todoEditTemplate(data));
   }
-
 });
-
 module.exports = TodoEditView;
-
-},{"../../templates/todo-edit.hbs":20,"backbone":1,"jquery":10}],16:[function(require,module,exports){
+},{"../../templates/todo-edit.hbs":20,"../models/todo":14,"backbone":1,"jquery":10}],16:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
@@ -12744,10 +12747,12 @@ var TodoInputView = Backbone.View.extend({
 
     var todoInput = $todoInput.val();
     var descriptionInput = $description.val();
+    var date = Date.now();
     var collectionFromInput = {
       title: todoInput,
       description: descriptionInput,
-      creationDate: Date.now()
+      creationDate: date,
+      id: 'todo' + date
     };
     this.collection.create( collectionFromInput, {validate: true});
     console.log(this.collection.models);
@@ -12776,11 +12781,10 @@ var TodoListItemView = Backbone.View.extend({
     this.model.on('destroy', this.remove, this);
   },
   events: {
-    'click #delete': 'deleteTodo'
+    'click #delete': 'deleteTodo',
   },
   deleteTodo: function () {
     this.model.destroy();
-    // this.remove();
   },
   render: function () {
     var data = {  title: this.model.escape('title'), 
@@ -12798,7 +12802,7 @@ var Backbone = require('backbone');
 Backbone.$ = $;
 
 var ListItemView = require('./todo-list-item-view');
-var myTemplate = require('../../templates/todo-list.hbs'); 
+//var myTemplate = require('../../templates/todo-list.hbs'); 
 
 var TodoListView = Backbone.View.extend({
   tagName: 'div',
@@ -12831,7 +12835,7 @@ var TodoListView = Backbone.View.extend({
 
 module.exports = TodoListView;
 
-},{"../../templates/todo-list.hbs":22,"./todo-list-item-view":17,"backbone":1,"jquery":10}],19:[function(require,module,exports){
+},{"./todo-list-item-view":17,"backbone":1,"jquery":10}],19:[function(require,module,exports){
 var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
@@ -12863,7 +12867,7 @@ var TodoMainView = Backbone.View.extend({
 
 module.exports = TodoMainView;
 
-},{"../../templates/todo-main.hbs":23,"../collections/todos":12,"./todo-input-view":16,"./todo-list-view":18,"backbone":1,"jquery":10}],20:[function(require,module,exports){
+},{"../../templates/todo-main.hbs":22,"../collections/todos":12,"./todo-input-view":16,"./todo-list-view":18,"backbone":1,"jquery":10}],20:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -12876,15 +12880,23 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</h2>\n<div class=\"form-group\">\n  <label for=\"todo-input\">Todo Title</label>\n  <input id=\"todo-input\" class=\"form-control\" type=\"text\">\n  <br>\n  <label for=\"description-input\">Todo Description</label>\n  <input id=\"description-input\" class=\"form-control\" type=\"text\">\n  <br>\n  <button id=\"save-todo\" class=\"btn btn-success\">Save todo</button>\n  <br>\n</div>\n<a href=\"#\" class=\"list-group-item\">\n  <h4 id=\"list-title\" class=\"list-group-item-heading\">";
+    + "</h2>\n<div class=\"form-group\">\n  <label for=\"title-input\">Todo Title</label>\n  <input id=\"title-input\" value=\"";
   if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</h4>\n  <p id=\"list-description\" class=\"list-group-item-text\">";
+    + "\"class=\"form-control\" type=\"text\">\n  <br>\n  <label for=\"description-input\">Todo Description</label>\n  <input id=\"description-input\" value=\"";
   if (helper = helpers.description) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.description); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</p>\n<a/>\n";
+    + "\" class=\"form-control\" type=\"text\">\n  <br>\n  <button id=\"save-todo\" class=\"btn btn-success\">Save todo</button>\n  <br>\n</div>\n<div id=\"item-display\">\n  <div class=\"list-group-item\">\n    <h4 id=\"list-title\" class=\"list-group-item-heading\">";
+  if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</h4>\n    <p id=\"list-description\" class=\"list-group-item-text\">";
+  if (helper = helpers.description) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.description); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\n  </div>\n</div>";
   return buffer;
   });
 
@@ -12914,39 +12926,6 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   });
 
 },{"hbsfy/runtime":9}],22:[function(require,module,exports){
-// hbsfy compiled Handlebars template
-var Handlebars = require('hbsfy/runtime');
-module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
-
-function program1(depth0,data) {
-  
-  var buffer = "", stack1, helper;
-  buffer += "\n<a href=\"/#/edit/";
-  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\" class=\"list-group-item\">\n  <h4 class=\"list-group-item-heading\">";
-  if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</h4>\n  <p class=\"list-group-item-text\">";
-  if (helper = helpers.description) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.description); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</p>\n<a/>\n";
-  return buffer;
-  }
-
-  stack1 = helpers.each.call(depth0, (depth0 && depth0.todoData), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n";
-  return buffer;
-  });
-
-},{"hbsfy/runtime":9}],23:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
