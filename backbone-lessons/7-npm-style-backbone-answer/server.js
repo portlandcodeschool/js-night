@@ -23,7 +23,6 @@ var partials = "./server-templates/partials/";
 fs.readdirSync(partials).forEach(function (file) {
   var source = fs.readFileSync(partials + file, "utf8"),
       partial = /(.+)\.html/.exec(file).pop();
-
   Handlebars.registerPartial(partial, source);
 });
 
