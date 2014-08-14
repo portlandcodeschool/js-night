@@ -1,29 +1,4 @@
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#sec-1">1. General Notes by CL:</a></li>
-<li><a href="#sec-2">2. Week:</a></li>
-<li><a href="#sec-3">3. Week:</a></li>
-<li><a href="#sec-4">4. Week:</a></li>
-<li><a href="#sec-5">5. Week:</a></li>
-<li><a href="#sec-6">6. Week:</a></li>
-<li><a href="#sec-7">7. Week:</a></li>
-<li><a href="#sec-8">8. Week:</a></li>
-<li><a href="#sec-9">9. Week:</a></li>
-<li><a href="#sec-10">10. Week:</a></li>
-<li><a href="#sec-11">11. Week:</a></li>
-<li><a href="#sec-12">12. Week:</a></li>
-<li><a href="#sec-13">13. Week:</a></li>
-<li><a href="#sec-14">14. Week:</a></li>
-<li><a href="#sec-15">15. Week:</a></li>
-<li><a href="#sec-16">16. Week:</a></li>
-<li><a href="#sec-17">17. Week:</a></li>
-</ul>
-</div>
-</div>
-
-# General Notes by CL:<a id="sec-1" name="sec-1"></a>
+# General Notes by CL:
 
 Problems that we had in the summer iteration of the course:
 -   Too much disconnect between the client and server pieces, students didn't seem to know what-code-ran-where nor did some of them understand what the point of a server was and the fact that it ran independently of the browser
@@ -41,7 +16,7 @@ My proposed modifications to the curriculm/syllabus, based upon discussions we i
 
 The underlying philosophy here is that we want to keep the number of moving parts students need to understand to a minimum and that entails charting out a very specific path to building a full client-and-server application.
 
-# Week:<a id="sec-2" name="sec-2"></a>
+# Week:
 
 -   Lecture:
     -   JS Console; Expressions, Operators;
@@ -59,7 +34,7 @@ The underlying philosophy here is that we want to keep the number of moving part
         -   add in more on scope when we get to function definitions
         -   maybe less on scratchpad? That's my own bias because I find it to be having annoying quirks
 
-# Week:<a id="sec-3" name="sec-3"></a>
+# Week:
 
 -   Lecture: 
     -   Review: Functions, Ternary Conditional Operator
@@ -75,7 +50,7 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   git workflow, branching, & assignments;
     -   CL's comments: I'm not convinced that the toolbox pattern is super useful for them to see? In a sense it doesn't show up that much in what they end up doing in this course and, ultimately, once they're at a more advanced level where it'll show up more then they'll know enough to be able to easily recrate the machinery. As such, I've left it out of this lecture where it would have been
 
-# Week:<a id="sec-4" name="sec-4"></a>
+# Week:
 
 -   Lecture:
     -   Functions as Objects; Functions as Arguments, Callbacks;
@@ -87,7 +62,7 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   Object Patterns; Helper Functions, Delegates
     -   Factory Functions; Duplicate vs. Shared Methods
 
-# Week:<a id="sec-5" name="sec-5"></a>
+# Week:
 
 -   Lecture:
     -   Access Control via Closures; Private variables and functions; Closure Modules;
@@ -95,12 +70,12 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   Constructors, <span class="underline">new</span>; Wrapper Objects and Converters;
     -   Prototypes, Instance Methods
 
-# Week:<a id="sec-6" name="sec-6"></a>
+# Week:
 
 -   Lecture: Class methods; Inheritance and Subclassing;
 -   Lecture: Core JS Review
 
-# Week:<a id="sec-7" name="sec-7"></a>
+# Week:
 
 -   Lecture: Intro to JQuery and the DOM
     -   What is the DOM?
@@ -110,19 +85,19 @@ The underlying philosophy here is that we want to keep the number of moving part
 -   Lecture: More JQuery examples, Backbone starts, Backbone Routes, Simple Views, Simple Models
     -   CL's comments: basically this week and next we do everything we can in Backbone without needing a server, which is most of everything except data persistance. It can easily be motivated by showing them that everything disappears if you hit refresh
 
-# Week:<a id="sec-8" name="sec-8"></a>
+# Week:
 
 -   Lecture: Nested Views in Backbone, Backbone Collections
 -   Lecture: More Backbone examples
 -   CL's comments: per conversation with Dan taking out the bits on browserify, watchify etc. until the end as special topics
 
-# Week:<a id="sec-9" name="sec-9"></a>
+# Week:
 
 -   Lecture: mini-project week
 -   Lecture: mini-project week
 -   CL's comments: I think it might be nice to give a breather before starting the server side programming to just build decently complex client-only applications with jQuery and Backbone.
 
-# Week:<a id="sec-10" name="sec-10"></a>
+# Week:
 
 -   Lecture:
     -   internet concepts (http, server, client)
@@ -137,7 +112,7 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   Serving up Backbone app as static web page
 -   Cl's comments: So this is with the understanding that we'll compress the node introduction to its bare minimum and teach them as much as possible with Express just so that they can get something up and running faster. I still think we can spend some class time getting them set up with the learn you node exercises so that they have something they can experiment with if they want to go deeper. Mostly I think the learn you node exercises are good *programming* practice regardless of the deeper lessons about asynchronous behavior and the event loop
 
-# Week:<a id="sec-11" name="sec-11"></a>
+# Week:
 
 -   Lecture: 
     -   Integrating Backbone with servers
@@ -151,7 +126,7 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   Orchestrate.io
     -   Integrating Orchestrate into applications
 
-# Week:<a id="sec-12" name="sec-12"></a>
+# Week:
 
 -   Lecture:
     -   Introduction to using APIs
@@ -171,27 +146,27 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   Adding tests to prior examples
     -   CL's comments: including Mocha because this is what Dan mentioned needing to teach this in the future. I'm not convinced that at the end is the right place to introduce it, but I'm also not convinced that there's a better place to put it either
 
-# Week:<a id="sec-13" name="sec-13"></a>
+# Week:
 
 -   Lecture: Advanced Topics (Node, Backbone, and programming skills), group projects underway
 -   Lecture: Advanced Topics (Node, Backbone, and programming skills), group projects underway
 
-# Week:<a id="sec-14" name="sec-14"></a>
+# Week:
 
 -   Lecture: Advanced Topics (Node, Backbone, and programming skills), group projects underway
 -   Lecture: Advanced Topics (Node, Backbone, and programming skills), group projects underway
 
-# Week:<a id="sec-15" name="sec-15"></a>
+# Week:
 
 -   Lecture: Advanced Topics (Node, Backbone, and programming skills), group projects underway
 -   Lecture: Advanced Topics (Node, Backbone, and programming skills), group projects underway
 
-# Week:<a id="sec-16" name="sec-16"></a>
+# Week:
 
 -   Lecture: Advanced Topics (Node, Backbone, and programming skills), group projects underway
 -   Lecture: Advanced Topics (Node, Backbone, and programming skills), group projects underway
 
-# Week:<a id="sec-17" name="sec-17"></a>
+# Week:
 
 -   Lecture: Prep and practice for Capstone, other bonus topics
 -   Lecture: Prep and practice for Capstone, other bonus topics
