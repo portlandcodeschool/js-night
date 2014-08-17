@@ -25,6 +25,8 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   CL's comments: 
         -   can probably spend less time on auto-conversion so early
         -   say less about scope up front, since it doesn't make much sense without functions
+    *   BV's comments:
+        -   Ditto to CL's comments on these issues. very good proposed changes
 -   Lecture:
     -   Array basics, indexing
     -   Conditionals & Branching; Truthiness; Boolean/Branching Operators (`&&`, `||`);
@@ -33,6 +35,8 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   CL's comments:
         -   add in more on scope when we get to function definitions
         -   maybe less on scratchpad? That's my own bias because I find it to be having annoying quirks
+    *   BV's comments: 
+        -   I would agree that scratchpad is querky. I would prefer to see each example's output in the console or on a web page. Although, some students do complain when there is a lot of fast switching between editor and browser, so this could be an issue.
 
 # Week:
 
@@ -49,6 +53,7 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   Custom methods, `this` keyword; examples; 3 roles of objects
     -   git workflow, branching, & assignments;
     -   CL's comments: I'm not convinced that the toolbox pattern is super useful for them to see? In a sense it doesn't show up that much in what they end up doing in this course and, ultimately, once they're at a more advanced level where it'll show up more then they'll know enough to be able to easily recrate the machinery. As such, I've left it out of this lecture where it would have been
+    -   BV comments: I'm not sure how much discussing peudo arrays helps. It might just be noise. Understanding that arrays are also objects might be better suited for a later lesson on array methods( e.g. How can this array have a method, I thought only objects can have those?).
 
 # Week:
 
@@ -90,6 +95,7 @@ The underlying philosophy here is that we want to keep the number of moving part
 -   Lecture: Nested Views in Backbone, Backbone Collections
 -   Lecture: More Backbone examples
 -   CL's comments: per conversation with Dan taking out the bits on browserify, watchify etc. until the end as special topics
+-   BV's comments: I agree with taking out browserify/watchify. I would say that when we hit group project month again, we might want to show them file concatenation as a best practice because it reduces the number of http requests that the browser has to make. This is more of a bonus topic. This could be useful for people who are in a place to take on this extra concept. It would not be necessary for group projects. 
 
 # Week:
 
@@ -145,6 +151,7 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   Mocha library
     -   Adding tests to prior examples
     -   CL's comments: including Mocha because this is what Dan mentioned needing to teach this in the future. I'm not convinced that at the end is the right place to introduce it, but I'm also not convinced that there's a better place to put it either
+    -   BV comments: yes on api lessons. Not sure about where to put testing either.
 
 # Week:
 
