@@ -44,7 +44,7 @@
 -   Lecture:
     -   Access Control via Closures; Private variables and functions; Closure Modules;
 -   Lecture:
-    -   Constructors, <span class="underline">new</span>; Wrapper Objects and Converters;
+    -   Constructors, `new`; Wrapper Objects and Converters;
     -   Prototypes, Instance Methods
 
 # Week:
