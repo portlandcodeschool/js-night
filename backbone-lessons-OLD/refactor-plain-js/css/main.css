@@ -1,0 +1,52 @@
+*{
+  margin: 0;
+}
+h1{
+  font-size: 2em;
+  padding-bottom: 1em;
+}
+body{
+  background-color: #ccc;
+  font-size: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+label{
+  display: inline-block;
+  min-width: 8em;
+}
+article{
+  box-sizing: border-box;
+  padding: 1em;
+  background-color: white;
+  min-height: 300px;
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+}
+
+@media screen and (min-width: 320px) {
+  section{
+    text-align: left;
+    width: 100%;
+    font-size: 12px;
+    display: inline-block;
+    padding: 1em;
+    box-sizing: border-box;
+    vertical-align: top;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  section{
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  section{
+    width: 33.333333%;
+  }
+}

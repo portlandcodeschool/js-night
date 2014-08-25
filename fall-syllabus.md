@@ -22,7 +22,7 @@
 -   Lecture:
     -   Review: Object creation, membership operators
     -   References; Object linking and sharing, shallow copy and compare, `null`, reference arguments
-    -   Pseudo-arrays; Arrays as Objects; Built-in Array methods
+    -   Built-in Array methods
     -   String methods; String wrapper objects
     -   Custom methods, `this` keyword; examples; 3 roles of objects
     -   git workflow, branching, & assignments;
@@ -65,7 +65,6 @@
 
 -   Lecture: Nested Views in Backbone, Backbone Collections
 -   Lecture: More Backbone examples
-
 
 # Week:
 
