@@ -1,38 +1,15 @@
-# General Notes by CL:
-
-Problems that we had in the summer iteration of the course:
--   Too much disconnect between the client and server pieces, students didn't seem to know what-code-ran-where nor did some of them understand what the point of a server was and the fact that it ran independently of the browser
--   Students like assignments were unrelated to "real problems", were "too mathematical", "too difficult", and had difficulty starting the assignments
--   Students definitely were treating Backbone and Express as magic. Seems like a lot of things started to become incantations by the end of the course
--   Some students didn't feel like they were getting their hands dirty through all the various pieces even towards the end of the capstone. Some weaker students appealing to experience they already had in front-end design rather than doing new things.
-
-My proposed modifications to the curriculm/syllabus, based upon discussions we instructors have had, are as follows. I argue that we address the issues above as follows:
-
--   Flipping the order of the client and server material appeals to visual understanding of how code functions, gives students more immediate visceral feedback about what their code does, and makes a better intermmediate stepping stone towards programming of entire applications
--   Spending more time up front on Backbone early on allows for mini-projects as assignments that can, in essence, be used to test out an individual's ideas on capstone projects in advance.
--   By presenting just *one* way to do server side programming we'll hopefully both buy time and get more conceptual clarity on how that one way actually works
--   We pare down the amount of middleware used in Express, per conversations with Dan, and thus the amount of time that needs to be spent on middleware.
--   We pare down the amount of time spent on automation
-
-The underlying philosophy here is that we want to keep the number of moving parts students need to understand to a minimum and that entails charting out a very specific path to building a full client-and-server application.
-
 # Week:
 
 -   Lecture:
     -   JS Console; Expressions, Operators;
     -   Variables, Assignment, Scope;
     -   Primitive types; String concatenation; Auto-conversion
-    -   CL's comments: 
-        -   can probably spend less time on auto-conversion so early
-        -   say less about scope up front, since it doesn't make much sense without functions
+
 -   Lecture:
     -   Array basics, indexing
     -   Conditionals & Branching; Truthiness; Boolean/Branching Operators (`&&`, `||`);
     -   ScratchPad; Blocks; Loops (`while`, `for`); `console.log`;
     -   Function basics: parameters, return values, definition vs. call;
-    -   CL's comments:
-        -   add in more on scope when we get to function definitions
-        -   maybe less on scratchpad? That's my own bias because I find it to be having annoying quirks
 
 # Week:
 
@@ -41,6 +18,7 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   Defensive Programming; Basic Testing with Assertions
     -   Objects: incremental creation, literal notation, nesting; Properties, membership operators (`[]` and `.`), chaining;
     -   Property creation, deletion, enumeration (`in` operator, `for...in` loops); Properties vs. Variables
+
 -   Lecture:
     -   Review: Object creation, membership operators
     -   References; Object linking and sharing, shallow copy and compare, `null`, reference arguments
@@ -48,16 +26,15 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   String methods; String wrapper objects
     -   Custom methods, `this` keyword; examples; 3 roles of objects
     -   git workflow, branching, & assignments;
-    -   CL's comments: I'm not convinced that the toolbox pattern is super useful for them to see? In a sense it doesn't show up that much in what they end up doing in this course and, ultimately, once they're at a more advanced level where it'll show up more then they'll know enough to be able to easily recrate the machinery. As such, I've left it out of this lecture where it would have been
 
 # Week:
 
 -   Lecture:
     -   Functions as Objects; Functions as Arguments, Callbacks;
     -   Call operator, parentheses types; Self-Executing Anonymous Functions;
-    -   Function details: Evaluation Phases, Call Objects, Arguments Object; Call Chain, Scopes, Closures; <span class="underline">this</span>
+    -   Function details: Evaluation Phases, Call Objects, Arguments Object; Call Chain, Scopes, Closures; `this`
     -   Global Object; Global variables vs. properties
-    -   CL's comments: I don't think we really need to cover a lot on the global object. At the beginner level they just need to know that It Exists and that if they're not careful with `this` then they'll accidentally give it properties
+
 -   Lecture:
     -   Object Patterns; Helper Functions, Delegates
     -   Factory Functions; Duplicate vs. Shared Methods
@@ -83,19 +60,17 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   Accessing elements in JQuery
     -   Simple event handlers in JQuery
 -   Lecture: More JQuery examples, Backbone starts, Backbone Routes, Simple Views, Simple Models
-    -   CL's comments: basically this week and next we do everything we can in Backbone without needing a server, which is most of everything except data persistance. It can easily be motivated by showing them that everything disappears if you hit refresh
 
 # Week:
 
 -   Lecture: Nested Views in Backbone, Backbone Collections
 -   Lecture: More Backbone examples
--   CL's comments: per conversation with Dan taking out the bits on browserify, watchify etc. until the end as special topics
+
 
 # Week:
 
 -   Lecture: mini-project week
 -   Lecture: mini-project week
--   CL's comments: I think it might be nice to give a breather before starting the server side programming to just build decently complex client-only applications with jQuery and Backbone.
 
 # Week:
 
@@ -110,7 +85,6 @@ The underlying philosophy here is that we want to keep the number of moving part
     -   Making basic servers
     -   Routing in Express
     -   Serving up Backbone app as static web page
--   Cl's comments: So this is with the understanding that we'll compress the node introduction to its bare minimum and teach them as much as possible with Express just so that they can get something up and running faster. I still think we can spend some class time getting them set up with the learn you node exercises so that they have something they can experiment with if they want to go deeper. Mostly I think the learn you node exercises are good *programming* practice regardless of the deeper lessons about asynchronous behavior and the event loop
 
 # Week:
 
@@ -137,14 +111,12 @@ The underlying philosophy here is that we want to keep the number of moving part
         -   Discogs
         -   Flickr
         -   Instagram
-        -   ???
-    -   CL's comments: Since this is an issue that comes up so much in the capstones it seems reasonable to spend more time explicitly teaching the students how to integrate other services into their own.
+
 -   Lecture: 
     -   Introduction to testing
     -   Examples demonstrating the *importance* of testing
     -   Mocha library
     -   Adding tests to prior examples
-    -   CL's comments: including Mocha because this is what Dan mentioned needing to teach this in the future. I'm not convinced that at the end is the right place to introduce it, but I'm also not convinced that there's a better place to put it either
 
 # Week:
 
