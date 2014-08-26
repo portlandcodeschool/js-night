@@ -1,0 +1,47 @@
+% Created 2014-08-25 Mon 17:32
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{Portland Code School}
+\date{\today}
+\title{Code Execution Worksheet}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.3.1 (Org mode 8.2.7b)}}
+\begin{document}
+
+\maketitle
+In this worksheet you will need to evaluate the following expressions \textbf{by hand} and calculate the answer. Part of the goal is to understand the exact order in which the sub-expressions are evaluated. When you are done, you may check your answers against the Javascript interpreter of your choice.
+
+\begin{itemize}
+\item \verb~(var x = 10)||(10+NaN)~
+\end{itemize}
+\vspace{2 in}
+\begin{itemize}
+\item \verb~(function () {return 5} || null)(10)~
+\end{itemize}
+\vspace{2 in}
+\begin{itemize}
+\item \verb~(var f = function (x) {f(x)}) + f(0)~ (what's funny about this one?)
+\end{itemize}
+\vspace{2 in}
+\begin{itemize}
+\item \verb~10+5-30*11/(11-10*(1-1))~
+\end{itemize}
+% Emacs 24.3.1 (Org mode 8.2.7b)
+\end{document}
