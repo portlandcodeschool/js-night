@@ -1,0 +1,78 @@
+
+Dear current Javascript Students at Portland Code School,
+(also hello to some others listening in (via cc) on this email, including our awesome TAs!)
+
+If you are reading this, then you are enrolled in the evening Javascript Course at Portland Code School (aka "Full-Stack" Javascript). 
+
+This email is intended to guide you through the period from today until we see you at the activity on Saturday (which, by the way, should be very fun). I'm looking forward to meeting those of you I did not meet during the Primer.
+
+Ok, time to get down to the agenda of this email. Firstly, let's talk about intangibles. I want to set the tone and basically just treat you like human beings. 
+
+SECTION 1: Human Stuff
+
+My name is Ben. I am an over-educated husband and father of one who has studied tons of things that made me no money whatsoever (like learning three foreign languages, ancient and modern). So basically, I love to learn and teach. I started learning JS and web development a few years ago and I still remember what it's like to be new. This means I have empathy for what you are going through. I've done some freelance web development and have been a part of PCS since last September.  My meetup/ user-group of choice is PDXnode. You should look into this and other meetups.
+
+Here is what Dan has to say about himself: 
+Dan here!  Like Ben, I have diverse interests and love learning for its own sake.
+I've always kept one foot in programming, and I have a fondness for the theory as well as the fun of building elegant programs.
+I'll do my best to ensure a solid conceptual foundation for the practices we teach so that you remain strong even when tech trends shift.
+Programming is play, and we'll play hard, and I'll be learning new things along with you.
+
+Now it's time for some advice: this course, if it is done properly, will frustrate you a lot. Frustration is key to most learning, and especially to learning programming. If you aren't frustrated with Javascript, you are probably not going about things the right way. Learning any type of programming means coming face to face with more knowledge than you can ever handle entirely. We have to start small and then continue to challenge ourselves. 
+
+More advice: keep a positive attitude. Morale is a huge issue for programmers. We tend to get down on ourselves for not being good enough and then we get out of a productive rhythm. Being positive will help you to stay disciplined. BTW, my definition of discipline is "doing small, manageable things habitually" NOT "punish the bad people". As you become a programmer, try to have positive "self talk" and look forward to meeting new challenges, even if you have been "stuck" for days or weeks. 
+
+This bit of advice is related: code six days a week, for at least thirty minutes a day, at a time when you are awake enough to code ineligibly. I recently heard a similar bit of advice from John Resig, the creator of jQuery. This goes in to more detail. 
+
+SECTION 2: What to Expect
+
+We will have the syllabus ready by Monday. Until then, here is a more general outline of the course (some of which may not make sense, don't worry). 
+
+1. Basic, Core, Vanilla, good-ol'-Javascript:  We will spend as much time here as we can since this is what will make you the best programmers you can be. This is also what has proven to be the most valuable skill for most of the people who have been hired recently after graduating from PCS.
+
+2. Testing: You will learn to test your code. This makes you a better programmer and employers want this. 
+
+3. Node.js: Node is an up-and-coming platform for writing servers and other network-y things. You will learn to write some basic kinds of servers in node. We will even use node as a productivity tool. Node is awesome. 
+
+4. Browser: You will learn how to write Javascript for the web browser. We will start with the manipulation of basic web sites and work our way up to Single-Page-Apps. Single-Page-Apps are those particular sites you visit that feel fast and responsive, like that killer iPhone app that has sold millions of copies. Single-Page-Apps are the future, and you will know how to write one by the end of the course. 
+
+5. Git:  You will learn Git so that you can collaborate with other programmers and have version control for your code. 
+
+6. Job Skills:  You will learn valuable skills to help you sell your new programming skills and experience to companies and recruiters seeking programmers. 
+
+7. Collaboration: You will learn how to work with other programmers. This will be practiced throughout the semester in class and most importantly with your group Capstone Project. 
+
+SECTION 3: Required Reading
+
+These are only some of the resources we will be using for the course. We will rely heavily upon the Mozilla Developer Network as a reference. They even have a guide for beginners here if you want more info. 
+
+As far as books, the following is the only book that you need to purchase: 
+Javascript: The Definitive Guide  (About $25 or $30: digital/ print. btw, it's heavy)
+This is a reliable resource and, along with the MDN reference, is basically the "bible" of JS. 
+
+Another book, which is free online, but has other formats available is: 
+Eloquent Javascript by Marijn Haverbeke 
+While you may also want to get a print or digital copy, the online version does have some neat, interactive features. 
+
+We'll talk about most of the concepts from the readings in class as well, but its important to sample multiple perspectives on the same content, early and often.  Please keep up with the reading. If you can keep that end of the bargain, we will promise not to drown you in reading (only code, haha). Seriously, though, you should begin pounding the keys as much as possible. Learning by doing and problem-solving is the best path for the programmer. Reading is very necessary up front, but most of what you need is practice. 
+
+
+SECTION 4: Pre-Day-1 Homework
+
+Treehouse 
+- Intro To Programming
+- JS Foundations 
+
+Books 
+http://eloquentjavascript.net/contents.html
+  - Chapter 1: Introduction
+  - Chapter 2 (1st half): Basic JavaScript: values, variables, and control flow
+ 
+A word on the homework: just do as much as you can.   Try to devote around six hours to all of this. The point is not to finish it all perfectly on the first attempt. The point is to keep working, and develop a rhythm you can sustain for 16 weeks.  Go as slowly as you need to at first. There is no point to quickly skip over everything you don't understand. Take it step by step. If you get stuck on a particular item for around ten minutes, then move on from it and remember to revisit the troublesome topic the next day.
+
+If you get this stuff done, try the Javascript track on Codecademy. It's a great way to learn by doing.
+
+Alright, now that I've finished this book-length email, I'll say farewell. I'll see you soon!
+
+-Ben Verble
+CO-Instructor of JS Night Course at PCS

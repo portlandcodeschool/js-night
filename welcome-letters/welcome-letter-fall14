@@ -1,0 +1,83 @@
+
+Dear incoming students,
+
+Welcome to the evening Javascript Course at Portland Code School (aka "Full-Stack" Javascript)!
+
+This email will serve as an introduction until we see you at the activity on Tuesday (which should be very fun).  We'd like everyone to get started right away on some warm-up homework (described at the end of this mail), but first we want to talk about some intangibles, set a positive tone, and treat you like human beings.
+
+---
+
+SECTION 1: Human Stuff
+
+Let's introduce ourselves!
+
+Ben says:   I am an over-educated husband and father of one who has studied tons of things that made me no money whatsoever (like learning three foreign languages, ancient and modern). So basically, I love to learn and teach. I started learning JS and web development a few years ago and I still remember what it's like to be new. This means I have empathy for what you are going through. I've done some freelance web development and have been a part of PCS since last September.  My meetup/ user-group of choice is PDXnode. You should look into this and other meetups.
+
+Dan says:  Like Ben, I have diverse interests and love learning for its own sake.  I spent years in a graduate program in cognitive science, studying the human side of technology, and I've always kept one foot in programming and computer science.  I have a fondness for the theory of computation as well as the fun of building elegant programs, and I'll do my best to ensure a solid conceptual foundation for the practices we teach.  Programming is play, and we'll play hard, and I'll be learning new things along with you.
+
+Now it's time for some advice:
+
+This course, if it is done properly, will frustrate you a lot. Frustration is key to most learning, and especially to learning programming. If you aren't frustrated with Javascript, you are probably not going about things the right way. Learning any type of programming means coming face to face with more knowledge than you can ever handle entirely. We have to start small and then continue to challenge ourselves. 
+
+Adopt a sustainable habit.  Like any expert skill, programming fluency will fade quickly if it idles, and you'll need to stay immersed in it.  Try to code six days a week, for at least thirty minutes a day, at a time when you are awake enough to code intelligently.  That doesn't happen naturally; you'll need to invent and practice techniques of discipline.
+(Here, discipline means "doing small, manageable things habitually" NOT "punish the bad people".)
+
+Keep a positive attitude. Morale is a huge issue for programmers. We tend to get down on ourselves for not being good enough and then we get out of a productive rhythm. Being positive will help you to stay disciplined.  As you become a programmer, try to have positive "self talk" and look forward to meeting new challenges, even if you have been "stuck" for days or weeks.
+
+And finally: you are not alone.  Programming is a team sport.  At all times, someone else in our class is probably experiencing the same struggle you are.  Treat each other as allies, and practice offering and asking for help from your peers and not just from your instructors and TAs.  Isolating yourself is a mistake difficult to recover from.  Feel the love!
+
+SECTION 2: What to Expect
+
+We'll have the formal syllabus ready by next Wednesday, the start of class.  Until then, here's a general outline of the course (some of which may not make sense, don't worry). 
+
+1. Basic, Core, Vanilla, good-ol'-Javascript:  We will spend as much time here as we can since this is what will make you the best programmers you can be. This is also what has proven to be the most valuable skill for most of the people who have been hired recently after graduating from PCS.
+
+2. Testing: You will learn to test your code. This makes you a better programmer and employers want this. 
+
+3. Browser: You will learn how to write Javascript for the web browser. We will start with the manipulation of basic web pages and work our way up to Single-Page-Apps. Single-Page-Apps are those particular sites you visit that feel fast and responsive, like that killer iPhone app that has sold millions of copies. Single-Page-Apps are the future, and you will know how to write one by the end of the course.
+
+3. Node.js: Node is an up-and-coming platform for writing servers and other network-y things. You will learn to write some basic kinds of servers in node. We will even use node as a productivity tool. Node is awesome. 
+
+5. Git:  You will learn Git so that you can collaborate with other programmers and have version control for your code. 
+
+6. Job Skills:  You will learn valuable skills to help you sell your new programming skills and experience to companies and recruiters seeking programmers. 
+
+7. Collaboration: You will learn how to work with other programmers. This will be practiced throughout the semester in class and most importantly with your group Capstone Project. 
+
+SECTION 3: Required Reading
+
+These are only some of the resources we will be using for the course. We will rely heavily upon the Mozilla Developer Network as a reference. They even have a guide for beginners here if you want more info. 
+
+The only book that you need to purchase is Javascript: The Definitive Guide  (about $25 or $30: digital/ print).
+This is a reliable resource and, along with the MDN reference, is basically the "bible" of JS. 
+
+Another book, which is free online but has other formats available, is Eloquent Javascript by Marijn Haverbeke.  While you may also want to get a print or digital copy, the online version (http://eloquentjavascript.net) does have some appealing interactive features. 
+
+We'll talk about most of the concepts from the readings in class as well, but it's important to sample multiple perspectives on the same content, early and often.  Please keep up with the reading. If you can keep that end of the bargain, we will promise not to drown you in reading (only code, haha).  Seriously, though, you should begin pounding the keys as much as possible.  Learning by doing and problem-solving is the best path for the programmer.  Reading is very necessary up front, but most of what you need is practice. 
+
+
+SECTION 4: Pre-Day-1 Homework
+
+Please get started on the following introductory materials:
+
+Treehouse: 
+- Intro To Programming (Achievement 1: Basics)
+- JS Foundations (Achievements 1-3: Variables, Strings, Numbers)
+- Console Foundations (Achievement 1: Getting Started With the Console)
+- Git Basics
+
+Books:
+Eloquent Javascript, 2nd edition:  http://eloquentjavascript.net
+  - Introduction
+  - Chapter 1: Basic JavaScript: values, numbers, strings, operators
+  - Chapter 2 (first third): statements, variables, keywords.
+
+
+We know time is short, but just do as much as you can.   Try to devote around eight hours to all of this. The point is not to finish it all perfectly on the first attempt. The point is to keep working, and develop a rhythm you can sustain for 16 weeks.  Go as slowly as you need to at first. There is no point to quickly skip over everything you don't understand. Take it step by step. If you get stuck on a particular item for around ten minutes, then move on from it and remember to revisit the troublesome topic the next day.
+
+If you get this stuff done before our first class, try the Javascript track on Codecademy. It's a great way to learn by doing.
+
+Alright, enough of this book-length email.  We'll see you all soon, first at the Challenge Day on Tuesday (Sept.2), and then in class next Wednesday night.  Welcome aboard!
+
+-Ben Verble and Dan Bauer
+Co-Instructors of JS Night Course at PCS
