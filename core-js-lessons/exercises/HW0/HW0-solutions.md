@@ -79,7 +79,9 @@ Assume variables x, y, and z are numbers.
 
 **a)**
 Write an expression for the mean (i.e. average) of x, y, and z.
-```(x+y+z)/3```
+```
+(x+y+z)/3
+```
 
 **b)**
 Write a series of expressions to adjust each of x, y, and z
