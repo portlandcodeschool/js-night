@@ -127,13 +127,23 @@ Write an expression which is true if the rectangle is taller than it is wide, an
 Imagine subdividing your rectangle into 3 equal rows and 3 equal columns, which would create 9 smaller rectangles, identical in shape but varying by position.
 Define four new variables describing the centermost small rectangle.
 (Hint: one of the many solutions is very similar to the solution of **2b** above.)
-```
-var l1 = (l + l + r)/3;
-var r1 = (r + r + l)/3;
-var t1 = (t + t + b)/3;
-var b1 = (b + b + t)/3;
-```
 
+Solution using weighted means:
+```
+var lc = (2*l + r)/3;
+var rc = (2*r + l)/3;
+var tc = (2*t + b)/3;
+var bc = (2*b + t)/3;
+```
+Solution using widths:
+```
+var miniWidth = (r-l)/3;
+var miniHeight = (t-b)/3;
+var lc = l + miniWidth; // == 3*l/3 + (r-l)/3 == (3*l+r-l)/3 == (2*l+r)/3
+var rc = r - miniWidth;
+var bc = b + miniHeight;
+var tc = t - miniHeight;
+```
 ---
 
 **4)** (_Difficulty: moderate_)
@@ -145,8 +155,8 @@ Write an expression for a string expressing the proper form of an improper fract
 
 (_Hint: you'll need the modulo operator _%_, and you'll probably want to create a couple of extra variables._)
 ```
-var num = n % d;
-var divisible = n - num;
-var wholes = divisible / d;
-var result = wholes + ' ' + num + '/' + d;
+var remainder = n % d;
+var evenlyDivisible = n - remainder;
+var wholes = evenlyDivisible / d;
+var result = wholes + ' ' + remainder + '/' + d;
 ```

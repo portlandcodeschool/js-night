@@ -2,13 +2,37 @@ Homework #2
 
 ---
 
-
 **1)** _(Easyish)_
-Rewrite each block below as a simpler equivalent.  Your equivalent should produce the same result as the original given the same conditions.
+Revisit your solution to homework #1, problem 4, which expresses an improper fraction as a proper one.  Encapsulate your solution into a function called "printFraction".  The function should receive 2 parameters (n and d) and return a string.
+
+**a)** First, solve the problem making the same assumptions as before (i.e. n and d are positive integers, with n>d).  For example, `printFraction(7,4)` should return "1 3/4".
+
+**b)** You may have noticed that your output can be simplified in some cases.  For example:
+
+- "0 1/2" could be just "1/2"
+- "1 0/3" could be just "1"
+- "2 2/4" could be reduced to "2 1/2"
+
+Write another version of your function which simplifies the output string whenever possible.
+(_Hint: you'll need some conditionals._)
+
+**c)** Now relax the constraints on parameters n and d.  In addition to working in the ways described above, your function should handle these cases:
+
+- n is less than or equal to d (i.e. the fraction isn't improper).
+- either n or d (or both) could be negative.  If quotient _n/d_ is negative, move the negative sign to the front of the string.
+- either n or d (or both) isn't an integer.  In this case, let your function return undefined.
+
+(_Hint: on this or any other problem, to check whether a number n is an integer, use `n%1 === 0`._)
+
+---
+
+**2)** _(Easyish)_
+Rewrite each block below as a simpler equivalent.  Your equivalent should produce the same final conditions as the original given the same initial conditions.
 
 **a)**
 
 ```
+var x;
 if (a) {
    if (b) {
      x = 0;
@@ -53,15 +77,17 @@ OR
 x = (!a*1) + (!b*1);
 ```
 
+---
+
 **b)**
 ```
-var y, isFalse = ((x? false : true);
-if (isFalse)
+var y, xIsFalse = (x? false : true);
+if (xIsFalse)
    y = false;
 else
    y = x;
 ```
-Solution:
+Solutions:
 ```
 var y = (x? x: false);
 ```
@@ -69,6 +95,8 @@ OR
 ```
 var y = x || false;
 ```
+
+---
 
 **c)**
 ```
@@ -98,6 +126,8 @@ while (i>0) {
 }
 ```
 
+---
+
 **d)**
 ```
 var i;
@@ -112,28 +142,6 @@ Solution:
 var i = Math.round(n);
 ```
 
-
-
-
-**2)** _(Easyish)_
-
-Revisit your solution to homework #1, problem 4, which expresses an improper fraction as a proper one.  Encapsulate your solution into a function called "printFraction".  The function should receive 2 parameters (n and d) and return a string.
-
-**a)** First, solve the problem making the same assumptions as before (i.e. n and d are positive integers, with n>d).  For example, `printFraction(7,4)` should return "1 3/4".
-
-**b)** You may have noticed that your output can be simplified in some cases.  For example:
-- "0 1/2" could be just "1/2"
-- "1 0/3" could be just "1"
-- "2 2/4" could be reduced to "2 1/2"
-Write another version of your function which simplifies the output string whenever possible.
-(_Hint: you'll need some conditionals._)
-
-**c)** Now relax the constraints on parameters n and d.  In addition to working in the ways described above, your function should handle these cases:
--- n is less than or equal to d (i.e. the fraction isn't improper).
--- either n or d (or both) could be negative.  If quotient _n/d_ is negative, move the negative sign to the front of the string.
--- either n or d (or both) isn't an integer.  In this case, let your function return undefined.
-
-(Hint: on this or any other problem, to check whether a number _n_ is an integer, use `n%1 === 0`._)
 ---
 
 **3)** _(Moderate)_
@@ -161,7 +169,7 @@ If your array argument holds values [a,b,c...z], as in
 Make sure to handle two special cases: length 0 (then return _true_) and length 1 (then return that single value).
 Again, don't use &&.
 
-**c)**
+**d)**
 You've just realized that your effort was doomed: neither of your functions can replace the && operator in certain circumstances.  Explain why, and find an example which demonstrates failure.
 
 ---
@@ -194,26 +202,4 @@ You may use the provided [template file](cards-template1b.js), which has extra t
 
 _(Please note: Problem 5 is the most important one in this homework, because variations of it will recur in several later homeworks.  The cleaner your code is now, the easier it will be to modify later.)_
 
----
-
-Bonus: These two are optional.  Try them only when you've finished all the other problems and want an extra challenge.
-
-**6)** _(Moderate)_
-Write a function to decide whether a given integer (a parameter) is prime. You may need one of these functions/operators:
-
-* function `Math.floor(N)` truncates any fractional part of a number N (i.e. returns greatest integer <=N)
-* modulo operator %: `x%y` returns 0 if x divides evenly by y 
-
----
-
-**7)** _(Difficult)_
-Write a function which converts any positive integer into a string of the corresponding Roman Numeral.  For example, `toRoman(2014)` should return 'MMXIV'.  You may want to write a couple of helper functions for subtasks which are repeated with slight variation.
-
-Write a few assertions to test your output.
-For example:
-```
-assert(toRoman(2014)==='MMXIV',"Test 2014 failed");
-```
-
----
 
