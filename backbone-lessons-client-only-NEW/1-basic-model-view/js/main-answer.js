@@ -24,7 +24,7 @@ var HomeView = Backbone.View.extend({
   }
 });
 
-$(function () {
+$(document).ready(function () {
   var homeView = new HomeView();
   homeView.render();
 });

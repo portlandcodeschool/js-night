@@ -1,18 +1,17 @@
 // challenge: refactor this application to have only 
-// one user-created (you) variable
+// one variable besides your dependencies
 // $, _, and Backbone are already globals
-var app = {};
 
-app.TodoModel = Backbone.Model.extend({});
+var Todo = Backbone.Model.extend({});
 
-app.TodosCollection = Backbone.Collection.extend({
-  model: app.TodoModel,
-  comparator: 'cid'
+var Todos = Backbone.Collection.extend({
+  model: Todo,
+  comparator: 'cid' // or perhaps sort by 'title'
 });
 
-app.todosCollection = new app.TodosCollection();
+var todos = new Todos();
 
-app.todosCollection.add([
+todos.add([
   { title: 'mow the lawn',
     description: 'fill the gasoline tank, start the engine, cut all the grass, bag grass'},
   { title: 'paint the house',
@@ -21,7 +20,7 @@ app.todosCollection.add([
     description: 'get the seat wrench, turn off water main, unscrew things, get new parts'}
 ]);
 
-app.TodoInputView = Backbone.View.extend({
+var TodoInputView = Backbone.View.extend({
   el: '#todo-form',
   events: {
     'click #add-todo': 'addTodo'
@@ -29,7 +28,7 @@ app.TodoInputView = Backbone.View.extend({
   addTodo: function (event) {
     event.preventDefault();
     var $todoInput = $(this.el).find('#todo-input');
-    var $description = $(this.el).find('#description-input');
+    var $description = $(this.el).find('#description-input'); 
     console.log('button was clicked');
     var todoInput = $todoInput.val();
     var descriptionInput = $description.val();
@@ -39,7 +38,7 @@ app.TodoInputView = Backbone.View.extend({
   }
 });
 
-app.TodoListView = Backbone.View.extend({
+var TodoListView = Backbone.View.extend({
   el: '#todo-list',
   initialize: function () {
     this.collection.on('add', this.render, this);
@@ -47,7 +46,7 @@ app.TodoListView = Backbone.View.extend({
   render: function () {
     var outputHtml = '';
 
-    this.collection.models.forEach(function (item) {
+    this.collection.models.forEach(function (item) { 
       outputHtml += '<li><strong>' + item.get('title') + ':  </strong>' +
                      item.get('description') + '</li>';
     });
@@ -57,7 +56,7 @@ app.TodoListView = Backbone.View.extend({
 });
 
 $(function () {
-  app.todoInputView = new app.TodoInputView({collection: app.todosCollection});
-  app.todoListView = new app.TodoListView({collection: app.todosCollection});
-  app.todoListView.render();
+  var todoInputView = new TodoInputView({collection: todos});
+  todoListView = new TodoListView({collection: todos});
+  todoListView.render();
 });

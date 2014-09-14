@@ -11,9 +11,6 @@ var todo1 = new Todo({
   description: 'fill the gasoline tank, start the engine, cut all the grass, bag grass'
 });
 
-console.log(todo1.attributes);
-
-
 var TodoInputView = Backbone.View.extend({
   el: '#todo-form',
   model: todo1,
@@ -23,8 +20,9 @@ var TodoInputView = Backbone.View.extend({
   addTodo: function (event) {
     // CHALLENGE: you will add several lines of code in this function 
     event.preventDefault();
+    // Clarification: the $ a the beginning of $todoInput is a naming convention
+    // it means that the thing contained in this variable is a "jQuery wrapped object"
     var $todoInput = $(this.el).find('#todo-input');
-    console.log('button was clicked');
     var todoInput = $todoInput.val();
     this.model.set({title: todoInput});
     $todoInput.val('');
