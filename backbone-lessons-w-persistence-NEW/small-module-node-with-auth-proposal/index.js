@@ -7,27 +7,12 @@ var Session = require("generic-session");
 var MemoryStore = require("generic-session").MemoryStore;
 var sendHtml = require("send-data/html");
 var formBody = require("body/form");
+var config = require('./config');
 var templates = require('./server-templates/compiled-templates');
-var db = require('orchestrate')('7fb9a423-b90c-4c9e-8158-14574be54e96');
+var db = require('orchestrate')(config.dbKey);
 
 var store = MemoryStore();
-var app = Router();
-
-/* with local object instead of db
-
-var users = {
-    tj: { name: "tj" }
-}
-
-pwd.hash("foobar", function (err, salt, hash) {
-  if (err) {
-    throw err
-  }
-
-  users.tj.salt = salt
-  users.tj.hash = String(hash)
-})
-*/
+var router = Router();
 
 function createUser (user, password) {
   pwd.hash(password, function (err, salt, hash) {
@@ -46,15 +31,14 @@ function createUser (user, password) {
     })
   })
 }
+
 //uncomment to create a user
 //createUser({name: "steve"}, "123"); 
 
 function authenticate(name, password, callback) {
-  // var user = users[name] //with local object instead of db
-  var user;
   db.get('users', name)
     .then(function(result){
-      user = result.body;
+      var user = result.body;
         if (!user) {
           return callback(new Error("cannot find user"))
         }
@@ -102,17 +86,20 @@ function restrict(handler) {
   }
 }
 
-app.addRoute("/", restrict(function (req, res) {
-  var message = "Welcome";
-  sendHtml(req, res, templates.index({message:message}));
-}))
+router.addRoute("/", restrict(function (req, res) {
+  var session = Session(req, res, store)
+  session.get("user", function (err, user) {
+    var message = "Welcome " + user.name.toString();
+    sendHtml(req, res, templates.index({message:message}));
+  });
+}));
 
-app.addRoute("/public/*", st({
+router.addRoute("/public/*", st({
   path: __dirname + "/public",
   url: "/public"
 }));
 
-app.addRoute("/logout", function (req, res, opts, callback) {
+router.addRoute("/logout", function (req, res, opts, callback) {
   var session = Session(req, res, store)
 
   session.destroy(function (err) {
@@ -121,10 +108,10 @@ app.addRoute("/logout", function (req, res, opts, callback) {
     }
 
     redirect(req, res, "/login")
-  })
-})
+  });
+});
 
-app.addRoute("/login", {
+router.addRoute("/login", {
   GET: function (req, res, opts, callback) {
     var session = Session(req, res, store)
 
@@ -199,8 +186,8 @@ app.addRoute("/login", {
       })
     })
   }
-})
+});
 
-var server = http.createServer(app)
-server.listen(3000)
-console.log("example auth server listening on port 3000")
+var server = http.createServer(router);
+server.listen(3000);
+console.log("example auth server listening on port 3000");

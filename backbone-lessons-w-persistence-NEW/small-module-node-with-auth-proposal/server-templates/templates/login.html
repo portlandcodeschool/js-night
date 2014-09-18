@@ -2,35 +2,31 @@
 <html lang="en">
   <head>
     <title>Authentication Example</title>
-    <style>
-    body {
-      padding: 50px;
-      font: 13px Helvetica, Arial, sans-serif;
-    }
-    .error {
-        color: red;
-    }
-    .success {
-        color: green;
-    }
-    </style>
+    <link rel="stylesheet" href="public/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="public/css/pure.css">
+    <link rel="stylesheet" href="public/css/grids-responsive.css">
+    <link rel="stylesheet" href="public/css/main.css">
+
   </head>
   <body>
-    <h1>Login</h1>
-    <div>{{message}}</div>
-    <form method="post" action="/login">
-      <p>
-        <label>Username:</label>
-        <input name="username" type="text">
-      </p>
-      <p>
-        <label>Password:</label>
-        <input name="password" type="text">
-      </p>
-      <p>
-        <input value="Login" type="submit">
-      </p>
-    </form>
-    <a href="/logout">Log-Out</a>
+    <section class="panel">
+      <h1>Login</h1>
+      <div>{{message}}</div>
+      <form method="post" action="/login">
+        <p>
+          <label>Username:</label>
+          <input name="username" type="text">
+        </p>
+        <p>
+          <label>Password:</label>
+          <input name="password" type="text">
+        </p>
+        <p>
+          <input value="Login" type="submit">
+        </p>
+      </form>
+      <a href="/logout">Log-Out</a>
+
+    </section>
   </body>
 </html>

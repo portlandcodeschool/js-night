@@ -16,6 +16,4 @@ files.forEach(function(item){
   compiledTemplates[templateName] = _.template(template);
 });
 
-console.log(compiledTemplates);
-
 module.exports = compiledTemplates;
