@@ -1,0 +1,18 @@
+{
+  "name": "experiment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ecstatic": "^0.5.4",
+    "routes-router": "^4.1.1",
+    "send-data": "^3.3.3",
+    "st": "^0.5.1"
+  }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Authentication Example</title>
+    <style>
+    body {
+      padding: 50px;
+      font: 13px Helvetica, Arial, sans-serif;
+    }
+    .error {
+        color: red;
+    }
+    .success {
+        color: green;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <div>{{message}}</div>
+    <form method="post" action="/login">
+      <p>
+        <label>Username:</label>
+        <input name="username" type="text">
+      </p>
+      <p>
+        <label>Password:</label>
+        <input name="password" type="text">
+      </p>
+      <p>
+        <input value="Login" type="submit">
+      </p>
+    </form>
+    <a href="/logout">Log-Out</a>
+  </body>
+</html>

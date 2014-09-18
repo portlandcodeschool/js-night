@@ -1,0 +1,23 @@
+{
+  "name": "http-framework-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin P. Verble",
+  "license": "MIT",
+  "dependencies": {
+    "body": "^4.5.0",
+    "generic-session": "^0.1.0",
+    "hyperscript": "^1.4.0",
+    "orchestrate": "^0.3.6",
+    "pwd": "0.0.4",
+    "redirecter": "^0.2.3",
+    "routes-router": "^4.1.1",
+    "send-data": "^3.3.3",
+    "st": "^0.5.1",
+    "underscore": "^1.7.0"
+  }
+}
