@@ -1,15 +1,15 @@
-var http = require("http");
-var st = require('st');
-var Router = require("routes-router");
+var http = require("http"); // essential
+var st = require('st'); // essential
+var Router = require("routes-router"); // essential
 var pwd = require("pwd");
 var redirect = require("redirecter");
 var Session = require("generic-session");
 var MemoryStore = require("generic-session").MemoryStore;
-var sendHtml = require("send-data/html");
-var formBody = require("body/form");
+var sendHtml = require("send-data/html"); // essential, also bring in send-data/json
+var formBody = require("body/form"); // essential
 var config = require('./config');
 var templates = require('./server-templates/compiled-templates');
-var db = require('orchestrate')(config.dbKey);
+var db = require('orchestrate')(config.dbKey); //essential
 
 var store = MemoryStore();
 var router = Router();
