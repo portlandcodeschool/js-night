@@ -1,102 +1,174 @@
-var Slot = Backbone.Model.extend({});
+var Slot = Backbone.Model.extend({
+    defaults: {
+        status:'facedown'
+    },
+    display: function() {
+        return this.get('face');
+    }
+});
 
 var Slots = Backbone.Collection.extend({
   model: Slot,
-  comparator: 'cid' // or perhaps sort by 'title'
-});
+  //comparator: 'cid',
+  match: function(here,there) {// here & there are models
+    return (here.get('group') === there.get('group'));
+  },
+  there:null,
+  restart: function() {
+    this.reset(this.shuffle());
+    this.models.forEach(function(it) {it.set(it.defaults)});
+  },
+  lift: function(here) { //here is a model, not a number
+    var there = this.there;
+    if (here.get('status') !== 'facedown') return false;
+    if (there===here) return false;
+    if (there === null) {
+    // no current face-up
+        this.there = here;
+        here.set('status','faceup');
+    } else {
+    // must match face-up
+        if (this.match(here,there)) {
+            here.set('status','matched');
+            there.set('status','matched');
+            //checkGameover();
+        } else {
+            here.trigger('change',here);// fake a change event, leaving status 'facedown'
+            there.set('status','facedown');
+        }
+        this.there = null;
+    }
+    return here.get('face');
+  }
+}); // end Slots
 
 var slots = new Slots();
 
-slots.add([{face:'Cat',group:1},{face:'Kitten',group:1},
+slots.add(
+            [{face:'Cat',group:1},{face:'Kitten',group:1},
 			{face:'Dog',group:2},{face:'Puppy',group:2},
-      {face:'Bird',group:3},{face:'Chick',group:3},
-      {face:'Frog',group:4},{face:'Tadpole',group:4}]);
+            {face:'Bird',group:3},{face:'Chick',group:3},
+            {face:'Frog',group:4},{face:'Tadpole',group:4},
+            {face:'Whale',group:5},{face:'Calf',group:5},
+            {face:'Sheep',group:6},{face:'Lamb',group:6},
+      ]);
 
-/*
-slots.models.forEach(function (item, index){
-  console.log('item\'s cid :' + item.cid);
-  console.log(item);
-  console.log(item.toJSON());
-});
-*/
+
+var MemoryGame = (function() {
+    return function(gui,collection) {
+        this.lift = function(where) {
+            console.log('where='+where);
+            gui.show(where,collection[where].get('face'));
+        }
+    }
+})();
+
+var MemoryGUI = (function() { // begin IIFE
 
 var SlotView = Backbone.View.extend({
+  //personal props:
+  // model, id
+  //shared props:
+  tagName: 'div',
   events: {
     'click': 'tryLift'
   },
   tryLift: function() {
-      console.log("clicked "+this.id);
-      //game.lift(id);
+      slots.lift(this.model);
     },
-  /*initialize2: function() {
-  		$('<div>').attr('id',this.id).appendTo('#memorygame');
-      this.el = '#'+this.id;
-      this.$el = $(this.el);
-      console.log(this.el);
-  		this.render();
-  },*/
   initialize: function() {
-      this.$el.addClass('memoryCell');
-      this.$el.appendTo('#memorygame');
-      //console.log(this.el);
-      this.render();
+    this.listenTo(this.model, 'change',this.update);
+    this.$el.addClass('memoryCell');
+    this.$el.appendTo('#memorygrid');
   },
-  render: function() {
+  update: function(model) {
+    this.show(); // turn faceup now
+    var me = this;
+    // maybe unshow later:
+    if (model.get('status') !== 'faceup') {
+        window.setTimeout(function() {
+            me.unshow();
+        },1000);
+    }
+  },
+  unshow: function() { //either hide or remove
+    var status = this.model.get('status');
+    if (status == 'matched')
+        this.remove();
+    else this.hide();
+  },
+  restore: function() {
     this.$el.removeClass('faceup').removeClass('missing');
   },
-  show: function(what) {
-      this.$el.attr('value',what);
-  		this.$el.addClass('faceup');
-	},
+  show: function() {
+    this.$el.attr('value',this.model.get('face'));
+    this.$el.addClass('faceup');
+  },
+  remove: function() {
+    this.$el.addClass('missing');
+  },
   hide: function() {
     this.$el.removeClass('faceup');
   }
 });
 
-var MainView = Backbone.View.extend({
-  events: {
-        'click #reset': 'reset'
-  },
-  initialize: function() {
-    this.resetBtn = $('<button id="reset">Reset</button').addClass('resetBtn').appendTo('body');
-    this.board = new GridView({collection:slots});
-  },
-  reset: function() {
-    this.board.reset();
-  }
-});
-
 var GridView = Backbone.View.extend({
-	el:'#memorygame',
-	slots:[],
+    // personal props:
+    // collection
+    // shared props:
+	el:'#memorygrid',
 	initialize: function() {
-    var len = this.collection.length;
+        this.collection.restart();
+        this.slots = []; // grid's subviews
+        var len = this.collection.length;
 		var cols = Math.ceil(Math.sqrt(len));
-		//var grid = $el[0];
 		for (var id=0; id<len; ++id) {
-		//	this.slots.push(new SlotView({id:'id'+id}));
-      var opts = {tagName:'div', id:'id'+id, model:this.collection[id]};
-      if (!(id%cols)) {
-          opts.className = 'firstCol';
-      }
-      //console.log(opts);
-      this.slots.push(new SlotView(opts));
-			//$el.append(makeCell(id,cols,clickFn));
+            var opts = {id:'id'+id, model:this.collection.at(id)};
+            if (!(id%cols)) {
+                opts.className = 'firstCol';
+            }
+            this.slots.push(new SlotView(opts)); //make one subview
 		}
 	},
   reset: function() {
-    this.slots.forEach(function(slot) {slot.render();});
+    this.$el.html('');
+    this.initialize();
+    //this.slots.forEach(function(slot) {slot.render();});
   },
+/*
   show: function(where,what) {
+    console.log(this);
     this.slots[where].show(what);
   },
   hideSoon: function(where) {
     var slot = this.slots[where];
     window.setTimeout(function() { slot.hide();}, 1000);
   }
+  */
 });
 
-var mainview = null;
+var MainView = Backbone.View.extend({
+  el:'#memorygame',
+  events: {
+        'click #resetBtn': 'reset'
+  },
+  initialize: function() {
+    this.board = new GridView({collection:slots});
+    this.resetBtn = $('<button id="resetBtn">Reset</button>').addClass('resetBtn').prependTo('#memorygame');
+  },
+  reset: function(evt) {
+    evt.preventDefault();
+    this.board.reset();
+  }
+});
+
+return function(collection) { //Ctor
+    this.mainview = new MainView({collection:collection});
+} //end Ctor
+
+})(); /// end IIFE
+
+var gui = null;
 $(function() {
-	mainview = new MainView({collection:slots});
+	gui = new MemoryGUI(slots);
 });
