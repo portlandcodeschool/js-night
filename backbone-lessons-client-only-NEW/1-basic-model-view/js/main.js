@@ -1,5 +1,7 @@
+// Make a new subclass (Todo) of Backbone.Model:
 var Todo = Backbone.Model.extend({});
 
+// Make a model (one instance of class Todo):
 var todo1 = new Todo({
   title: 'mow the lawn'
 });
@@ -8,7 +10,7 @@ var todo1 = new Todo({
 
 console.log(todo1.attributes);
 
-// CHALLENGE: Log your new todo to see it's properties
+// CHALLENGE: Log your new todo to see its properties
 
 var HomeView = Backbone.View.extend({
   el: '#my-app',
