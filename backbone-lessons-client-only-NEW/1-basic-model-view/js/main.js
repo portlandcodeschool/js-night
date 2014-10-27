@@ -10,13 +10,13 @@ var todo1 = new Todo({
 
 console.log(todo1.attributes);
 
-// CHALLENGE: Log your new todo to see its properties
+// CHALLENGE: Log your new todo to the browser console to see its properties
 
 var HomeView = Backbone.View.extend({
   el: '#my-app',
   render: function () {
     $(this.el).html('<h1><i class="fa fa-check-square-o"></i> Todos</h1>' + 
-                    '<ol><li>' + todo1.get('title') + '</li>' + //QUESTION: add another li 
+                    '<ol><li>' + todo1.get('title') + '</li>' + //CHALLENGE: add another li 
                     '</ol>');                             // with your new todo's title
   }
 });
@@ -25,3 +25,7 @@ $(function () {
   var homeView = new HomeView();
   homeView.render();
 });
+
+
+// GROUP CHALLENGE: get into a group and talk about the parts of this code
+// that do not make sense to you

@@ -2,9 +2,8 @@ body{
   background-color: lightblue;
 }
 
-#my-app{
+.panel{
   margin: 3em 1em 1em 1em;
   padding: 1em;
-  background-color: aliceblue;
-  box-shadow: 3px 3px 10px #000;
+  background-color: white;
 }
