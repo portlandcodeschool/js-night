@@ -14,6 +14,12 @@ var db = require('orchestrate')(config.dbKey); //essential
 var store = MemoryStore();
 var router = Router();
 
+var _ = require('underscore');
+function showSession(session) {
+  console.log(_.pick(session,['options','store','expire','token','id']));
+  // excludes: 'cookies','request','response'
+}
+
 function createUser (user, password) {
   pwd.hash(password, function (err, salt, hash) {
     if (err) {
@@ -33,7 +39,7 @@ function createUser (user, password) {
 }
 
 //uncomment to create a user
-//createUser({name: "steve"}, "123"); 
+createUser({name: "steve"}, "123"); 
 
 function authenticate(name, password, callback) {
   db.get('users', name)
@@ -62,7 +68,7 @@ function authenticate(name, password, callback) {
 
 function restrict(handler) {
   return function (req, res, opts, callback) {
-    var session = Session(req, res, store)
+    var session = Session(req, res, store);
     session.get("user", function (err, user) {
       if (err) {
         return callback(err)
@@ -87,7 +93,7 @@ function restrict(handler) {
 }
 
 router.addRoute("/", restrict(function (req, res) {
-  var session = Session(req, res, store)
+  var session = Session(req, res, store);
   session.get("user", function (err, user) {
     var message = "Welcome " + user.name.toString();
     sendHtml(req, res, templates.index({message:message}));
@@ -137,8 +143,9 @@ router.addRoute("/login", {
       })
     })
   },
-  POST: function (req, res, opts, callback) {
-    formBody(req, res, function (err, body) {
+  POST: function (req, res, opts, callback) { //process login form...
+
+    formBody(req, res, function (err, body) { // when form body is ready...
       if (err) {
         return callback(err)
       }
@@ -159,17 +166,20 @@ router.addRoute("/login", {
             redirect(req, res, "/login")
           })
       }
-
+      // else no err, proceed:
+      showSession(session);
       session.del(function (err) {
         if (err) {
             return callback(err)
         }
+        showSession(session);
 
         session.set("user", user, function (err) {
             if (err) {
               return callback(err)
             }
-
+            showSession(session);
+            
             session.set("message", {
               type: "success",
               text: "Authenticated as " + user.name +
@@ -180,11 +190,11 @@ router.addRoute("/login", {
               }
 
               redirect(req, res, "/")
-            })
-          })
-        })
-      })
-    })
+            })//session.set message
+          })//session.set user
+        })//session.del
+      })//authenticate
+    })//formBody
   }
 });
 
